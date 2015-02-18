@@ -32,13 +32,13 @@ wget https://github.com/aguslr/multibootusb/tarball/master -O - | tar -xzv --str
 
 Connect an USB drive with a FAT32 partition to your computer and mount the partition.
 
-1. Create a boot folder to store GRUB's configuration files and an isos folder to store ISO files:
+1. Create a directory named *boot* to store GRUB's configuration files, and a directory named *isos* to store ISO files:
 
    ```sh
    mkdir -p <mountpoint>/{boot/grub/grub.d/,isos}
    ```
 
-   Where <mountpoint> is the directory where the USB drive is mounted. Use `mount` command to get this information.
+   Where `<mountpoint>` is the directory where the USB drive is mounted. Use `mount` command to get this information.
 
 2. Install GRUB on to the USB drive:
 
@@ -46,7 +46,7 @@ Connect an USB drive with a FAT32 partition to your computer and mount the parti
    sudo grub-install --force --no-floppy --boot-directory=<mountpoint>/boot <device>
    ```
 
-   Where <device> is the name of the USB device (e.g. **/dev/sdh**).
+   Where `<device>` is the name of the USB device (e.g. */dev/sdh*).
 
 3. Copy the necessary GRUB files:
 
