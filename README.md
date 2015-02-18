@@ -11,13 +11,13 @@ This repository stores the files needed to create a pendrive capable of booting 
 If we have Git installed on the system, we can get the files directly from the repository and then use the `install.sh` script:
 
 ```sh
-git clone git://github.com/aguslr/multiboot.git
+git clone git://github.com/aguslr/multibootusb.git
 ```
 
 After this, every time we want to update the files we do:
 
 ```sh
-cd multiboot && git pull
+cd multibootusb && git pull
 ```
 
 ### Without Git
@@ -25,7 +25,7 @@ cd multiboot && git pull
 If Git is not installed, we can still get the files as long as we have a basic Unix environment available:
 
 ```sh
-wget https://github.com/aguslr/multiboot/tarball/master -O - | tar -xzv --strip-components 1 --exclude={README.md}
+wget https://github.com/aguslr/multibootusb/tarball/master -O - | tar -xzv --strip-components 1 --exclude={README.md}
 ```
 
 ## Creating a bootable USB drive
@@ -51,7 +51,7 @@ Connect an USB drive with a FAT32 partition to your computer and mount the parti
 3. Copy the necessary GRUB files:
 
    ```sh
-   cd multiboot && cp -f grub.cfg <mountpoint>/boot/grub/ && cp grub.d/*.cfg <mountpoint>/boot/grub/grub.d/
+   cd multibootusb && cp -f grub.cfg <mountpoint>/boot/grub/ && cp grub.d/*.cfg <mountpoint>/boot/grub/grub.d/
    ```
 
 4. Download and copy the ISO files into the USB drive:
