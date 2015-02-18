@@ -25,7 +25,7 @@ cd multibootusb && git pull
 If Git is not installed, we can still get the files as long as we have a basic Unix environment available:
 
 ```sh
-wget https://github.com/aguslr/multibootusb/tarball/master -O - | tar -xzv --strip-components 1 --exclude={README.md}
+wget https://github.com/aguslr/multibootusb/tarball/master -O - | tar -xzv --strip-components 1 --exclude={README.md,demo.gif}
 ```
 
 ## Creating a bootable USB drive
@@ -72,6 +72,10 @@ You can download from these websites:
 * [**Parted Magic**](http://partedmagic.com/): a complete hard disk management solution.
 * [**SystemRescueCd**](http://www.sysresccd.org/): a Linux system rescue disk for administrating or repairing your system and data after a crash.
 * [**Tails**](https://tails.boum.org/): a live operating system, that aims at preserving your privacy and anonymity.
+
+## Demo
+
+![Demo GIF](demo.gif "Demo")
 
 ## References
 
