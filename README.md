@@ -79,6 +79,7 @@ You can download from these websites:
 
 ## References
 
+- [Using Syslinux and memdisk](https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Using_Syslinux_and_memdisk)
 - [Thermionix/multipass-usb](https://github.com/Thermionix/multipass-usb)
 - [Transform a USB stick into a boot device packing multiple Linux distros](http://www.circuidipity.com/multi-boot-usb.html)
 - [MultiBoot USB with Grub2 (boot directly from iso files)](http://www.panticz.de/MultiBootUSB)
