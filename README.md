@@ -8,7 +8,7 @@ This repository stores the files needed to create a pendrive capable of booting 
 
 ### Using Git
 
-If we have Git installed on the system, we can get the files directly from the repository and then use the `install.sh` script:
+If we have Git installed on the system, we can get the files directly from the repository:
 
 ```sh
 git clone git://github.com/aguslr/multibootusb.git
