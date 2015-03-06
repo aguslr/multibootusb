@@ -30,7 +30,7 @@ wget https://github.com/aguslr/multibootusb/tarball/master -O - | tar -xzv --str
 
 ## Creating a bootable USB drive
 
-Connect an USB drive with a FAT32 partition to your computer and mount the partition.
+Connect a partitioned USB drive to your computer and mount it.
 
 1. Create a directory named *boot* to store GRUB's configuration files, and a directory named *isos* to store ISO files:
 
