@@ -66,12 +66,12 @@ Connect a partitioned USB drive to your computer and mount it.
 ## Get bootable ISO files 
 
 You can download from these websites:
-* [**Clonezilla Live**](http://clonezilla.org/clonezilla-live.php): a small bootable GNU/Linux distribution for x86/amd64 (x86-64) based computers.
-* [**Hiren's BootCD**](http://www.hirensbootcd.org/): a first aid kit for your computer.
-* [**Kali Linux**](https://www.kali.org/): a Debian-derived Linux distribution designed for digital forensics and penetration testing.
-* [**Parted Magic**](http://partedmagic.com/): a complete hard disk management solution.
-* [**SystemRescueCd**](http://www.sysresccd.org/): a Linux system rescue disk for administrating or repairing your system and data after a crash.
-* [**Tails**](https://tails.boum.org/): a live operating system, that aims at preserving your privacy and anonymity.
+* **[Clonezilla Live](http://clonezilla.org/clonezilla-live.php)**: a small bootable GNU/Linux distribution for x86/amd64 (x86-64) based computers.
+* **[Hiren's BootCD](http://www.hirensbootcd.org/)**: a first aid kit for your computer.
+* **[Kali Linux](https://www.kali.org/)**: a Debian-derived Linux distribution designed for digital forensics and penetration testing.
+* **[Parted Magic](http://partedmagic.com/)**: a complete hard disk management solution.
+* **[SystemRescueCd](http://www.sysresccd.org/)**: a Linux system rescue disk for administrating or repairing your system and data after a crash.
+* **[Tails](https://tails.boum.org/)**: a live operating system, that aims at preserving your privacy and anonymity.
 
 ## Demo
 
