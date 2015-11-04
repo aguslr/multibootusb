@@ -63,6 +63,17 @@ wget "http://cdimage.kali.org/kali-1.1.0/kali-linux-1.1.0-i386.iso" -P <mountpoi
 5. Reboot and select the USB drive to access the menu.
 
 
+## Testing USB drive with [KVM](http://www.linux-kvm.org/)
+
+To test the newly created USB drive in a virtual environment, run:
+
+```sh
+kvm -cpu host -machine type=pc -m 2G -drive file=<device>,readonly,cache=none,if=virtio
+```
+
+   Where `<device>` is the name of the USB device (e.g. */dev/sdh*).
+
+
 ## Get bootable ISO files
 
 You can download from these websites:
