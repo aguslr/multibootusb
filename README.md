@@ -38,7 +38,7 @@ Connect a partitioned USB drive to your computer and mount it.
    mkdir -p <mountpoint>/boot/{grub/grub.d/,isos}
    ```
 
-   Where `<mountpoint>` is the directory where the USB drive is mounted. Use `mount` command to get this information.
+   Where `<mountpoint>` is the directory where the USB drive is mounted (e.g. */mnt/usb*). Run `mount` to get this information.
 
 2. Install GRUB on to the USB drive:
 
@@ -46,7 +46,7 @@ Connect a partitioned USB drive to your computer and mount it.
    sudo grub-install --force --no-floppy --boot-directory=<mountpoint>/boot <device>
    ```
 
-   Where `<device>` is the name of the USB device (e.g. */dev/sdh*).
+   Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to get this information.
 
 3. Copy the necessary GRUB files:
 
@@ -71,7 +71,7 @@ To test the newly created USB drive in a virtual environment, run:
 kvm -cpu host -machine type=pc -m 2G -drive file=<device>,readonly,cache=none,if=virtio
 ```
 
-   Where `<device>` is the name of the USB device (e.g. */dev/sdh*).
+   Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to get this information.
 
 
 ## Get bootable ISO files
