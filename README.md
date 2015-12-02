@@ -78,6 +78,7 @@ kvm -cpu host -machine type=pc -m 2G -drive file=<device>,readonly,cache=none,if
 
 You can download from these websites:
 * **[Clonezilla Live](http://clonezilla.org/clonezilla-live.php)**: a small bootable GNU/Linux distribution for x86/amd64 (x86-64) based computers.
+* **[Grml Live Linux](https://grml.org/)**: a bootable live system based on Debian that includes a collection of GNU/Linux software especially for system administrators.
 * **[Hiren's BootCD](http://www.hirensbootcd.org/)**: a first aid kit for your computer.
 * **[Kali Linux](https://www.kali.org/)**: a Debian-derived Linux distribution designed for digital forensics and penetration testing.
 * **[Parted Magic](http://partedmagic.com/)**: a complete hard disk management solution.
@@ -95,3 +96,4 @@ You can download from these websites:
 - [Transform a USB stick into a boot device packing multiple Linux distros](http://www.circuidipity.com/multi-boot-usb.html)
 - [MultiBoot USB with Grub2 (boot directly from iso files)](http://www.panticz.de/MultiBootUSB)
 - [Grub2 Loop Boot Solution](http://forums.kali.org/showthread.php?1025-Grub2-Loop-Boot-Solution)
+- [Multiboot USB-Stick: grml 2014.11 einrichten](http://www.gtkdb.de/index_7_2627.html)
