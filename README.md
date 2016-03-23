@@ -51,7 +51,9 @@ Connect a partitioned USB drive to your computer and mount it.
 3. Copy the necessary GRUB files:
 
     ```sh
-    cd multibootusb && cp -f grub.cfg <mountpoint>/boot/grub/ && cp grub.d/*.cfg <mountpoint>/boot/grub/grub.d/
+    cd multibootusb
+    cp -f grub.cfg <mountpoint>/boot/grub/
+    cp grub.d/*.cfg <mountpoint>/boot/grub/grub.d/
     ```
 
 4. Download and copy the ISO files into the USB drive:
