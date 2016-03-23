@@ -34,31 +34,31 @@ Connect a partitioned USB drive to your computer and mount it.
 
 1. Create a directory named *boot* to store GRUB's configuration files, and a directory named *isos* to store ISO files:
 
-   ```sh
-   mkdir -p <mountpoint>/boot/{grub/grub.d/,isos}
-   ```
+    ```sh
+    mkdir -p <mountpoint>/boot/{grub/grub.d/,isos}
+    ```
 
-   Where `<mountpoint>` is the directory where the USB drive is mounted (e.g. */mnt/usb*). Run `mount` to get this information.
+    Where `<mountpoint>` is the directory where the USB drive is mounted (e.g. */mnt/usb*). Run `mount` to get this information.
 
 2. Install GRUB on to the USB drive:
 
-   ```sh
-   sudo grub-install --force --no-floppy --boot-directory=<mountpoint>/boot <device>
-   ```
+    ```sh
+    sudo grub-install --force --no-floppy --boot-directory=<mountpoint>/boot <device>
+    ```
 
-   Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to get this information.
+    Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to get this information.
 
 3. Copy the necessary GRUB files:
 
-   ```sh
-   cd multibootusb && cp -f grub.cfg <mountpoint>/boot/grub/ && cp grub.d/*.cfg <mountpoint>/boot/grub/grub.d/
-   ```
+    ```sh
+    cd multibootusb && cp -f grub.cfg <mountpoint>/boot/grub/ && cp grub.d/*.cfg <mountpoint>/boot/grub/grub.d/
+    ```
 
 4. Download and copy the ISO files into the USB drive:
 
-   ```sh
-   wget "http://cdimage.kali.org/kali-1.1.0/kali-linux-1.1.0-i386.iso" -P <mountpoint>/boot/isos/
-   ```
+    ```sh
+    wget "http://cdimage.kali.org/kali-1.1.0/kali-linux-1.1.0-i386.iso" -P <mountpoint>/boot/isos/
+    ```
 
 5. Reboot and select the USB drive to access the menu.
 
@@ -71,7 +71,7 @@ To test the newly created USB drive in a virtual environment, run:
 kvm -cpu host -machine type=pc -m 2G -drive file=<device>,readonly,cache=none,if=virtio
 ```
 
-   Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to get this information.
+Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to get this information.
 
 
 ## Get bootable ISO files
