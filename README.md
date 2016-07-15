@@ -70,7 +70,7 @@ Connect a partitioned USB drive to your computer and mount it.
 To test the newly created USB drive in a virtual environment, run:
 
 ```sh
-kvm -cpu host -machine type=pc -m 2G -drive file=<device>,readonly,cache=none,if=virtio
+qemu-system-x86_64 -enable-kvm -localtime -m 2G -drive file=<device>,cache=none,if=virtio
 ```
 
 Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to get this information.
