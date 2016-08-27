@@ -84,6 +84,10 @@ You can download from these websites:
 
 * **[Grml Live Linux][grml]**: a bootable live system based on Debian that includes a collection of GNU/Linux software especially for system administrators.
 
+* **[Debian][debian]**: a free operating system (OS) for your computer.
+
+* **[Fedora][fedora]**: a polished, easy to use operating system.
+
 * **[Hiren's BootCD][hirens]**: a first aid kit for your computer.
 
 * **[Kali Linux][kali]**: a Debian-derived Linux distribution designed for digital forensics and penetration testing.
@@ -93,6 +97,8 @@ You can download from these websites:
 * **[SystemRescueCd][sysrescuecd]**: a Linux system rescue disk for administrating or repairing your system and data after a crash.
 
 * **[Tails][tails]**: a live operating system, that aims at preserving your privacy and anonymity.
+
+* **[Ubuntu][ubuntu]**: an open source software platform that runs from the cloud, to the smartphone, to all your things.
 
 
 ## Demo
@@ -109,12 +115,15 @@ You can download from these websites:
 - [Multiboot USB-Stick: grml 2014.11 einrichten][grml-usb-stick]
 
 [clonezilla]: http://clonezilla.org/clonezilla-live.php
+[debian]: https://www.debian.org/
+[fedora]: https://getfedora.org/
 [grml]: https://grml.org/
 [hirens]: http://www.hirensbootcd.org/
 [kali]: https://www.kali.org/
 [partedmagic]: http://partedmagic.com/
 [sysrescuecd]: http://www.sysresccd.org/
 [tails]: https://tails.boum.org/
+[ubuntu]: http://www.ubuntu.com/
 [qemu]: http://qemu.org/
 [memdisk]: https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Using_Syslinux_and_memdisk
 [multipass-usb]: https://github.com/Thermionix/multipass-usb
