@@ -65,7 +65,7 @@ Connect a partitioned USB drive to your computer and mount it.
 5. Reboot and select the USB drive to access the menu.
 
 
-## Testing USB drive with [KVM](http://www.linux-kvm.org/)
+## Testing USB drive with [QEMU](http://qemu.org/)
 
 To test the newly created USB drive in a virtual environment, run:
 
