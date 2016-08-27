@@ -28,25 +28,29 @@ If Git is not installed, we can still get the files as long as we have a basic U
 wget https://github.com/aguslr/multibootusb/tarball/master -O - | tar -xzv --strip-components 1 --exclude={README.md,demo.gif}
 ```
 
+
 ## Creating a bootable USB drive
 
-Connect a partitioned USB drive to your computer and mount it.
+Follow the instructions to create a [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bios] from the ArchWiki.
 
-1. Create a directory named *boot* to store GRUB's configuration files, and a directory named *isos* to store ISO files:
+
+## Copying the files to the USB drive:
+
+1. Mount the data partition:
+
+    ```sh
+    mount <device>3 <mountpoint>
+    ```
+
+    Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `dmesg` to get this information.
+
+2. Create a directory named *boot* to store GRUB's configuration files, and a directory named *isos* to store ISO files:
 
     ```sh
     mkdir -p <mountpoint>/boot/{grub/grub.d/,isos}
     ```
 
-    Where `<mountpoint>` is the directory where the USB drive is mounted (e.g. */mnt/usb*). Run `mount` to get this information.
-
-2. Install GRUB on to the USB drive:
-
-    ```sh
-    sudo grub-install --force --no-floppy --boot-directory=<mountpoint>/boot <device>
-    ```
-
-    Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to get this information.
+    Where `<mountpoint>` is the directory where the data partition is mounted (e.g. */mnt/usb*). Run `mount` to get this information.
 
 3. Copy the necessary GRUB files:
 
@@ -107,6 +111,7 @@ You can download from these websites:
 
 ## References
 
+- [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bios]
 - [Using Syslinux and memdisk][memdisk]
 - [Thermionix/multipass-usb][multipass-usb]
 - [Transform a USB stick into a boot device packing multiple Linux distros][multiboot-usb]
@@ -131,3 +136,4 @@ You can download from these websites:
 [multibootusb]: http://www.panticz.de/MultiBootUSB
 [loop-boot]: http://forums.kali.org/showthread.php?1025-Grub2-Loop-Boot-Solution
 [grml-usb-stick]: http://www.gtkdb.de/index_7_2627.html
+[efi+bios]: https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Hybrid_UEFI_GPT_.2B_BIOS_GPT.2FMBR_boot
