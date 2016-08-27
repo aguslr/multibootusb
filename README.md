@@ -65,7 +65,7 @@ Connect a partitioned USB drive to your computer and mount it.
 5. Reboot and select the USB drive to access the menu.
 
 
-## Testing USB drive with [QEMU](http://qemu.org/)
+## Testing USB drive with [QEMU][qemu]
 
 To test the newly created USB drive in a virtual environment, run:
 
@@ -80,19 +80,19 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 
 You can download from these websites:
 
-* **[Clonezilla Live](http://clonezilla.org/clonezilla-live.php)**: a small bootable GNU/Linux distribution for x86/amd64 (x86-64) based computers.
+* **[Clonezilla Live][clonezilla]**: a small bootable GNU/Linux distribution for x86/amd64 (x86-64) based computers.
 
-* **[Grml Live Linux](https://grml.org/)**: a bootable live system based on Debian that includes a collection of GNU/Linux software especially for system administrators.
+* **[Grml Live Linux][grml]**: a bootable live system based on Debian that includes a collection of GNU/Linux software especially for system administrators.
 
-* **[Hiren's BootCD](http://www.hirensbootcd.org/)**: a first aid kit for your computer.
+* **[Hiren's BootCD][hirens]**: a first aid kit for your computer.
 
-* **[Kali Linux](https://www.kali.org/)**: a Debian-derived Linux distribution designed for digital forensics and penetration testing.
+* **[Kali Linux][kali]**: a Debian-derived Linux distribution designed for digital forensics and penetration testing.
 
-* **[Parted Magic](http://partedmagic.com/)**: a complete hard disk management solution.
+* **[Parted Magic][partedmagic]**: a complete hard disk management solution.
 
-* **[SystemRescueCd](http://www.sysresccd.org/)**: a Linux system rescue disk for administrating or repairing your system and data after a crash.
+* **[SystemRescueCd][sysrescuecd]**: a Linux system rescue disk for administrating or repairing your system and data after a crash.
 
-* **[Tails](https://tails.boum.org/)**: a live operating system, that aims at preserving your privacy and anonymity.
+* **[Tails][tails]**: a live operating system, that aims at preserving your privacy and anonymity.
 
 
 ## Demo
@@ -101,9 +101,24 @@ You can download from these websites:
 
 ## References
 
-- [Using Syslinux and memdisk](https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Using_Syslinux_and_memdisk)
-- [Thermionix/multipass-usb](https://github.com/Thermionix/multipass-usb)
-- [Transform a USB stick into a boot device packing multiple Linux distros](http://www.circuidipity.com/multi-boot-usb.html)
-- [MultiBoot USB with Grub2 (boot directly from iso files)](http://www.panticz.de/MultiBootUSB)
-- [Grub2 Loop Boot Solution](http://forums.kali.org/showthread.php?1025-Grub2-Loop-Boot-Solution)
-- [Multiboot USB-Stick: grml 2014.11 einrichten](http://www.gtkdb.de/index_7_2627.html)
+- [Using Syslinux and memdisk][memdisk]
+- [Thermionix/multipass-usb][multipass-usb]
+- [Transform a USB stick into a boot device packing multiple Linux distros][multiboot-usb]
+- [MultiBoot USB with Grub2 (boot directly from iso files)][multibootusb]
+- [Grub2 Loop Boot Solution][loop-boot]
+- [Multiboot USB-Stick: grml 2014.11 einrichten][grml-usb-stick]
+
+[clonezilla]: http://clonezilla.org/clonezilla-live.php
+[grml]: https://grml.org/
+[hirens]: http://www.hirensbootcd.org/
+[kali]: https://www.kali.org/
+[partedmagic]: http://partedmagic.com/
+[sysrescuecd]: http://www.sysresccd.org/
+[tails]: https://tails.boum.org/
+[qemu]: http://qemu.org/
+[memdisk]: https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Using_Syslinux_and_memdisk
+[multipass-usb]: https://github.com/Thermionix/multipass-usb
+[multiboot-usb]: http://www.circuidipity.com/multi-boot-usb.html
+[multibootusb]: http://www.panticz.de/MultiBootUSB
+[loop-boot]: http://forums.kali.org/showthread.php?1025-Grub2-Loop-Boot-Solution
+[grml-usb-stick]: http://www.gtkdb.de/index_7_2627.html
