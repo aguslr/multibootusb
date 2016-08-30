@@ -80,9 +80,9 @@ qemu-system-x86_64 -enable-kvm -localtime -m 2G -drive file=<device>,cache=none,
 Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to get this information.
 
 
-## Get bootable ISO files
+## Get bootable files
 
-You can download from these websites:
+You can download ISO files from these websites:
 
 * **[Clonezilla Live][clonezilla]**: a small bootable GNU/Linux distribution for x86/amd64 (x86-64) based computers.
 
@@ -103,6 +103,8 @@ You can download from these websites:
 * **[Tails][tails]**: a live operating system, that aims at preserving your privacy and anonymity.
 
 * **[Ubuntu][ubuntu]**: an open source software platform that runs from the cloud, to the smartphone, to all your things.
+
+You can get iPXE kernels from these websites:
 
 * **[boot.rackspace.com][]**: a collection of iPXE scripts that allow you to rapidly network boot Operating Systems, Utilities and other tools very easily.
 
