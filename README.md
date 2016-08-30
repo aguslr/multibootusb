@@ -104,6 +104,8 @@ You can download from these websites:
 
 * **[Ubuntu][ubuntu]**: an open source software platform that runs from the cloud, to the smartphone, to all your things.
 
+* **[boot.rackspace.com][]**: a collection of iPXE scripts that allow you to rapidly network boot Operating Systems, Utilities and other tools very easily.
+
 * **[netboot.xyz][]**: a way to select various operating system installers or utilities from one place within the BIOS without the need of having to go retrieve the media to run the tool.
 
 
@@ -131,6 +133,7 @@ You can download from these websites:
 [sysrescuecd]: http://www.sysresccd.org/
 [tails]: https://tails.boum.org/
 [ubuntu]: http://www.ubuntu.com/
+[boot.rackspace.com]: http://boot.rackspace.com/
 [netboot.xyz]: https://netboot.xyz/
 [qemu]: http://qemu.org/
 [memdisk]: https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Using_Syslinux_and_memdisk
