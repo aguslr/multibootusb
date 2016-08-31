@@ -98,6 +98,8 @@ You can download ISO files from these websites:
 
 * **[Parted Magic][partedmagic]**: a complete hard disk management solution.
 
+* **[Slax Linux][slax]**: a modern, portable, small and fast Linux operating system with a modular approach and outstanding design.
+
 * **[SystemRescueCd][sysrescuecd]**: a Linux system rescue disk for administrating or repairing your system and data after a crash.
 
 * **[Tails][tails]**: a live operating system, that aims at preserving your privacy and anonymity.
@@ -132,6 +134,7 @@ You can get iPXE kernels from these websites:
 [hirens]: http://www.hirensbootcd.org/
 [kali]: https://www.kali.org/
 [partedmagic]: http://partedmagic.com/
+[slax]: http://www.slax.org/
 [sysrescuecd]: http://www.sysresccd.org/
 [tails]: https://tails.boum.org/
 [ubuntu]: http://www.ubuntu.com/
