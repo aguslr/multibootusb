@@ -39,18 +39,16 @@ Follow the instructions to create a [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bi
 1. Mount the data partition:
 
     ```sh
-    mount <device>3 <mountpoint>
+    mount --target <mountpoint> <partition>
     ```
 
-    Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `dmesg` to get this information.
+    Where `<mountpoint>` is any directory you want the partition to be mounted at, and `<partition>` is the name of the data partition (e.g. */dev/sdh3*). Run `dmesg` to get this information.
 
 2. Create a directory named *boot* to store GRUB's configuration files, and a directory named *isos* to store ISO files:
 
     ```sh
     mkdir -p <mountpoint>/boot/{grub/grub.d/,isos}
     ```
-
-    Where `<mountpoint>` is the directory where the data partition is mounted (e.g. */mnt/usb*). Run `mount` to get this information.
 
 3. Copy the necessary GRUB files:
 
