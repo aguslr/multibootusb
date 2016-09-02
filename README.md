@@ -44,10 +44,10 @@ Follow the instructions to create a [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bi
 
     Where `<mountpoint>` is any directory you want the partition to be mounted at, and `<partition>` is the name of the data partition (e.g. */dev/sdh3*). Run `dmesg` to get this information.
 
-2. Create a directory named *boot* to store GRUB's configuration files, and a directory named *isos* to store ISO files:
+2. Create a directory named *boot* to store GRUB's configuration files, a directory named *krnl* for the kernel files and another named *isos* for the ISO files:
 
     ```sh
-    mkdir -p <mountpoint>/boot/{grub/grub.d/,isos}
+    mkdir -p <mountpoint>/boot/{grub/grub.d/,krnl,isos}
     ```
 
 3. Copy the necessary GRUB files:
@@ -80,7 +80,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 
 ## Get bootable files
 
-You can download ISO files from these websites:
+You can download ISO files from these websites (save to `<mountpoint>/boot/isos`):
 
 * **[Clonezilla Live][clonezilla]**: a small bootable GNU/Linux distribution for x86/amd64 (x86-64) based computers.
 
@@ -104,7 +104,7 @@ You can download ISO files from these websites:
 
 * **[Ubuntu][ubuntu]**: an open source software platform that runs from the cloud, to the smartphone, to all your things.
 
-You can get iPXE kernels from these websites:
+You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 
 * **[boot.rackspace.com][]**: a collection of iPXE scripts that allow you to rapidly network boot Operating Systems, Utilities and other tools very easily.
 
