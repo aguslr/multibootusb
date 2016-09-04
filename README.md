@@ -90,6 +90,8 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 
 * **[Debian][debian]**: a free operating system (OS) for your computer.
 
+* **[elementary OS][elementary]**: a fast and open replacement for Windows and OS X.
+
 * **[Fedora][fedora]**: a polished, easy to use operating system.
 
 * **[Hiren's BootCD][hirens]**: a first aid kit for your computer.
@@ -132,6 +134,7 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 [backbox]: https://backbox.org/
 [clonezilla]: http://clonezilla.org/clonezilla-live.php
 [debian]: https://www.debian.org/
+[elementary]: https://elementary.io/
 [fedora]: https://getfedora.org/
 [grml]: https://grml.org/
 [hirens]: http://www.hirensbootcd.org/
