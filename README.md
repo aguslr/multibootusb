@@ -82,6 +82,8 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 
 You can download ISO files from these websites (save to `<mountpoint>/boot/isos`):
 
+* **[Arch Linux][arch]**: a lightweight and flexible Linux® distribution that tries to Keep It Simple.
+
 * **[BackBox][backbox]**: an Ubuntu-based distribution developed to perform penetration tests and security assessments.
 
 * **[Clonezilla Live][clonezilla]**: a small bootable GNU/Linux distribution for x86/amd64 (x86-64) based computers.
@@ -133,6 +135,7 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 - [Grub2 Loop Boot Solution][loop-boot]
 - [Multiboot USB-Stick: grml 2014.11 einrichten][grml-usb-stick]
 
+[arch]: https://www.archlinux.org/
 [backbox]: https://backbox.org/
 [clonezilla]: http://clonezilla.org/clonezilla-live.php
 [debian]: https://www.debian.org/
