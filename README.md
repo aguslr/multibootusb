@@ -96,6 +96,8 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 
 * **[Kali Linux][kali]**: a Debian-derived Linux distribution designed for digital forensics and penetration testing.
 
+* **[Linux Mint][mint]**: an Ubuntu-based distribution whose goal is to provide a more complete out-of-the-box experience by including browser plugins, media codecs, support for DVD playback, Java and other components.
+
 * **[Parted Magic][partedmagic]**: a complete hard disk management solution.
 
 * **[Slax Linux][slax]**: a modern, portable, small and fast Linux operating system with a modular approach and outstanding design.
@@ -134,6 +136,7 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 [grml]: https://grml.org/
 [hirens]: http://www.hirensbootcd.org/
 [kali]: https://www.kali.org/
+[mint]: https://linuxmint.com/
 [partedmagic]: http://partedmagic.com/
 [slax]: http://www.slax.org/
 [sysrescuecd]: http://www.sysresccd.org/
