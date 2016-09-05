@@ -117,6 +117,8 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 
 * **[Linux Mint][mint]**: an Ubuntu-based distribution whose goal is to provide a more complete out-of-the-box experience by including browser plugins, media codecs, support for DVD playback, Java and other components.
 
+* **[Manjaro Linux][manjaro]**: a user-friendly Linux distribution based on the independently developed Arch operating system.
+
 * **[openSUSE][]**: a Linux-based project and distribution sponsored by SUSE Linux GmbH and other companies.
 
 * **[Parted Magic][partedmagic]**: a complete hard disk management solution.
@@ -159,6 +161,7 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 [grml]: https://grml.org/
 [hirens]: http://www.hirensbootcd.org/
 [kali]: https://www.kali.org/
+[manjaro]: https://manjaro.org/
 [mint]: https://linuxmint.com/
 [opensuse]: https://www.opensuse.org/
 [partedmagic]: http://partedmagic.com/
