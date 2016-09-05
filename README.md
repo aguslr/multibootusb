@@ -54,7 +54,7 @@ Follow the instructions to create a [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bi
 
     ```sh
     cd multibootusb
-    cp -f grub.cfg <mountpoint>/boot/grub/
+    cp -f {grub.cfg,multiboot.*} <mountpoint>/boot/grub/
     cp grub.d/*.cfg <mountpoint>/boot/grub/grub.d/
     ```
 
