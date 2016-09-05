@@ -67,6 +67,21 @@ Follow the instructions to create a [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bi
 5. Reboot and select the USB drive to access the menu.
 
 
+## Boot any ISO with [MEMDISK][]
+
+[Using Syslinux's MEMDISK][usingmemdisk], an ISO file can be loaded directly into memory (as long as the system has enough) which will allow for booting some unsupported ISO's.
+
+To get MEMDISK's binary, you can install [syslinux][] using your system's package manager, and find it at `/usr/lib/syslinux/memdisk` or `/usr/lib/syslinux/bios/memdisk`, depending on your distribution.
+
+Alternatively, you can download the official tarball from [kernel.org][], in which case, you will find the binary at `/bios/memdisk/memdisk`.
+
+Once you have the file, simply copy it to your data partition:
+
+```sh
+cp -f memdisk <mountpoint>/boot/grub/
+```
+
+
 ## Testing USB drive with [QEMU][qemu]
 
 To test the newly created USB drive in a virtual environment, run:
@@ -128,7 +143,7 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 ## References
 
 - [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bios]
-- [Using Syslinux and memdisk][memdisk]
+- [Using Syslinux and memdisk][usingmemdisk]
 - [Thermionix/multipass-usb][multipass-usb]
 - [Transform a USB stick into a boot device packing multiple Linux distros][multiboot-usb]
 - [MultiBoot USB with Grub2 (boot directly from iso files)][multibootusb]
@@ -153,8 +168,11 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 [ubuntu]: http://www.ubuntu.com/
 [boot.rackspace.com]: http://boot.rackspace.com/
 [netboot.xyz]: https://netboot.xyz/
+[memdisk]: http://www.syslinux.org/wiki/index.php?title=MEMDISK
+[syslinux]: http://www.syslinux.org/
+[kernel.org]: https://www.kernel.org/pub/linux/utils/boot/syslinux/
 [qemu]: http://qemu.org/
-[memdisk]: https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Using_Syslinux_and_memdisk
+[usingmemdisk]: https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Using_Syslinux_and_memdisk
 [multipass-usb]: https://github.com/Thermionix/multipass-usb
 [multiboot-usb]: http://www.circuidipity.com/multi-boot-usb.html
 [multibootusb]: http://www.panticz.de/MultiBootUSB
