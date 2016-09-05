@@ -82,7 +82,7 @@ cp -f memdisk <mountpoint>/boot/grub/
 ```
 
 
-## Testing USB drive with [QEMU][qemu]
+## Testing USB drive with [QEMU][]
 
 To test the newly created USB drive in a virtual environment, run:
 
@@ -99,17 +99,17 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 
 * **[Arch Linux][arch]**: a lightweight and flexible Linux® distribution that tries to Keep It Simple.
 
-* **[BackBox][backbox]**: an Ubuntu-based distribution developed to perform penetration tests and security assessments.
+* **[BackBox][]**: an Ubuntu-based distribution developed to perform penetration tests and security assessments.
 
 * **[Clonezilla Live][clonezilla]**: a small bootable GNU/Linux distribution for x86/amd64 (x86-64) based computers.
 
 * **[Grml Live Linux][grml]**: a bootable live system based on Debian that includes a collection of GNU/Linux software especially for system administrators.
 
-* **[Debian][debian]**: a free operating system (OS) for your computer.
+* **[Debian][]**: a free operating system (OS) for your computer.
 
 * **[elementary OS][elementary]**: a fast and open replacement for Windows and OS X.
 
-* **[Fedora][fedora]**: a polished, easy to use operating system.
+* **[Fedora][]**: a polished, easy to use operating system.
 
 * **[Hiren's BootCD][hirens]**: a first aid kit for your computer.
 
@@ -117,7 +117,7 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 
 * **[Linux Mint][mint]**: an Ubuntu-based distribution whose goal is to provide a more complete out-of-the-box experience by including browser plugins, media codecs, support for DVD playback, Java and other components.
 
-* **[openSUSE][opensuse]**: a Linux-based project and distribution sponsored by SUSE Linux GmbH and other companies.
+* **[openSUSE][]**: a Linux-based project and distribution sponsored by SUSE Linux GmbH and other companies.
 
 * **[Parted Magic][partedmagic]**: a complete hard disk management solution.
 
@@ -125,9 +125,9 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 
 * **[SystemRescueCd][sysrescuecd]**: a Linux system rescue disk for administrating or repairing your system and data after a crash.
 
-* **[Tails][tails]**: a live operating system, that aims at preserving your privacy and anonymity.
+* **[Tails][]**: a live operating system, that aims at preserving your privacy and anonymity.
 
-* **[Ubuntu][ubuntu]**: an open source software platform that runs from the cloud, to the smartphone, to all your things.
+* **[Ubuntu][]**: an open source software platform that runs from the cloud, to the smartphone, to all your things.
 
 You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 
