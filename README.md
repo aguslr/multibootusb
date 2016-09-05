@@ -97,6 +97,8 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 
 You can download ISO files from these websites (save to `<mountpoint>/boot/isos`):
 
+* **[Antergos][]**: a modern, elegant, and powerful operating system based on one of the best Linux distributions available, Arch Linux.
+
 * **[Arch Linux][arch]**: a lightweight and flexible Linux® distribution that tries to Keep It Simple.
 
 * **[BackBox][]**: an Ubuntu-based distribution developed to perform penetration tests and security assessments.
@@ -152,6 +154,7 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 - [Grub2 Loop Boot Solution][loop-boot]
 - [Multiboot USB-Stick: grml 2014.11 einrichten][grml-usb-stick]
 
+[antergos]: https://antergos.com/
 [arch]: https://www.archlinux.org/
 [backbox]: https://backbox.org/
 [clonezilla]: http://clonezilla.org/clonezilla-live.php
