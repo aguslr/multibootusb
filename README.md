@@ -125,6 +125,8 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 
 * **[openSUSE][]**: a Linux-based project and distribution sponsored by SUSE Linux GmbH and other companies.
 
+* **[Parabola GNU/Linux-libre][parabola]**: a community driven effort to provide a fully Free (as in freedom) operating system that is simple and lightweight.
+
 * **[Parted Magic][partedmagic]**: a complete hard disk management solution.
 
 * **[Slax Linux][slax]**: a modern, portable, small and fast Linux operating system with a modular approach and outstanding design.
@@ -170,6 +172,7 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 [manjaro]: https://manjaro.org/
 [mint]: https://linuxmint.com/
 [opensuse]: https://www.opensuse.org/
+[parabola]: https://www.parabola.nu/
 [partedmagic]: http://partedmagic.com/
 [slax]: http://www.slax.org/
 [sysrescuecd]: http://www.sysresccd.org/
