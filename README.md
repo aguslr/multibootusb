@@ -105,8 +105,6 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 
 * **[Clonezilla Live][clonezilla]**: a small bootable GNU/Linux distribution for x86/amd64 (x86-64) based computers.
 
-* **[Grml Live Linux][grml]**: a bootable live system based on Debian that includes a collection of GNU/Linux software especially for system administrators.
-
 * **[Debian][]**: a free operating system (OS) for your computer.
 
 * **[elementary OS][elementary]**: a fast and open replacement for Windows and OS X.
@@ -114,6 +112,8 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 * **[Fedora][]**: a polished, easy to use operating system.
 
 * **[GParted Live][gparted]**: a small bootable GNU/Linux distribution for x86 based computers.
+
+* **[Grml Live Linux][grml]**: a bootable live system based on Debian that includes a collection of GNU/Linux software especially for system administrators.
 
 * **[Hiren's BootCD][hirens]**: a first aid kit for your computer.
 
