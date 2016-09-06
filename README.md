@@ -111,6 +111,8 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 
 * **[Fedora][]**: a polished, easy to use operating system.
 
+* **[Gentoo Linux][gentoo]**: a flexible, source-based Linux distribution that becomes just about any system you need—and much more.
+
 * **[GParted Live][gparted]**: a small bootable GNU/Linux distribution for x86 based computers.
 
 * **[Grml Live Linux][grml]**: a bootable live system based on Debian that includes a collection of GNU/Linux software especially for system administrators.
@@ -165,6 +167,7 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 [debian]: https://www.debian.org/
 [elementary]: https://elementary.io/
 [fedora]: https://getfedora.org/
+[gentoo]: https://www.gentoo.org/
 [gparted]: http://gparted.sourceforge.net/livecd.php
 [grml]: https://grml.org/
 [hirens]: http://www.hirensbootcd.org/
