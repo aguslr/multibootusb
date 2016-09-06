@@ -113,6 +113,8 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 
 * **[Fedora][]**: a polished, easy to use operating system.
 
+* **[GParted Live][gparted]**: a small bootable GNU/Linux distribution for x86 based computers.
+
 * **[Hiren's BootCD][hirens]**: a first aid kit for your computer.
 
 * **[Kali Linux][kali]**: a Debian-derived Linux distribution designed for digital forensics and penetration testing.
@@ -161,6 +163,7 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 [debian]: https://www.debian.org/
 [elementary]: https://elementary.io/
 [fedora]: https://getfedora.org/
+[gparted]: http://gparted.sourceforge.net/livecd.php
 [grml]: https://grml.org/
 [hirens]: http://www.hirensbootcd.org/
 [kali]: https://www.kali.org/
