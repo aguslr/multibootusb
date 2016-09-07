@@ -139,6 +139,8 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 
 * **[Ubuntu][]**: an open source software platform that runs from the cloud, to the smartphone, to all your things.
 
+* **[Void][]**: a general purpose operating system, based on the monolithic Linux® kernel.
+
 You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 
 * **[boot.rackspace.com][]**: a collection of iPXE scripts that allow you to rapidly network boot Operating Systems, Utilities and other tools very easily.
@@ -181,6 +183,7 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 [sysrescuecd]: http://www.sysresccd.org/
 [tails]: https://tails.boum.org/
 [ubuntu]: http://www.ubuntu.com/
+[void]: http://www.voidlinux.eu/
 [boot.rackspace.com]: http://boot.rackspace.com/
 [netboot.xyz]: https://netboot.xyz/
 [memdisk]: http://www.syslinux.org/wiki/index.php?title=MEMDISK
