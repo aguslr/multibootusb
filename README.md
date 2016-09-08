@@ -137,6 +137,8 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 
 * **[Tails][]**: a live operating system, that aims at preserving your privacy and anonymity.
 
+* **[Trisquel GNU/Linux][trisquel]**: a fully free operating system for home users, small enterprises and educational centers.
+
 * **[Ubuntu][]**: an open source software platform that runs from the cloud, to the smartphone, to all your things.
 
 * **[Void][]**: a general purpose operating system, based on the monolithic Linux® kernel.
@@ -182,6 +184,7 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 [slax]: http://www.slax.org/
 [sysrescuecd]: http://www.sysresccd.org/
 [tails]: https://tails.boum.org/
+[trisquel]: https://trisquel.info/
 [ubuntu]: http://www.ubuntu.com/
 [void]: http://www.voidlinux.eu/
 [boot.rackspace.com]: http://boot.rackspace.com/
