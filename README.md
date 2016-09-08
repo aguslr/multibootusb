@@ -135,6 +135,8 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 
 * **[Slax Linux][slax]**: a modern, portable, small and fast Linux operating system with a modular approach and outstanding design.
 
+* **[SliTaz][]**: a secure and high performance operating system using the Linux Kernel and GNU software.
+
 * **[SystemRescueCd][sysrescuecd]**: a Linux system rescue disk for administrating or repairing your system and data after a crash.
 
 * **[Tails][]**: a live operating system, that aims at preserving your privacy and anonymity.
@@ -185,6 +187,7 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 [parabola]: https://www.parabola.nu/
 [partedmagic]: http://partedmagic.com/
 [slax]: http://www.slax.org/
+[slitaz]: http://www.slitaz.org/
 [sysrescuecd]: http://www.sysresccd.org/
 [tails]: https://tails.boum.org/
 [trisquel]: https://trisquel.info/
