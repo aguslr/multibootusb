@@ -103,6 +103,8 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 
 * **[BackBox][]**: an Ubuntu-based distribution developed to perform penetration tests and security assessments.
 
+* **[CentOS][]**: a community-driven free software effort focused on delivering a robust open source ecosystem.
+
 * **[Clonezilla Live][clonezilla]**: a small bootable GNU/Linux distribution for x86/amd64 (x86-64) based computers.
 
 * **[Debian][]**: a free operating system (OS) for your computer.
@@ -167,6 +169,7 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 [antergos]: https://antergos.com/
 [arch]: https://www.archlinux.org/
 [backbox]: https://backbox.org/
+[centos]: http://www.centos.org/
 [clonezilla]: http://clonezilla.org/clonezilla-live.php
 [debian]: https://www.debian.org/
 [elementary]: https://elementary.io/
