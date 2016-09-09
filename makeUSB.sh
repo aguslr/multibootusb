@@ -82,7 +82,8 @@ fi
 
 # Create BIOS boot partition (1M)
 printf 'Creating BIOS boot partition on %s... ' "$usb_dev"
-if sgdisk --new 1::+1M --typecode 1:ef02 "$usb_dev" >/dev/null 2>&1; then
+if sgdisk --new 1::+1M --typecode 1:ef02 \
+    --change-name 1:"BIOS boot partition" "$usb_dev" >/dev/null 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
@@ -91,7 +92,8 @@ fi
 
 # Create EFI System partition (50M)
 printf 'Creating EFI System partition on %s... ' "$usb_dev"
-if sgdisk --new 2::+50M --typecode 2:ef00 "$usb_dev" >/dev/null 2>&1; then
+if sgdisk --new 2::+50M --typecode 2:ef00 --change-name 2:"EFI System" \
+    "$usb_dev" >/dev/null 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
@@ -102,7 +104,9 @@ fi
 printf 'Creating data partition on %s... ' "$usb_dev"
 case "$data_fmt" in
 	ext2|ext3|ext4)
-		if sgdisk --new 3::: --typecode 3:8300 "$usb_dev" >/dev/null 2>&1; then
+		if sgdisk --new 3::: --typecode 3:8300 \
+		    --change-name 3:"Linux filesystem" \
+		    "$usb_dev" >/dev/null 2>&1; then
 			printf 'OK\n'
 		else
 			printf 'FAILED\n'
@@ -110,7 +114,9 @@ case "$data_fmt" in
 		fi
 		;;
 	msdos|fat|vfat|ntfs)
-		if sgdisk --new 3::: --typecode 3:0700 "$usb_dev" >/dev/null 2>&1; then
+		if sgdisk --new 3::: --typecode 3:0700 \
+		    --change-name 3:"Microsoft basic data" \
+		    "$usb_dev" >/dev/null 2>&1; then
 			printf 'OK\n'
 		else
 			printf 'FAILED\n'
