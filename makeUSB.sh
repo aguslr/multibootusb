@@ -63,6 +63,25 @@ command -v grub-install >/dev/null || cleanUp 3
 # Unmount device
 umount --force ${usb_dev}* 2>/dev/null
 
+# Confirm the device
+read -r -p "Are you sure you want to use $usb_dev? [y/N] " answer1
+case "$answer1" in
+	[yY][eE][sS]|[yY])
+		read -r -p "THIS WILL DELETE ALL DATA ON THE DEVICE. Are you sure? [y/N] " answer2
+		case $answer2 in
+			[yY][eE][sS]|[yY])
+				true
+			;;
+			*)
+			cleanUp 3
+			;;
+		esac
+		;;
+	*)
+		cleanUp 3
+		;;
+esac
+
 # Remove partitions
 printf 'Removing partitions from %s... ' "$usb_dev"
 if sgdisk --zap-all "$usb_dev" >/dev/null 2>&1; then
