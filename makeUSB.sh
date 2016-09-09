@@ -4,6 +4,7 @@
 
 # Defaults
 scriptname=$(basename "$0")
+data_fmt="vfat"
 efi_mnt="/mnt/MBU-EFI"
 data_mnt="/mnt/MBU-DATA"
 
@@ -22,6 +23,24 @@ cleanUp() {
 # Trap kill signals (SIGHUP, SIGINT, SIGTERM) to do some cleanup and exit
 trap 'cleanUp' 1 2 15
 
+# Check arguments
+while [ "$#" -gt 0 ]; do
+	case "$1" in
+		/dev/*)
+			if [ -e "$1" ]; then
+				usb_dev="$1"
+			else
+				cleanUp 1
+			fi
+			shift
+			;;
+		*)
+			data_fmt="$1"
+			shift
+			;;
+	esac
+done
+
 # Check for root
 [ "$(id -u)" -ne 0 ] && {
 	printf '%s: This script must be run as root.\n' "$scriptname" >&2
@@ -29,12 +48,10 @@ trap 'cleanUp' 1 2 15
 }
 
 # Check for required arguments
-[ "$1" ] || {
+[ "$usb_dev" ] || {
 	printf '%s: No device was provided.\n' "$scriptname" >&2
 	cleanUp 1
 }
-usb_dev="$1"
-data_fmt="${2-vfat}"
 
 # Check for required binaries
 command -v sgdisk >/dev/null || cleanUp 3
