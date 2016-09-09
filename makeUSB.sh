@@ -9,6 +9,20 @@ data_fmt="vfat"
 efi_mnt="/mnt/MBU-EFI"
 data_mnt="/mnt/MBU-DATA"
 
+# Show usage
+showUsage() {
+	cat <<- EOF
+	Script to prepare multiboot USB drive
+	Usage: $scriptname [options] device [fs-type]
+
+	 device                         Device to modify (e.g. /dev/sdb)
+	 fs-type                        Filesystem type for the data partition [ext3|ext4|vfat|ntfs]
+	  -i,  --interactive            Launch gdisk to create a hybrid MBR
+	  -h,  --help                   Display this message
+
+	EOF
+}
+
 # Clean up when exiting
 cleanUp() {
 	# Unmount everything
@@ -27,6 +41,11 @@ trap 'cleanUp' 1 2 15
 # Check arguments
 while [ "$#" -gt 0 ]; do
 	case "$1" in
+		# Show help
+		-h|--help)
+			showUsage
+			exit 0
+			;;
 		-i|--interactive)
 			interactive=1
 			shift
@@ -55,6 +74,7 @@ done
 # Check for required arguments
 [ "$usb_dev" ] || {
 	printf '%s: No device was provided.\n' "$scriptname" >&2
+	showUsage
 	cleanUp 1
 }
 
