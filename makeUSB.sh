@@ -167,6 +167,11 @@ case "$data_fmt" in
 			cleanUp 10
 		fi
 		;;
+	*)
+		printf '%s: %s is an invalid filesystem type.\n' "$scriptname" "$data_fmt" >&2
+		showUsage
+		cleanUp 1
+		;;
 esac
 
 # Unmount device
