@@ -4,6 +4,7 @@
 
 # Defaults
 scriptname=$(basename "$0")
+interactive=0
 data_fmt="vfat"
 efi_mnt="/mnt/MBU-EFI"
 data_mnt="/mnt/MBU-DATA"
@@ -26,6 +27,10 @@ trap 'cleanUp' 1 2 15
 # Check arguments
 while [ "$#" -gt 0 ]; do
 	case "$1" in
+		-i|--interactive)
+			interactive=1
+			shift
+			;;
 		/dev/*)
 			if [ -e "$1" ]; then
 				usb_dev="$1"
@@ -148,12 +153,16 @@ esac
 umount --force ${usb_dev}* 2>/dev/null
 
 # Create hybrid MBR
-printf 'Creating hybrid MBR on %s... ' "${usb_dev}"
-if sgdisk --hybrid 1:2:3 "$usb_dev" >/dev/null 2>&1; then
-	printf 'OK\n'
+if [ "$interactive" -eq 0 ]; then
+	printf 'Creating hybrid MBR on %s... ' "${usb_dev}"
+	if sgdisk --hybrid 1:2:3 "$usb_dev" >/dev/null 2>&1; then
+		printf 'OK\n'
+	else
+		printf 'FAILED\n'
+		cleanUp 10
+	fi
 else
-	printf 'FAILED\n'
-	cleanUp 10
+	gdisk "$usb_dev"
 fi
 
 # Set bootable flag for data partion
