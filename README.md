@@ -29,12 +29,29 @@ wget https://github.com/aguslr/multibootusb/tarball/master -O - | tar -xzv --str
 ```
 
 
-## Creating a bootable USB drive
+## Creating the USB drive
+
+### Using the script
+
+Simply run:
+
+```sh
+./makeUSB.sh <device>
+```
+
+Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to get this information.
+
+**WARNING**: This will delete all data in the device, so make sure you pick the right one.
+
+
+### Manually prepare the drive
+
+#### Creating a bootable USB drive
 
 Follow the instructions to create a [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bios] from the ArchWiki.
 
 
-## Copying the files to the USB drive:
+#### Copying the files to the USB drive:
 
 1. Mount the data partition:
 
@@ -167,6 +184,8 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 - [MultiBoot USB with Grub2 (boot directly from iso files)][multibootusb]
 - [Grub2 Loop Boot Solution][loop-boot]
 - [Multiboot USB-Stick: grml 2014.11 einrichten][grml-usb-stick]
+- [Man page of SGDISK][sgdisk]
+- [Hybrid MBRs][hybridmbr]
 
 [antergos]: https://antergos.com/
 [arch]: https://www.archlinux.org/
@@ -205,4 +224,6 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 [multibootusb]: http://www.panticz.de/MultiBootUSB
 [loop-boot]: http://forums.kali.org/showthread.php?1025-Grub2-Loop-Boot-Solution
 [grml-usb-stick]: http://www.gtkdb.de/index_7_2627.html
+[sgdisk]: http://www.rodsbooks.com/gdisk/sgdisk.html
+[hybridmbr]: http://www.rodsbooks.com/gdisk/hybrid.html
 [efi+bios]: https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Hybrid_UEFI_GPT_.2B_BIOS_GPT.2FMBR_boot
