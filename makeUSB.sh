@@ -179,7 +179,7 @@ fi
 
 # Format EFI System partition
 printf 'Formatting EFI System partition on %s... ' "${usb_dev}2"
-if mkfs.vfat "${usb_dev}2" >/dev/null 2>&1; then
+if mkfs.vfat -F 32 "${usb_dev}2" >/dev/null 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
