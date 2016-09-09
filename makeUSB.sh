@@ -128,8 +128,23 @@ esac
 # Unmount device
 umount --force ${usb_dev}* 2>/dev/null
 
-# Open gdisk
-gdisk $usb_dev
+# Create hybrid MBR
+printf 'Creating hybrid MBR on %s... ' "${usb_dev}"
+if sgdisk --hybrid 1:2:3 "$usb_dev" >/dev/null 2>&1; then
+	printf 'OK\n'
+else
+	printf 'FAILED\n'
+	cleanUp 10
+fi
+
+# Set bootable flag for data partion
+printf 'Setting bootable flag on %s... ' "${usb_dev}3"
+if sgdisk --attributes 3:set:2 "$usb_dev" >/dev/null 2>&1; then
+	printf 'OK\n'
+else
+	printf 'FAILED\n'
+	cleanUp 10
+fi
 
 # Unmount device
 umount --force ${usb_dev}* 2>/dev/null
