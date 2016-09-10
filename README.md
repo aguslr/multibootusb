@@ -64,15 +64,13 @@ Follow the instructions to create a [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bi
 2. Create a directory named *boot* to store GRUB's configuration files, a directory named *krnl* for the kernel files and another named *isos* for the ISO files:
 
     ```sh
-    mkdir -p <mountpoint>/boot/{grub/grub.d/,krnl,isos}
+    mkdir -p <mountpoint>/boot/{grub/grub.d/,bin,krnl,isos}
     ```
 
 3. Copy the necessary GRUB files:
 
     ```sh
-    cd multibootusb
-    cp -f {grub.cfg,multiboot.*} <mountpoint>/boot/grub/
-    cp grub.d/*.cfg <mountpoint>/boot/grub/grub.d/
+    cd multibootusb && cp -rf {grub.cfg,grub.d,multiboot.*} <mountpoint>/boot/grub/
     ```
 
 4. Download and copy the ISO files into the USB drive:
