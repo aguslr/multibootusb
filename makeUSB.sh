@@ -148,24 +148,12 @@ fi
 printf 'Creating data partition on %s... ' "$usb_dev"
 case "$data_fmt" in
 	ext2|ext3|ext4)
-		if sgdisk --new 3::: --typecode 3:8300 \
-		    --change-name 3:"Linux filesystem" \
-		    "$usb_dev" >/dev/null 2>&1; then
-			printf 'OK\n'
-		else
-			printf 'FAILED\n'
-			cleanUp 10
-		fi
+		type_code="8300"
+		part_name="Linux filesystem"
 		;;
 	msdos|fat|vfat|ntfs)
-		if sgdisk --new 3::: --typecode 3:0700 \
-		    --change-name 3:"Microsoft basic data" \
-		    "$usb_dev" >/dev/null 2>&1; then
-			printf 'OK\n'
-		else
-			printf 'FAILED\n'
-			cleanUp 10
-		fi
+		type_code="0700"
+		part_name="Microsoft basic data"
 		;;
 	*)
 		printf '%s: %s is an invalid filesystem type.\n' "$scriptname" "$data_fmt" >&2
@@ -173,6 +161,13 @@ case "$data_fmt" in
 		cleanUp 1
 		;;
 esac
+if sgdisk --new 3::: --typecode 3:"$type_code" --change-name 3:"$part_name" \
+    "$usb_dev" >/dev/null 2>&1; then
+	printf 'OK\n'
+else
+	printf 'FAILED\n'
+	cleanUp 10
+fi
 
 # Unmount device
 umount --force ${usb_dev}* 2>/dev/null
@@ -222,16 +217,12 @@ fi
 
 # Format data partition
 printf 'Formatting data partition as %s on %s... ' "$data_fmt" "${usb_dev}3"
-case "$data_fmt" in
-	ext2|ext3|ext4|msdos|fat|vfat|ntfs)
-		if mkfs.${data_fmt} "${usb_dev}3" >/dev/null 2>&1; then
-			printf 'OK\n'
-		else
-			printf 'FAILED\n'
-			cleanUp 10
-		fi
-		;;
-esac
+if mkfs.${data_fmt} "${usb_dev}3" >/dev/null 2>&1; then
+	printf 'OK\n'
+else
+	printf 'FAILED\n'
+	cleanUp 10
+fi
 
 # Unmount device
 umount --force ${usb_dev}* 2>/dev/null
