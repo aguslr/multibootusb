@@ -33,7 +33,7 @@ wget https://github.com/aguslr/multibootusb/tarball/master -O - | tar -xzv --str
 
 ### Using the script
 
-Simply run:
+Simply run as root:
 
 ```sh
 ./makeUSB.sh <device>
