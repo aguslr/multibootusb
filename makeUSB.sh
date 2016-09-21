@@ -54,6 +54,7 @@ while [ "$#" -gt 0 ]; do
 			if [ -b "$1" ]; then
 				usb_dev="$1"
 			else
+				printf '%s: %s is not a valid device.\n' "$scriptname" "$1" >&2
 				cleanUp 1
 			fi
 			shift
