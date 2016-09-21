@@ -183,6 +183,8 @@ if [ "$interactive" -eq 0 ]; then
 		cleanUp 10
 	fi
 else
+	# Create hybrid MBR manually
+	# https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Hybrid_UEFI_GPT_.2B_BIOS_GPT.2FMBR_boot
 	gdisk "$usb_dev"
 fi
 
