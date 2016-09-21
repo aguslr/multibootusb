@@ -51,7 +51,7 @@ while [ "$#" -gt 0 ]; do
 			shift
 			;;
 		/dev/*)
-			if [ -e "$1" ]; then
+			if [ -b "$1" ]; then
 				usb_dev="$1"
 			else
 				cleanUp 1
