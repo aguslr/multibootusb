@@ -6,8 +6,8 @@
 scriptname=$(basename "$0")
 interactive=0
 data_fmt="vfat"
-efi_mnt="/mnt/MBU-EFI"
-data_mnt="/mnt/MBU-DATA"
+efi_mnt="/mnt/MBU-EFI/"
+data_mnt="/mnt/MBU-DATA/"
 
 # Show usage
 showUsage() {
@@ -251,7 +251,7 @@ fi
 # Install GRUB for EFI
 printf 'Installing GRUB for EFI on %s... ' "$usb_dev"
 if grub-install --target=x86_64-efi --efi-directory=$efi_mnt \
-    --boot-directory=${data_mnt}/boot --removable --recheck >/dev/null 2>&1; then
+    --boot-directory=${data_mnt}boot --removable --recheck >/dev/null 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
@@ -269,7 +269,7 @@ fi
 
 # Install GRUB for BIOS
 printf 'Installing GRUB for BIOS on %s... ' "$usb_dev"
-if grub-install --target=i386-pc --boot-directory=${data_mnt}/boot \
+if grub-install --target=i386-pc --boot-directory=${data_mnt}boot \
     --recheck "$usb_dev" >/dev/null 2>&1; then
 	printf 'OK\n'
 else
@@ -280,7 +280,7 @@ fi
 # Install fallback GRUB
 printf 'Installing fallback GRUB on %s... ' "${usb_dev}3"
 if grub-install --force --target=i386-pc \
-    --boot-directory=${data_mnt}/boot \
+    --boot-directory=${data_mnt}boot \
     --recheck "${usb_dev}3" >/dev/null 2>&1; then
 	printf 'OK\n'
 else
@@ -289,9 +289,9 @@ else
 fi
 
 # Create necesary directories
-printf 'Creating directories on %s... ' "${data_mnt}/boot"
-if mkdir -p ${data_mnt}/boot/grub ${data_mnt}/boot/bin ${data_mnt}/boot/krnl \
-    ${data_mnt}/boot/isos; then
+printf 'Creating directories on %s... ' "${data_mnt}boot"
+if mkdir -p ${data_mnt}boot/grub ${data_mnt}boot/bin ${data_mnt}boot/krnl \
+    ${data_mnt}boot/isos; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
@@ -299,8 +299,8 @@ else
 fi
 
 # Copy files
-printf 'Copying files to %s... ' "${data_mnt}/boot"
-if cp -rf ./grub.cfg ./grub.d ./multiboot.* "${data_mnt}/boot/grub/"; then
+printf 'Copying files to %s... ' "${data_mnt}boot"
+if cp -rf ./grub.cfg ./grub.d ./multiboot.* "${data_mnt}boot/grub/"; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
