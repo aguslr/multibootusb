@@ -97,10 +97,10 @@ case "$answer1" in
 		case $answer2 in
 			[yY][eE][sS]|[yY])
 				true
-			;;
+				;;
 			*)
-			cleanUp 3
-			;;
+				cleanUp 3
+				;;
 		esac
 		;;
 	*)
