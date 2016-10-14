@@ -67,17 +67,17 @@ while [ "$#" -gt 0 ]; do
 done
 
 # Check for root
-[ "$(id -u)" -ne 0 ] && {
+if [ "$(id -u)" -ne 0 ]; then
 	printf '%s: This script must be run as root.\n' "$scriptname" >&2
 	cleanUp 2
-}
+fi
 
 # Check for required arguments
-[ "$usb_dev" ] || {
+if [ ! "$usb_dev" ]; then
 	printf '%s: No device was provided.\n' "$scriptname" >&2
 	showUsage
 	cleanUp 1
-}
+fi
 
 # Check for required binaries
 command -v sgdisk >/dev/null || cleanUp 3
