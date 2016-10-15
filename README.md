@@ -116,6 +116,8 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 
 * **[Arch Linux][arch]**: a lightweight and flexible Linux® distribution that tries to Keep It Simple.
 
+* **[AVG Rescue CD][avgrescue]**: a tool to repair system crashes and return your systems to operating at full capacity.
+
 * **[BackBox][]**: an Ubuntu-based distribution developed to perform penetration tests and security assessments.
 
 * **[CentOS][]**: a community-driven free software effort focused on delivering a robust open source ecosystem.
@@ -187,6 +189,7 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 
 [antergos]: https://antergos.com/
 [arch]: https://www.archlinux.org/
+[avgrescue]: http://www.avg.com/ww-en/rescue-cd-business-edition
 [backbox]: https://backbox.org/
 [centos]: http://www.centos.org/
 [clonezilla]: http://clonezilla.org/clonezilla-live.php
