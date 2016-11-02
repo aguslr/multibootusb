@@ -303,17 +303,26 @@ fi
 
 # Create necesary directories
 printf 'Creating directories on %s... ' "${data_mnt}boot"
-if mkdir -p ${data_mnt}boot/grub ${data_mnt}boot/bin ${data_mnt}boot/krnl \
-    ${data_mnt}boot/isos; then
+if mkdir -p ${data_mnt}boot/bin ${data_mnt}boot/krnl \
+    ${data_mnt}boot/isos >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
 	cleanUp 10
 fi
 
+# Detect GRUB directory name
+if [ -d "${data_mnt}boot/grub" ]; then
+	grub_dir="${data_mnt}boot/grub/"
+elif [ -d "${data_mnt}boot/grub2" ]; then
+	grub_dir="${data_mnt}boot/grub2/"
+else
+	cleanUp 10
+fi
+
 # Copy files
 printf 'Copying files to %s... ' "${data_mnt}boot"
-if cp -rf ./grub.cfg ./grub.d ./multiboot.* "${data_mnt}boot/grub/"; then
+if cp -rf ./grub.cfg ./grub.d ./multiboot.* "$grub_dir" >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
