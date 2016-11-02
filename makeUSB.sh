@@ -8,6 +8,7 @@ interactive=0
 data_fmt="vfat"
 efi_mnt="/mnt/MBU-EFI/"
 data_mnt="/mnt/MBU-DATA/"
+log_file="/dev/null"
 
 # Show usage
 showUsage() {
@@ -18,6 +19,7 @@ showUsage() {
 	 device                         Device to modify (e.g. /dev/sdb)
 	 fs-type                        Filesystem type for the data partition [ext3|ext4|vfat|ntfs]
 	  -i,  --interactive            Launch gdisk to create a hybrid MBR
+	  -l,  --log                    Save debug information to log
 	  -h,  --help                   Display this message
 
 	EOF
@@ -48,6 +50,11 @@ while [ "$#" -gt 0 ]; do
 			;;
 		-i|--interactive)
 			interactive=1
+			shift
+			;;
+		-l|--log)
+			log_file="${scriptname%.*}.log"
+			printf '' "$log_file"
 			shift
 			;;
 		/dev/*)
@@ -110,7 +117,7 @@ esac
 
 # Remove partitions
 printf 'Removing partitions from %s... ' "$usb_dev"
-if sgdisk --zap-all "$usb_dev" >/dev/null 2>&1; then
+if sgdisk --zap-all "$usb_dev" >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
@@ -118,7 +125,7 @@ fi
 
 # Create GUID Partition Table
 printf 'Creating GUID Partition Table on %s... ' "$usb_dev"
-if sgdisk --mbrtogpt "$usb_dev" >/dev/null 2>&1; then
+if sgdisk --mbrtogpt "$usb_dev" >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
@@ -128,7 +135,7 @@ fi
 # Create BIOS boot partition (1M)
 printf 'Creating BIOS boot partition on %s... ' "$usb_dev"
 if sgdisk --new 1::+1M --typecode 1:ef02 \
-    --change-name 1:"BIOS boot partition" "$usb_dev" >/dev/null 2>&1; then
+    --change-name 1:"BIOS boot partition" "$usb_dev" >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
@@ -138,7 +145,7 @@ fi
 # Create EFI System partition (50M)
 printf 'Creating EFI System partition on %s... ' "$usb_dev"
 if sgdisk --new 2::+50M --typecode 2:ef00 --change-name 2:"EFI System" \
-    "$usb_dev" >/dev/null 2>&1; then
+    "$usb_dev" >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
@@ -163,7 +170,7 @@ case "$data_fmt" in
 		;;
 esac
 if sgdisk --new 3::: --typecode 3:"$type_code" --change-name 3:"$part_name" \
-    "$usb_dev" >/dev/null 2>&1; then
+    "$usb_dev" >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
@@ -176,7 +183,7 @@ umount --force ${usb_dev}* 2>/dev/null
 # Create hybrid MBR
 if [ "$interactive" -eq 0 ]; then
 	printf 'Creating hybrid MBR on %s... ' "${usb_dev}"
-	if sgdisk --hybrid 1:2:3 "$usb_dev" >/dev/null 2>&1; then
+	if sgdisk --hybrid 1:2:3 "$usb_dev" >> "$log_file" 2>&1; then
 		printf 'OK\n'
 	else
 		printf 'FAILED\n'
@@ -190,7 +197,7 @@ fi
 
 # Set bootable flag for data partion
 printf 'Setting bootable flag on %s... ' "${usb_dev}3"
-if sgdisk --attributes 3:set:2 "$usb_dev" >/dev/null 2>&1; then
+if sgdisk --attributes 3:set:2 "$usb_dev" >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
@@ -202,7 +209,7 @@ umount --force ${usb_dev}* 2>/dev/null
 
 # Format BIOS boot partition
 printf 'Formatting BIOS boot partition on %s... ' "${usb_dev}1"
-if dd if=/dev/zero of=${usb_dev}1 bs=512 count=1 >/dev/null 2>&1; then
+if dd if=/dev/zero of=${usb_dev}1 bs=512 count=1 >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
@@ -211,7 +218,7 @@ fi
 
 # Format EFI System partition
 printf 'Formatting EFI System partition on %s... ' "${usb_dev}2"
-if mkfs.vfat -F 32 "${usb_dev}2" >/dev/null 2>&1; then
+if mkfs.vfat -v -F 32 "${usb_dev}2" >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
@@ -220,7 +227,7 @@ fi
 
 # Format data partition
 printf 'Formatting data partition as %s on %s... ' "$data_fmt" "${usb_dev}3"
-if mkfs.${data_fmt} "${usb_dev}3" >/dev/null 2>&1; then
+if mkfs.${data_fmt} "${usb_dev}3" >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
@@ -232,7 +239,8 @@ umount --force ${usb_dev}* 2>/dev/null
 
 # Mount EFI System partition
 printf 'Mounting EFI System partition on %s... ' "$efi_mnt"
-if mkdir -p "$efi_mnt" && mount "${usb_dev}2" "$efi_mnt"; then
+if mkdir -p "$efi_mnt" \
+    && mount -v "${usb_dev}2" "$efi_mnt" >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
@@ -241,7 +249,8 @@ fi
 
 # Mount data partition
 printf 'Mounting data partition on %s... ' "$data_mnt"
-if mkdir -p "$data_mnt" && mount "${usb_dev}3" "$data_mnt"; then
+if mkdir -p "$data_mnt" \
+    && mount -v "${usb_dev}3" "$data_mnt" >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
@@ -251,7 +260,7 @@ fi
 # Install GRUB for EFI
 printf 'Installing GRUB for EFI on %s... ' "$usb_dev"
 if grub-install --target=x86_64-efi --efi-directory=$efi_mnt \
-    --boot-directory=${data_mnt}boot --removable --recheck >/dev/null 2>&1; then
+    --boot-directory=${data_mnt}boot --removable --recheck >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
@@ -260,7 +269,7 @@ fi
 
 # Unmount EFI System partition
 printf 'Unmounting EFI System partition on %s... ' "$efi_mnt"
-if umount $efi_mnt; then
+if umount -v $efi_mnt >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
@@ -270,7 +279,7 @@ fi
 # Install GRUB for BIOS
 printf 'Installing GRUB for BIOS on %s... ' "$usb_dev"
 if grub-install --target=i386-pc --boot-directory=${data_mnt}boot \
-    --recheck "$usb_dev" >/dev/null 2>&1; then
+    --recheck "$usb_dev" >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
@@ -281,7 +290,7 @@ fi
 printf 'Installing fallback GRUB on %s... ' "${usb_dev}3"
 if grub-install --force --target=i386-pc \
     --boot-directory=${data_mnt}boot \
-    --recheck "${usb_dev}3" >/dev/null 2>&1; then
+    --recheck "${usb_dev}3" >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
@@ -309,7 +318,7 @@ fi
 
 # Unmount data partition
 printf 'Unmounting data partition on %s... ' "$data_mnt"
-if umount $data_mnt; then
+if umount -v $data_mnt >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
