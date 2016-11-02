@@ -277,7 +277,6 @@ if umount -v $efi_mnt >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
-	cleanUp 10
 fi
 
 # Install GRUB for BIOS
@@ -298,7 +297,6 @@ if $grub_cmd --force --target=i386-pc \
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
-	cleanUp 10
 fi
 
 # Create necesary directories
