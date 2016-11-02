@@ -2,6 +2,9 @@
 
 # Description: Script to prepare multiboot USB drive
 
+# Exit if any variable is not set
+set -o nounset
+
 # Defaults
 scriptname=$(basename "$0")
 interactive=0
