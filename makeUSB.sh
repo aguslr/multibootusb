@@ -271,7 +271,6 @@ if $grub_cmd --target=x86_64-efi --efi-directory=$efi_mnt \
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
-	cleanUp 10
 fi
 
 # Unmount EFI System partition
@@ -280,6 +279,7 @@ if umount -v $efi_mnt >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
+	cleanUp 10
 fi
 
 # Install GRUB for BIOS
