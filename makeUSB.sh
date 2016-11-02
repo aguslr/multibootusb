@@ -91,7 +91,11 @@ command -v sgdisk >/dev/null || cleanUp 3
 command -v dd >/dev/null || cleanUp 3
 command -v mkfs.${data_fmt} >/dev/null || cleanUp 3
 command -v mount >/dev/null || cleanUp 3
-command -v grub-install >/dev/null || cleanUp 3
+
+# Check for GRUB installation binary
+grub_cmd=$(command -v grub-install) \
+    || grub_cmd=$(command -v grub2-install) \
+    || cleanUp 3
 
 # Unmount device
 umount --force ${usb_dev}* 2>/dev/null
@@ -259,7 +263,7 @@ fi
 
 # Install GRUB for EFI
 printf 'Installing GRUB for EFI on %s... ' "$usb_dev"
-if grub-install --target=x86_64-efi --efi-directory=$efi_mnt \
+if $grub_cmd --target=x86_64-efi --efi-directory=$efi_mnt \
     --boot-directory=${data_mnt}boot --removable --recheck >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
@@ -278,7 +282,7 @@ fi
 
 # Install GRUB for BIOS
 printf 'Installing GRUB for BIOS on %s... ' "$usb_dev"
-if grub-install --target=i386-pc --boot-directory=${data_mnt}boot \
+if $grub_cmd --target=i386-pc --boot-directory=${data_mnt}boot \
     --recheck "$usb_dev" >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
@@ -288,7 +292,7 @@ fi
 
 # Install fallback GRUB
 printf 'Installing fallback GRUB on %s... ' "${usb_dev}3"
-if grub-install --force --target=i386-pc \
+if $grub_cmd --force --target=i386-pc \
     --boot-directory=${data_mnt}boot \
     --recheck "${usb_dev}3" >> "$log_file" 2>&1; then
 	printf 'OK\n'
