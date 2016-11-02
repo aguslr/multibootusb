@@ -43,6 +43,20 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 
 **WARNING**: This will delete all data in the device, so make sure you pick the right one.
 
+These are the options for the script:
+
+```
+Script to prepare multiboot USB drive
+Usage: makeUSB.sh [options] device [fs-type]
+
+ device                         Device to modify (e.g. /dev/sdb)
+ fs-type                        Filesystem type for the data partition [ext3|ext4|vfat|ntfs]
+  -e,  --efi                    Enable EFI compatibility
+  -i,  --interactive            Launch gdisk to create a hybrid MBR
+  -l,  --log                    Save debug information to log
+  -h,  --help                   Display this message
+```
+
 
 ### Manually prepare the drive
 
