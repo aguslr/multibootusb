@@ -311,7 +311,8 @@ fi
 
 # Install GRUB for BIOS
 printf 'Installing GRUB for BIOS on %s... ' "$usb_dev"
-if $grub_cmd --target=i386-pc --boot-directory=${data_mnt}boot \
+if $grub_cmd --force --target=i386-pc \
+    --boot-directory=${data_mnt}boot \
     --recheck "$usb_dev" >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
