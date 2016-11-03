@@ -235,7 +235,7 @@ umount --force ${usb_dev}* 2>/dev/null
 
 # Format BIOS boot partition
 printf 'Formatting BIOS boot partition on %s... ' "${usb_dev}1"
-if dd if=/dev/zero of=${usb_dev}1 bs=512 count=1 >> "$log_file" 2>&1; then
+if dd if=/dev/zero of=${usb_dev}1 bs=1M count=1 >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
