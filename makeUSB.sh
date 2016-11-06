@@ -7,6 +7,7 @@ set -o nounset
 
 # Defaults
 scriptname=$(basename "$0")
+hybrid=0
 eficonfig=0
 interactive=0
 data_part=2
@@ -23,6 +24,7 @@ showUsage() {
 
 	 device                         Device to modify (e.g. /dev/sdb)
 	 fs-type                        Filesystem type for the data partition [ext3|ext4|vfat|ntfs]
+	  -b,  --hybrid                 Create a hybrid MBR
 	  -e,  --efi                    Enable EFI compatibility
 	  -i,  --interactive            Launch gdisk to create a hybrid MBR
 	  -l,  --log                    Save debug information to log
@@ -53,6 +55,10 @@ while [ "$#" -gt 0 ]; do
 		-h|--help)
 			showUsage
 			exit 0
+			;;
+		-b|--hybrid)
+			hybrid=1
+			shift
 			;;
 		-e|--efi)
 			eficonfig=1
@@ -198,27 +204,29 @@ fi
 umount --force ${usb_dev}* 2>/dev/null
 
 # Create hybrid MBR
-if [ "$interactive" -eq 0 ]; then
-	printf 'Creating hybrid MBR on %s... ' "${usb_dev}"
-	if [ "$eficonfig" -eq 1 ]; then
-		if sgdisk --hybrid 1:2:3 "$usb_dev" >> "$log_file" 2>&1; then
-			printf 'OK\n'
+if [ "$hybrid" -eq 1 ]; then
+	if [ "$interactive" -eq 0 ]; then
+		printf 'Creating hybrid MBR on %s... ' "${usb_dev}"
+		if [ "$eficonfig" -eq 1 ]; then
+			if sgdisk --hybrid 1:2:3 "$usb_dev" >> "$log_file" 2>&1; then
+				printf 'OK\n'
+			else
+				printf 'FAILED\n'
+				cleanUp 10
+			fi
 		else
-			printf 'FAILED\n'
-			cleanUp 10
+			if sgdisk --hybrid 1:2 "$usb_dev" >> "$log_file" 2>&1; then
+				printf 'OK\n'
+			else
+				printf 'FAILED\n'
+				cleanUp 10
+			fi
 		fi
 	else
-		if sgdisk --hybrid 1:2 "$usb_dev" >> "$log_file" 2>&1; then
-			printf 'OK\n'
-		else
-			printf 'FAILED\n'
-			cleanUp 10
-		fi
+		# Create hybrid MBR manually
+		# https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Hybrid_UEFI_GPT_.2B_BIOS_GPT.2FMBR_boot
+		gdisk "$usb_dev"
 	fi
-else
-	# Create hybrid MBR manually
-	# https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Hybrid_UEFI_GPT_.2B_BIOS_GPT.2FMBR_boot
-	gdisk "$usb_dev"
 fi
 
 # Set bootable flag for data partion

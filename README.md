@@ -51,6 +51,7 @@ Usage: makeUSB.sh [options] device [fs-type]
 
  device                         Device to modify (e.g. /dev/sdb)
  fs-type                        Filesystem type for the data partition [ext3|ext4|vfat|ntfs]
+  -b,  --hybrid                 Create a hybrid MBR
   -e,  --efi                    Enable EFI compatibility
   -i,  --interactive            Launch gdisk to create a hybrid MBR
   -l,  --log                    Save debug information to log
