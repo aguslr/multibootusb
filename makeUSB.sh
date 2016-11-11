@@ -266,9 +266,11 @@ printf 'Formatting data partition as %s on %s... ' \
     "$data_fmt" "${usb_dev}${data_part}"
 if [ "$data_fmt" = "ntfs" ]; then
 	# Use mkntfs quick format
-	data_fmt="ntfs -f"
+	mkfs_args="-t $data_fmt -f"
+else
+	mkfs_args="-t $data_fmt"
 fi
-if mkfs.${data_fmt} "${usb_dev}${data_part}" >> "$log_file" 2>&1; then
+if mkfs $mkfs_args "${usb_dev}${data_part}" >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
