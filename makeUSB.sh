@@ -5,6 +5,12 @@
 # Exit if any variable is not set
 set -o nounset
 
+# show line number when execute by bash -x makeUSB.sh
+export PS4='        +\t $BASH_SOURCE:$LINENO: ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
+
+# Exit if any return code is not zero
+set -e
+
 # Defaults
 scriptname=$(basename "$0")
 hybrid=0
@@ -36,8 +42,8 @@ showUsage() {
 # Clean up when exiting
 cleanUp() {
 	# Unmount everything
-	umount --force "$efi_mnt" 2>/dev/null
-	umount --force "$data_mnt" 2>/dev/null
+	umount --force "$efi_mnt" 2>/dev/null || true
+	umount --force "$data_mnt" 2>/dev/null || true
 	# Delete mountpoints
 	[ -d "$efi_mnt" ] && rmdir "$efi_mnt"
 	[ -d "$data_mnt" ] && rmdir "$data_mnt"
@@ -49,6 +55,7 @@ cleanUp() {
 trap 'cleanUp' 1 2 15
 
 # Check arguments
+[ $# -eq 0 ] && showUsage && exit 0
 while [ "$#" -gt 0 ]; do
 	case "$1" in
 		# Show help
@@ -115,7 +122,7 @@ grub_cmd=$(command -v grub-install) \
     || cleanUp 3
 
 # Unmount device
-umount --force ${usb_dev}* 2>/dev/null
+umount --force ${usb_dev}* 2>/dev/null || true
 
 # Confirm the device
 read -r -p "Are you sure you want to use $usb_dev? [y/N] " answer1
@@ -201,7 +208,7 @@ else
 fi
 
 # Unmount device
-umount --force ${usb_dev}* 2>/dev/null
+umount --force ${usb_dev}* 2>/dev/null || true
 
 # Create hybrid MBR
 if [ "$hybrid" -eq 1 ]; then
@@ -239,7 +246,7 @@ else
 fi
 
 # Unmount device
-umount --force ${usb_dev}* 2>/dev/null
+umount --force ${usb_dev}* 2>/dev/null || true
 
 # Format BIOS boot partition
 printf 'Formatting BIOS boot partition on %s... ' "${usb_dev}1"
@@ -278,7 +285,7 @@ else
 fi
 
 # Unmount device
-umount --force ${usb_dev}* 2>/dev/null
+umount --force ${usb_dev}* 2>/dev/null || true
 
 if [ "$eficonfig" -eq 1 ]; then
 	# Mount EFI System partition
