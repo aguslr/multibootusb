@@ -194,13 +194,22 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 
 ![Demo GIF](demo.gif "Demo")
 
+
+## Similar projects
+
+- [Easy2Boot][];
+- [MultiBootUSB][];
+- [SARDU][];
+- [YUMI][].
+
+
 ## References
 
 - [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bios]
 - [Using Syslinux and memdisk][usingmemdisk]
 - [Thermionix/multipass-usb][multipass-usb]
 - [Transform a USB stick into a boot device packing multiple Linux distros][multiboot-usb]
-- [MultiBoot USB with Grub2 (boot directly from iso files)][multibootusb]
+- [MultiBoot USB with Grub2 (boot directly from iso files)][panticz-mbusb]
 - [Grub2 Loop Boot Solution][loop-boot]
 - [Multiboot USB-Stick: grml 2014.11 einrichten][grml-usb-stick]
 - [Man page of SGDISK][sgdisk]
@@ -216,6 +225,7 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 [clonezilla]: http://clonezilla.org/clonezilla-live.php
 [dban]: http://www.dban.org/
 [debian]: https://www.debian.org/
+[easy2boot]: http://www.easy2boot.com/
 [efi+bios]: https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Hybrid_UEFI_GPT_.2B_BIOS_GPT.2FMBR_boot
 [elementary]: https://elementary.io/
 [fedora]: https://getfedora.org/
@@ -232,13 +242,15 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 [memdisk]: http://www.syslinux.org/wiki/index.php?title=MEMDISK
 [mint]: https://linuxmint.com/
 [multiboot-usb]: http://www.circuidipity.com/multi-boot-usb.html
-[multibootusb]: http://www.panticz.de/MultiBootUSB
+[multibootusb]: http://multibootusb.org/
 [multipass-usb]: https://github.com/Thermionix/multipass-usb
 [netboot.xyz]: https://netboot.xyz/
 [opensuse]: https://www.opensuse.org/
+[panticz-mbusb]: http://www.panticz.de/MultiBootUSB
 [parabola]: https://www.parabola.nu/
 [partedmagic]: http://partedmagic.com/
 [qemu]: http://qemu.org/
+[sardu]: http://www.sarducd.it/
 [sgdisk]: http://www.rodsbooks.com/gdisk/sgdisk.html
 [slax]: http://www.slax.org/
 [slitaz]: http://www.slitaz.org/
@@ -249,3 +261,4 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 [ubuntu]: http://www.ubuntu.com/
 [usingmemdisk]: https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Using_Syslinux_and_memdisk
 [void]: http://www.voidlinux.eu/
+[yumi]: https://www.pendrivelinux.com/yumi-multiboot-usb-creator/
