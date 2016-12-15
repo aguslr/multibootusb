@@ -135,6 +135,8 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 
 * **[BackBox][]**: an Ubuntu-based distribution developed to perform penetration tests and security assessments.
 
+* **[Byzantium][]**: a live Linux distribution that delivers easy-to-use, secure, and robust mesh networking capabilities.
+
 * **[CentOS][]**: a community-driven free software effort focused on delivering a robust open source ecosystem.
 
 * **[Clonezilla Live][clonezilla]**: a small bootable GNU/Linux distribution for x86/amd64 (x86-64) based computers.
