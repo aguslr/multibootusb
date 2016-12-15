@@ -211,6 +211,7 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 [avgrescue]: http://www.avg.com/ww-en/rescue-cd-business-edition
 [backbox]: https://backbox.org/
 [boot.rackspace.com]: http://boot.rackspace.com/
+[byzantium]: http://project-byzantium.org/
 [centos]: http://www.centos.org/
 [clonezilla]: http://clonezilla.org/clonezilla-live.php
 [dban]: http://www.dban.org/
