@@ -139,6 +139,8 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 
 * **[Clonezilla Live][clonezilla]**: a small bootable GNU/Linux distribution for x86/amd64 (x86-64) based computers.
 
+* **[DBAN][]**: a free erasure software designed for the personal user.
+
 * **[Debian][]**: a free operating system (OS) for your computer.
 
 * **[elementary OS][elementary]**: a fast and open replacement for Windows and OS X.
@@ -208,6 +210,7 @@ You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
 [backbox]: https://backbox.org/
 [centos]: http://www.centos.org/
 [clonezilla]: http://clonezilla.org/clonezilla-live.php
+[dban]: http://www.dban.org/
 [debian]: https://www.debian.org/
 [elementary]: https://elementary.io/
 [fedora]: https://getfedora.org/
