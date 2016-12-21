@@ -76,10 +76,10 @@ Follow the instructions to create a [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bi
 
     Where `<mountpoint>` is any directory you want the partition to be mounted at, and `<partition>` is the name of the data partition (e.g. */dev/sdh3*). Run `dmesg` to get this information.
 
-2. Create a directory named *boot* to store GRUB's configuration files, a directory named *krnl* for the kernel files and another named *isos* for the ISO files:
+2. Create a directory named *boot* to store GRUB's configuration files, a directory named *bin* for binary files and another named *isos* for the kernel/ISO files:
 
     ```sh
-    mkdir -p <mountpoint>/boot/{grub/grub.d/,bin,krnl,isos}
+    mkdir -p <mountpoint>/boot/{grub/grub.d/,bin,isos}
     ```
 
 3. Copy the necessary GRUB files:
@@ -135,6 +135,8 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 
 * **[BackBox][]**: an Ubuntu-based distribution developed to perform penetration tests and security assessments.
 
+* **[boot.rackspace.com][]**: a collection of iPXE scripts that allow you to rapidly network boot Operating Systems, Utilities and other tools very easily.
+
 * **[Byzantium][]**: a live Linux distribution that delivers easy-to-use, secure, and robust mesh networking capabilities.
 
 * **[CentOS][]**: a community-driven free software effort focused on delivering a robust open source ecosystem.
@@ -163,6 +165,8 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 
 * **[Manjaro Linux][manjaro]**: a user-friendly Linux distribution based on the independently developed Arch operating system.
 
+* **[netboot.xyz][]**: a way to select various operating system installers or utilities from one place within the BIOS without the need of having to go retrieve the media to run the tool.
+
 * **[openSUSE][]**: a Linux-based project and distribution sponsored by SUSE Linux GmbH and other companies.
 
 * **[Parabola GNU/Linux-libre][parabola]**: a community driven effort to provide a fully Free (as in freedom) operating system that is simple and lightweight.
@@ -182,12 +186,6 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 * **[Ubuntu][]**: an open source software platform that runs from the cloud, to the smartphone, to all your things.
 
 * **[Void][]**: a general purpose operating system, based on the monolithic Linux® kernel.
-
-You can get iPXE kernels from these websites (save to `<mountpoint>/boot/krnl`):
-
-* **[boot.rackspace.com][]**: a collection of iPXE scripts that allow you to rapidly network boot Operating Systems, Utilities and other tools very easily.
-
-* **[netboot.xyz][]**: a way to select various operating system installers or utilities from one place within the BIOS without the need of having to go retrieve the media to run the tool.
 
 
 ## Demo
