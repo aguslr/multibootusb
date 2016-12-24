@@ -177,6 +177,8 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 
 * **[Parted Magic][partedmagic]**: a complete hard disk management solution.
 
+* **[Raspberry PIXEL][raspixel]**: the Raspberry Pi OS for PC and Mac.
+
 * **[Slax Linux][slax]**: a modern, portable, small and fast Linux operating system with a modular approach and outstanding design.
 
 * **[SliTaz][]**: a secure and high performance operating system using the Linux Kernel and GNU software.
@@ -254,6 +256,7 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 [parabola]: https://www.parabola.nu/
 [partedmagic]: http://partedmagic.com/
 [qemu]: http://qemu.org/
+[raspixel]: https://www.raspberrypi.org/blog/pixel-pc-mac/
 [sardu]: http://www.sarducd.it/
 [sgdisk]: http://www.rodsbooks.com/gdisk/sgdisk.html
 [slax]: http://www.slax.org/
