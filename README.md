@@ -137,6 +137,8 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 
 * **[boot.rackspace.com][]**: a collection of iPXE scripts that allow you to rapidly network boot Operating Systems, Utilities and other tools very easily.
 
+* **[Boot-repair-disk][brd]**: the 'must-have' rescue CD.
+
 * **[Byzantium][]**: a live Linux distribution that delivers easy-to-use, secure, and robust mesh networking capabilities.
 
 * **[CentOS][]**: a community-driven free software effort focused on delivering a robust open source ecosystem.
@@ -160,6 +162,8 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 * **[Hiren's BootCD][hirens]**: a first aid kit for your computer.
 
 * **[Kali Linux][kali]**: a Debian-derived Linux distribution designed for digital forensics and penetration testing.
+
+* **[KDE neon][kdeneon]**: the latest and greatest of KDE community software packaged on a rock-solid base.
 
 * **[Linux Mint][mint]**: an Ubuntu-based distribution whose goal is to provide a more complete out-of-the-box experience by including browser plugins, media codecs, support for DVD playback, Java and other components.
 
@@ -217,6 +221,7 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 [arch]: https://www.archlinux.org/
 [avgrescue]: http://www.avg.com/ww-en/rescue-cd-business-edition
 [backbox]: https://backbox.org/
+[brd]: https://sourceforge.net/p/boot-repair-cd/home/Home/
 [boot.rackspace.com]: http://boot.rackspace.com/
 [byzantium]: http://project-byzantium.org/
 [centos]: http://www.centos.org/
@@ -234,6 +239,7 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 [hirens]: http://www.hirensbootcd.org/
 [hybridmbr]: http://www.rodsbooks.com/gdisk/hybrid.html
 [kali]: https://www.kali.org/
+[kdeneon]: https://neon.kde.org/
 [kernel.org]: https://www.kernel.org/pub/linux/utils/boot/syslinux/
 [loop-boot]: http://forums.kali.org/showthread.php?1025-Grub2-Loop-Boot-Solution
 [manjaro]: https://manjaro.org/
