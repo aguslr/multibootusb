@@ -60,6 +60,18 @@ Follow the instructions to create a [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bi
     cd multibootusb && cp -rf {grub.cfg,grub.d,multiboot.*} <mountpoint>/boot/grub/
     ```
 
+4. Download memdisk from [kernel.org][]:
+
+    ```sh
+    wget -qO - 'https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.gz' | tar -xz -C <mountpoint>/boot/grub/ --no-same-owner --strip-components 3 'syslinux-6.03/bios/memdisk/memdisk'
+    ```
+
+5. Download [Memtest86+][]:
+
+    ```sh
+    wget -qO - 'http://www.memtest.org/download/5.01/memtest86+-5.01.bin.gz' | gunzip -c > <mountpoint>/boot/bin/memtest86+.bin
+    ```
+
 
 ### Using the script
 
@@ -160,21 +172,6 @@ Currently, the following bootable files are supported (save to `<mountpoint>/boo
 * **[Void][]**: a general purpose operating system, based on the monolithic Linux® kernel.
 
 
-## Boot ISO with [MEMDISK][]
-
-[Using Syslinux's MEMDISK][usingmemdisk], an ISO file can be loaded directly into memory (as long as the system has enough) which will allow for booting some unsupported ISO's.
-
-To get MEMDISK's binary, you can install [syslinux][] using your system's package manager, and find it at `/usr/lib/syslinux/memdisk` or `/usr/lib/syslinux/bios/memdisk`, depending on your distribution.
-
-Alternatively, you can download the official tarball from [kernel.org][], in which case, you will find the binary at `/bios/memdisk/memdisk`.
-
-Once you have the file, simply copy it to your data partition:
-
-```sh
-cp -f memdisk <mountpoint>/boot/grub/
-```
-
-
 ## Testing USB drive with [QEMU][]
 
 To test the newly created USB drive in a virtual environment, run:
@@ -238,6 +235,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [loop-boot]: http://forums.kali.org/showthread.php?1025-Grub2-Loop-Boot-Solution
 [manjaro]: https://manjaro.org/
 [memdisk]: http://www.syslinux.org/wiki/index.php?title=MEMDISK
+[memtest86+]: http://www.memtest.org/
 [mint]: https://linuxmint.com/
 [multiboot-usb]: http://www.circuidipity.com/multi-boot-usb.html
 [multibootusb]: http://multibootusb.org/
