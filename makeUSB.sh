@@ -115,6 +115,9 @@ command -v sgdisk >/dev/null || cleanUp 3
 command -v dd >/dev/null || cleanUp 3
 command -v mkfs.${data_fmt} >/dev/null || cleanUp 3
 command -v mount >/dev/null || cleanUp 3
+command -v wget >/dev/null || cleanUp 3
+command -v gunzip >/dev/null || cleanUp 3
+command -v tar >/dev/null || cleanUp 3
 
 # Check for GRUB installation binary
 grub_cmd=$(command -v grub-install) \
@@ -351,10 +354,9 @@ else
 	printf 'FAILED\n'
 fi
 
-# Create necesary directories
+# Create necessary directories
 printf 'Creating directories on %s... ' "${data_mnt}boot"
-if mkdir -p ${data_mnt}boot/bin ${data_mnt}boot/krnl \
-    ${data_mnt}boot/isos >> "$log_file" 2>&1; then
+if mkdir -p ${data_mnt}boot/bin ${data_mnt}boot/isos >> "$log_file" 2>&1; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
@@ -373,6 +375,28 @@ fi
 # Copy files
 printf 'Copying files to %s... ' "${data_mnt}boot"
 if cp -rf ./grub.cfg ./grub.d ./multiboot.* "$grub_dir" >> "$log_file" 2>&1; then
+	printf 'OK\n'
+else
+	printf 'FAILED\n'
+	cleanUp 10
+fi
+
+# Download memdisk
+printf 'Downloading memdisk to %s... ' "${data_mnt}boot/grub"
+if wget -qO - \
+    'https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.gz' \
+    | tar -xz -C "${data_mnt}boot/grub" --no-same-owner --strip-components 3 \
+    'syslinux-6.03/bios/memdisk/memdisk' 2>> "$log_file"; then
+	printf 'OK\n'
+else
+	printf 'FAILED\n'
+	cleanUp 10
+fi
+
+# Download Memtest86+
+printf 'Downloading Memtest86+ to %s... ' "${data_mnt}boot/bin"
+if wget -qO - 'http://www.memtest.org/download/5.01/memtest86+-5.01.bin.gz' \
+    | gunzip -c > "${data_mnt}boot/bin/memtest86+.bin" 2>> "$log_file"; then
 	printf 'OK\n'
 else
 	printf 'FAILED\n'
