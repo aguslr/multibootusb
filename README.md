@@ -91,7 +91,7 @@ Usage: makeUSB.sh [options] device [fs-type]
 
 ## Get bootable files
 
-You can download ISO files from these websites (save to `<mountpoint>/boot/isos`):
+Currently, the following bootable files are supported (save to `<mountpoint>/boot/isos`):
 
 * **[Antergos][]**: a modern, elegant, and powerful operating system based on one of the best Linux distributions available, Arch Linux.
 
