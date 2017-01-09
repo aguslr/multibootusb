@@ -31,34 +31,6 @@ wget https://github.com/aguslr/multibootusb/tarball/master -O - | tar -xzv --str
 
 ## Creating the USB drive
 
-### Using the script
-
-Simply run as root:
-
-```sh
-./makeUSB.sh <device>
-```
-
-Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to get this information.
-
-**WARNING**: This will delete all data in the device, so make sure you pick the right one.
-
-These are the options for the script:
-
-```
-Script to prepare multiboot USB drive
-Usage: makeUSB.sh [options] device [fs-type]
-
- device                         Device to modify (e.g. /dev/sdb)
- fs-type                        Filesystem type for the data partition [ext3|ext4|vfat|ntfs]
-  -b,  --hybrid                 Create a hybrid MBR
-  -e,  --efi                    Enable EFI compatibility
-  -i,  --interactive            Launch gdisk to create a hybrid MBR
-  -l,  --log                    Save debug information to log
-  -h,  --help                   Display this message
-```
-
-
 ### Manually prepare the drive
 
 #### Creating a bootable USB drive
@@ -88,39 +60,33 @@ Follow the instructions to create a [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bi
     cd multibootusb && cp -rf {grub.cfg,grub.d,multiboot.*} <mountpoint>/boot/grub/
     ```
 
-4. Download and copy the ISO files into the USB drive:
 
-    ```sh
-    wget "http://cdimage.kali.org/kali-1.1.0/kali-linux-1.1.0-i386.iso" -P <mountpoint>/boot/isos/
-    ```
+### Using the script
 
-5. Reboot and select the USB drive to access the menu.
-
-
-## Boot any ISO with [MEMDISK][]
-
-[Using Syslinux's MEMDISK][usingmemdisk], an ISO file can be loaded directly into memory (as long as the system has enough) which will allow for booting some unsupported ISO's.
-
-To get MEMDISK's binary, you can install [syslinux][] using your system's package manager, and find it at `/usr/lib/syslinux/memdisk` or `/usr/lib/syslinux/bios/memdisk`, depending on your distribution.
-
-Alternatively, you can download the official tarball from [kernel.org][], in which case, you will find the binary at `/bios/memdisk/memdisk`.
-
-Once you have the file, simply copy it to your data partition:
+Simply run as root:
 
 ```sh
-cp -f memdisk <mountpoint>/boot/grub/
-```
-
-
-## Testing USB drive with [QEMU][]
-
-To test the newly created USB drive in a virtual environment, run:
-
-```sh
-qemu-system-x86_64 -enable-kvm -localtime -m 2G -vga std -drive file=<device>,cache=none,if=virtio
+./makeUSB.sh <device>
 ```
 
 Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to get this information.
+
+**WARNING**: This will delete all data in the device, so make sure you pick the right one.
+
+These are the options for the script:
+
+```
+Script to prepare multiboot USB drive
+Usage: makeUSB.sh [options] device [fs-type]
+
+ device                         Device to modify (e.g. /dev/sdb)
+ fs-type                        Filesystem type for the data partition [ext3|ext4|vfat|ntfs]
+  -b,  --hybrid                 Create a hybrid MBR
+  -e,  --efi                    Enable EFI compatibility
+  -i,  --interactive            Launch gdisk to create a hybrid MBR
+  -l,  --log                    Save debug information to log
+  -h,  --help                   Display this message
+```
 
 
 ## Get bootable files
@@ -192,6 +158,32 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 * **[Ubuntu][]**: an open source software platform that runs from the cloud, to the smartphone, to all your things.
 
 * **[Void][]**: a general purpose operating system, based on the monolithic Linux® kernel.
+
+
+## Boot ISO with [MEMDISK][]
+
+[Using Syslinux's MEMDISK][usingmemdisk], an ISO file can be loaded directly into memory (as long as the system has enough) which will allow for booting some unsupported ISO's.
+
+To get MEMDISK's binary, you can install [syslinux][] using your system's package manager, and find it at `/usr/lib/syslinux/memdisk` or `/usr/lib/syslinux/bios/memdisk`, depending on your distribution.
+
+Alternatively, you can download the official tarball from [kernel.org][], in which case, you will find the binary at `/bios/memdisk/memdisk`.
+
+Once you have the file, simply copy it to your data partition:
+
+```sh
+cp -f memdisk <mountpoint>/boot/grub/
+```
+
+
+## Testing USB drive with [QEMU][]
+
+To test the newly created USB drive in a virtual environment, run:
+
+```sh
+qemu-system-x86_64 -enable-kvm -localtime -m 2G -vga std -drive file=<device>,cache=none,if=virtio
+```
+
+Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to get this information.
 
 
 ## Demo
