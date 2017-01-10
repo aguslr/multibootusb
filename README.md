@@ -193,6 +193,7 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 
 * **[Void][]**: a general purpose operating system, based on the monolithic Linux® kernel.
 
+* **[Tiny Core Linux][]**: a highly modular based system with community build extensions.
 
 ## Demo
 
@@ -269,3 +270,4 @@ You can download ISO files from these websites (save to `<mountpoint>/boot/isos`
 [usingmemdisk]: https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Using_Syslinux_and_memdisk
 [void]: http://www.voidlinux.eu/
 [yumi]: https://www.pendrivelinux.com/yumi-multiboot-usb-creator/
+[tiny core linux]: http://tinycorelinux.net/
