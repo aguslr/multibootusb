@@ -171,6 +171,7 @@ Currently, the following bootable files are supported (save to `<mountpoint>/boo
 
 * **[Void][]**: a general purpose operating system, based on the monolithic Linux® kernel.
 
+* **[Tiny Core Linux][]**: a highly modular based system with community build extensions.
 
 ## Testing USB drive with [QEMU][]
 
@@ -259,3 +260,4 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [usingmemdisk]: https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Using_Syslinux_and_memdisk
 [void]: http://www.voidlinux.eu/
 [yumi]: https://www.pendrivelinux.com/yumi-multiboot-usb-creator/
+[tiny core linux]: http://tinycorelinux.net/
