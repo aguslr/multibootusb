@@ -1,0 +1,13 @@
+loopback loop $isofile
+menuentry "Boot Arch Linux (i686)" {
+  bootoptions="img_dev=$imgdevpath img_loop=$isofile earlymodules=loop"
+  linux (loop)/arch/boot/i686/vmlinuz $bootoptions
+  initrd (loop)/arch/boot/i686/archiso.img
+}
+if cpuid -l ; then # Check whether CPU is 64-bit
+  menuentry "Boot Arch Linux (x86_64)" {
+    bootoptions="img_dev=$imgdevpath img_loop=$isofile earlymodules=loop"
+    linux (loop)/arch/boot/x86_64/vmlinuz $bootoptions
+    initrd (loop)/arch/boot/x86_64/archiso.img
+  }
+fi
