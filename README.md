@@ -208,6 +208,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 - [Multiboot USB-Stick: grml 2014.11 einrichten][grml-usb-stick]
 - [Man page of SGDISK][sgdisk]
 - [Hybrid MBRs][hybridmbr]
+- [Super Grub Disk Wiki - Loopback.cfg][loopback]
 
 [antergos]: https://antergos.com/
 [arch]: https://www.archlinux.org/
@@ -234,6 +235,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [kdeneon]: https://neon.kde.org/
 [kernel.org]: https://www.kernel.org/pub/linux/utils/boot/syslinux/
 [loop-boot]: http://forums.kali.org/showthread.php?1025-Grub2-Loop-Boot-Solution
+[loopback]: http://www.supergrubdisk.org/wiki/Loopback.cfg
 [manjaro]: https://manjaro.org/
 [memdisk]: http://www.syslinux.org/wiki/index.php?title=MEMDISK
 [memtest86+]: http://www.memtest.org/
