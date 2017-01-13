@@ -169,6 +169,8 @@ Currently, the following bootable files are supported (save to `<mountpoint>/boo
 
 * **[Ubuntu][]**: an open source software platform that runs from the cloud, to the smartphone, to all your things.
 
+* **[Ultimate Boot CD][ubcd]**: a boot CD with several diagnotic tools.
+
 * **[Void][]**: a general purpose operating system, based on the monolithic Linux® kernel.
 
 * **[Tiny Core Linux][]**: a highly modular based system with community build extensions.
@@ -209,6 +211,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 - [Man page of SGDISK][sgdisk]
 - [Hybrid MBRs][hybridmbr]
 - [Super Grub Disk Wiki - Loopback.cfg][loopback]
+- [Grub2 loopback ISO support - Ultimate Boot CD][ubcdiso]
 
 [antergos]: https://antergos.com/
 [arch]: https://www.archlinux.org/
@@ -258,6 +261,8 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [sysrescuecd]: http://www.sysresccd.org/
 [tails]: https://tails.boum.org/
 [trisquel]: https://trisquel.info/
+[ubcd]: http://www.ultimatebootcd.com/
+[ubcdiso]: http://www.ultimatebootcd.com/forums/viewtopic.php?p=9108#p9108
 [ubuntu]: http://www.ubuntu.com/
 [usingmemdisk]: https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Using_Syslinux_and_memdisk
 [void]: http://www.voidlinux.eu/
