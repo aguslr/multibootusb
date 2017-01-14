@@ -159,6 +159,8 @@ Currently, the following bootable files are supported (save to `<mountpoint>/boo
 
 * **[Raspberry PIXEL][raspixel]**: the Raspberry Pi OS for PC and Mac.
 
+* **[Sabayon Linux][sabayon]**: a beginner-friendly Gentoo-based Open Source Linux distribution.
+
 * **[Slax Linux][slax]**: a modern, portable, small and fast Linux operating system with a modular approach and outstanding design.
 
 * **[SliTaz][]**: a secure and high performance operating system using the Linux Kernel and GNU software.
@@ -256,6 +258,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [partedmagic]: http://partedmagic.com/
 [qemu]: http://qemu.org/
 [raspixel]: https://www.raspberrypi.org/blog/pixel-pc-mac/
+[sabayon]: https://www.sabayon.org/
 [sardu]: http://www.sarducd.it/
 [sgdisk]: http://www.rodsbooks.com/gdisk/sgdisk.html
 [slax]: http://www.slax.org/
