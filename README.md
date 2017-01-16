@@ -149,6 +149,8 @@ Currently, the following bootable files are supported (save to `<mountpoint>/boo
 
 * **[netboot.xyz][]**: a way to select various operating system installers or utilities from one place within the BIOS without the need of having to go retrieve the media to run the tool.
 
+**[OpenBSD][]**: a FREE, multi-platform 4.4BSD-based UNIX-like operating system.
+
 * **[openSUSE][]**: a Linux-based project and distribution sponsored by SUSE Linux GmbH and other companies.
 
 * **[Parabola GNU/Linux-libre][parabola]**: a community driven effort to provide a fully Free (as in freedom) operating system that is simple and lightweight.
@@ -247,6 +249,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [multibootusb]: http://multibootusb.org/
 [multipass-usb]: https://github.com/Thermionix/multipass-usb
 [netboot.xyz]: https://netboot.xyz/
+[openbsd]: http://www.openbsd.org/
 [opensuse]: https://www.opensuse.org/
 [panticz-mbusb]: http://www.panticz.de/MultiBootUSB
 [parabola]: https://www.parabola.nu/
