@@ -149,7 +149,7 @@ Currently, the following bootable files are supported (save to `<mountpoint>/boo
 
 * **[netboot.xyz][]**: a way to select various operating system installers or utilities from one place within the BIOS without the need of having to go retrieve the media to run the tool.
 
-**[OpenBSD][]**: a FREE, multi-platform 4.4BSD-based UNIX-like operating system.
+* **[OpenBSD][]**: a FREE, multi-platform 4.4BSD-based UNIX-like operating system.
 
 * **[openSUSE][]**: a Linux-based project and distribution sponsored by SUSE Linux GmbH and other companies.
 
@@ -171,13 +171,13 @@ Currently, the following bootable files are supported (save to `<mountpoint>/boo
 
 * **[Trisquel GNU/Linux][trisquel]**: a fully free operating system for home users, small enterprises and educational centers.
 
+* **[Tiny Core Linux][tinycore]**: a highly modular based system with community build extensions.
+
 * **[Ubuntu][]**: an open source software platform that runs from the cloud, to the smartphone, to all your things.
 
 * **[Ultimate Boot CD][ubcd]**: a boot CD with several diagnotic tools.
 
 * **[Void][]**: a general purpose operating system, based on the monolithic Linux® kernel.
-
-* **[Tiny Core Linux][]**: a highly modular based system with community build extensions.
 
 ## Testing USB drive with [QEMU][]
 
@@ -267,10 +267,10 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [sysrescuecd]: http://www.sysresccd.org/
 [tails]: https://tails.boum.org/
 [trisquel]: https://trisquel.info/
+[tinycore]: http://tinycorelinux.net/
 [ubcd]: http://www.ultimatebootcd.com/
 [ubcdiso]: http://www.ultimatebootcd.com/forums/viewtopic.php?p=9108#p9108
 [ubuntu]: http://www.ubuntu.com/
 [usingmemdisk]: https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Using_Syslinux_and_memdisk
 [void]: http://www.voidlinux.eu/
 [yumi]: https://www.pendrivelinux.com/yumi-multiboot-usb-creator/
-[tiny core linux]: http://tinycorelinux.net/
