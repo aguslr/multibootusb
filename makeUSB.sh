@@ -127,13 +127,12 @@ if [ ! "$usb_dev" ]; then
 fi
 
 # Check for required binaries
-command -v sgdisk >/dev/null || cleanUp 3
-command -v dd >/dev/null || cleanUp 3
-command -v mkfs.${data_fmt} >/dev/null || cleanUp 3
-command -v mount >/dev/null || cleanUp 3
-command -v wget >/dev/null || cleanUp 3
-command -v gunzip >/dev/null || cleanUp 3
-command -v tar >/dev/null || cleanUp 3
+sgdisk_cmd=$(command -v sgdisk)         || cleanUp 3
+dd_cmd=$(command -v dd)                 || cleanUp 3
+wget_cmd=$(command -v wget)             || cleanUp 3
+gunzip_cmd=$(command -v gunzip)         || cleanUp 3
+tar_cmd=$(command -v tar)               || cleanUp 3
+command -v mkfs.${data_fmt} >/dev/null  || cleanUp 3
 
 # Check for GRUB installation binary
 grub_cmd=$(command -v grub-install) \
@@ -164,21 +163,21 @@ esac
 
 # Remove partitions
 tryCMD "Removing partitions from $usb_dev" \
-    "sgdisk --zap-all $usb_dev"
+    "$sgdisk_cmd --zap-all $usb_dev"
 
 # Create GUID Partition Table
 tryCMD "Creating GUID Partition Table on $usb_dev" \
-    "sgdisk --mbrtogpt $usb_dev" || cleanUp 10
+    "$sgdisk_cmd --mbrtogpt $usb_dev" || cleanUp 10
 
 # Create BIOS boot partition (1M)
 tryCMD "Creating BIOS boot partition on $usb_dev" \
-    "sgdisk --new 1::+1M --typecode 1:ef02 \
+    "$sgdisk_cmd --new 1::+1M --typecode 1:ef02 \
     --change-name 1:\"BIOS boot partition\" $usb_dev" || cleanUp 10
 
 if [ "$eficonfig" -eq 1 ]; then
 	# Create EFI System partition (50M)
 	tryCMD "Creating EFI System partition on $usb_dev" \
-	    "sgdisk --new 2::+50M --typecode 2:ef00 --change-name 2:\"EFI System\" \
+	    "$sgdisk_cmd --new 2::+50M --typecode 2:ef00 --change-name 2:\"EFI System\" \
 	    $usb_dev" || cleanUp 10
 fi
 
@@ -199,7 +198,7 @@ case "$data_fmt" in
 		;;
 esac
 tryCMD "Creating data partition on $usb_dev" \
-    "sgdisk --new ${data_part}::: --typecode ${data_part}:\"$type_code\" \
+    "$sgdisk_cmd --new ${data_part}::: --typecode ${data_part}:\"$type_code\" \
     --change-name ${data_part}:\"$part_name\" $usb_dev" || cleanUp 10
 
 # Unmount device
@@ -210,10 +209,10 @@ if [ "$hybrid" -eq 1 ]; then
 	if [ "$interactive" -eq 0 ]; then
 		if [ "$eficonfig" -eq 1 ]; then
 		    tryCMD "Creating hybrid MBR on ${usb_dev}" \
-			    "sgdisk --hybrid 1:2:3 $usb_dev" || cleanUp 10
+			    "$sgdisk_cmd --hybrid 1:2:3 $usb_dev" || cleanUp 10
 		else
 		    tryCMD "Creating hybrid MBR on ${usb_dev}" \
-			    "sgdisk --hybrid 1:2 $usb_dev" || cleanUp 10
+			    "$sgdisk_cmd --hybrid 1:2 $usb_dev" || cleanUp 10
 		fi
 	else
 		# Create hybrid MBR manually
@@ -224,14 +223,14 @@ fi
 
 # Set bootable flag for data partion
 tryCMD "Setting bootable flag on ${usb_dev}${data_part}" \
-   "sgdisk --attributes ${data_part}:set:2 $usb_dev" || cleanUp 10
+   "$sgdisk_cmd --attributes ${data_part}:set:2 $usb_dev" || cleanUp 10
 
 # Unmount device
 unmountUSB $usb_dev
 
 # Format BIOS boot partition
 tryCMD "Formatting BIOS boot partition on ${usb_dev}1" \
-    "dd if=/dev/zero of=${usb_dev}1 bs=1M count=1" || cleanUp 10
+    "$dd_cmd if=/dev/zero of=${usb_dev}1 bs=1M count=1" || cleanUp 10
 
 if [ "$eficonfig" -eq 1 ]; then
 	# Format EFI System partition
@@ -306,15 +305,15 @@ tryCMD "Copying files to ${data_mnt}boot" \
 
 # Download memdisk
 tryCMD "Downloading memdisk to ${data_mnt}boot/grub" \
-    "wget -qO - \
+    "$wget_cmd -qO - \
     'https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.gz' \
-    | tar -xz -C ${data_mnt}boot/grub --no-same-owner --strip-components 3 \
+    | $tar_cmd -xz -C ${data_mnt}boot/grub --no-same-owner --strip-components 3 \
     'syslinux-6.03/bios/memdisk/memdisk'"
 
 # Download Memtest86+
 tryCMD "Downloading Memtest86+ to ${data_mnt}boot/bin" \
-    "wget -qO - 'http://www.memtest.org/download/5.01/memtest86+-5.01.bin.gz' \
-    | gunzip -c > ${data_mnt}boot/bin/memtest86+.bin"
+    "$wget_cmd -qO - 'http://www.memtest.org/download/5.01/memtest86+-5.01.bin.gz' \
+    | $gunzip_cmd -c > ${data_mnt}boot/bin/memtest86+.bin"
 
 # Unmount data partition
 tryCMD "Unmounting data partition on $data_mnt" "umount -v $data_mnt" \
