@@ -49,6 +49,24 @@ cleanUp() {
 	exit "${1-0}"
 }
 
+# Make sure USB drive is not mounted
+unmountUSB() {
+	umount --force ${1}* 2>/dev/null || true
+}
+
+# Try running a command
+tryCMD() {
+	local msg="$1"
+	local cmd="$2"
+	printf '%s... ' "$msg"
+	if eval "$cmd" >> "$log_file" 2>&1; then
+		printf 'OK\n'
+	else
+		printf 'FAILED\n'
+		return 1
+	fi
+}
+
 # Trap kill signals (SIGHUP, SIGINT, SIGTERM) to do some cleanup and exit
 trap 'cleanUp' 1 2 15
 
@@ -123,7 +141,7 @@ grub_cmd=$(command -v grub-install) \
     || cleanUp 3
 
 # Unmount device
-umount --force ${usb_dev}* 2>/dev/null || true
+unmountUSB $usb_dev
 
 # Confirm the device
 read -r -p "Are you sure you want to use $usb_dev? [y/N] " answer1
@@ -145,46 +163,26 @@ case "$answer1" in
 esac
 
 # Remove partitions
-printf 'Removing partitions from %s... ' "$usb_dev"
-if sgdisk --zap-all "$usb_dev" >> "$log_file" 2>&1; then
-	printf 'OK\n'
-else
-	printf 'FAILED\n'
-fi
+tryCMD "Removing partitions from $usb_dev" \
+    "sgdisk --zap-all $usb_dev"
 
 # Create GUID Partition Table
-printf 'Creating GUID Partition Table on %s... ' "$usb_dev"
-if sgdisk --mbrtogpt "$usb_dev" >> "$log_file" 2>&1; then
-	printf 'OK\n'
-else
-	printf 'FAILED\n'
-	cleanUp 10
-fi
+tryCMD "Creating GUID Partition Table on $usb_dev" \
+    "sgdisk --mbrtogpt $usb_dev" || cleanUp 10
 
 # Create BIOS boot partition (1M)
-printf 'Creating BIOS boot partition on %s... ' "$usb_dev"
-if sgdisk --new 1::+1M --typecode 1:ef02 \
-    --change-name 1:"BIOS boot partition" "$usb_dev" >> "$log_file" 2>&1; then
-	printf 'OK\n'
-else
-	printf 'FAILED\n'
-	cleanUp 10
-fi
+tryCMD "Creating BIOS boot partition on $usb_dev" \
+    "sgdisk --new 1::+1M --typecode 1:ef02 \
+    --change-name 1:\"BIOS boot partition\" $usb_dev" || cleanUp 10
 
 if [ "$eficonfig" -eq 1 ]; then
 	# Create EFI System partition (50M)
-	printf 'Creating EFI System partition on %s... ' "$usb_dev"
-	if sgdisk --new 2::+50M --typecode 2:ef00 --change-name 2:"EFI System" \
-	    "$usb_dev" >> "$log_file" 2>&1; then
-		printf 'OK\n'
-	else
-		printf 'FAILED\n'
-		cleanUp 10
-	fi
+	tryCMD "Creating EFI System partition on $usb_dev" \
+	    "sgdisk --new 2::+50M --typecode 2:ef00 --change-name 2:\"EFI System\" \
+	    $usb_dev" || cleanUp 10
 fi
 
 # Create data partition
-printf 'Creating data partition on %s... ' "$usb_dev"
 case "$data_fmt" in
 	ext2|ext3|ext4)
 		type_code="8300"
@@ -200,35 +198,22 @@ case "$data_fmt" in
 		cleanUp 1
 		;;
 esac
-if sgdisk --new ${data_part}::: --typecode ${data_part}:"$type_code" \
-    --change-name ${data_part}:"$part_name" "$usb_dev" >> "$log_file" 2>&1; then
-	printf 'OK\n'
-else
-	printf 'FAILED\n'
-	cleanUp 10
-fi
+tryCMD "Creating data partition on $usb_dev" \
+    "sgdisk --new ${data_part}::: --typecode ${data_part}:\"$type_code\" \
+    --change-name ${data_part}:\"$part_name\" $usb_dev" || cleanUp 10
 
 # Unmount device
-umount --force ${usb_dev}* 2>/dev/null || true
+unmountUSB $usb_dev
 
 # Create hybrid MBR
 if [ "$hybrid" -eq 1 ]; then
 	if [ "$interactive" -eq 0 ]; then
-		printf 'Creating hybrid MBR on %s... ' "${usb_dev}"
 		if [ "$eficonfig" -eq 1 ]; then
-			if sgdisk --hybrid 1:2:3 "$usb_dev" >> "$log_file" 2>&1; then
-				printf 'OK\n'
-			else
-				printf 'FAILED\n'
-				cleanUp 10
-			fi
+		    tryCMD "Creating hybrid MBR on ${usb_dev}" \
+			    "sgdisk --hybrid 1:2:3 $usb_dev" || cleanUp 10
 		else
-			if sgdisk --hybrid 1:2 "$usb_dev" >> "$log_file" 2>&1; then
-				printf 'OK\n'
-			else
-				printf 'FAILED\n'
-				cleanUp 10
-			fi
+		    tryCMD "Creating hybrid MBR on ${usb_dev}" \
+			    "sgdisk --hybrid 1:2 $usb_dev" || cleanUp 10
 		fi
 	else
 		# Create hybrid MBR manually
@@ -238,128 +223,73 @@ if [ "$hybrid" -eq 1 ]; then
 fi
 
 # Set bootable flag for data partion
-printf 'Setting bootable flag on %s... ' "${usb_dev}${data_part}"
-if sgdisk --attributes ${data_part}:set:2 "$usb_dev" >> "$log_file" 2>&1; then
-	printf 'OK\n'
-else
-	printf 'FAILED\n'
-	cleanUp 10
-fi
+tryCMD "Setting bootable flag on ${usb_dev}${data_part}" \
+   "sgdisk --attributes ${data_part}:set:2 $usb_dev" || cleanUp 10
 
 # Unmount device
-umount --force ${usb_dev}* 2>/dev/null || true
+unmountUSB $usb_dev
 
 # Format BIOS boot partition
-printf 'Formatting BIOS boot partition on %s... ' "${usb_dev}1"
-if dd if=/dev/zero of=${usb_dev}1 bs=1M count=1 >> "$log_file" 2>&1; then
-	printf 'OK\n'
-else
-	printf 'FAILED\n'
-	cleanUp 10
-fi
+tryCMD "Formatting BIOS boot partition on ${usb_dev}1" \
+    "dd if=/dev/zero of=${usb_dev}1 bs=1M count=1" || cleanUp 10
 
 if [ "$eficonfig" -eq 1 ]; then
 	# Format EFI System partition
-	printf 'Formatting EFI System partition on %s... ' "${usb_dev}2"
-	if mkfs.vfat -v -F 32 "${usb_dev}2" >> "$log_file" 2>&1; then
-		printf 'OK\n'
-	else
-		printf 'FAILED\n'
-		cleanUp 10
-	fi
+	tryCMD "Formatting EFI System partition on ${usb_dev}2" \
+	    "mkfs.vfat -v -F 32 ${usb_dev}2" || cleanUp 10
 fi
 
 # Format data partition
-printf 'Formatting data partition as %s on %s... ' \
-    "$data_fmt" "${usb_dev}${data_part}"
 if [ "$data_fmt" = "ntfs" ]; then
 	# Use mkntfs quick format
 	mkfs_args="-t $data_fmt -f"
 else
 	mkfs_args="-t $data_fmt"
 fi
-if mkfs $mkfs_args "${usb_dev}${data_part}" >> "$log_file" 2>&1; then
-	printf 'OK\n'
-else
-	printf 'FAILED\n'
-	cleanUp 10
-fi
+tryCMD "Formatting data partition as $data_fmt on ${usb_dev}${data_part}" \
+    "mkfs $mkfs_args ${usb_dev}${data_part}" || cleanUp 10
 
 # Unmount device
-umount --force ${usb_dev}* 2>/dev/null || true
+unmountUSB $usb_dev
 
 if [ "$eficonfig" -eq 1 ]; then
 	# Mount EFI System partition
-	printf 'Mounting EFI System partition on %s... ' "$efi_mnt"
-	if mkdir -p "$efi_mnt" \
-	    && mount -v "${usb_dev}2" "$efi_mnt" >> "$log_file" 2>&1; then
-		printf 'OK\n'
-	else
-		printf 'FAILED\n'
-		cleanUp 10
-	fi
+	tryCMD "Mounting EFI System partition on $efi_mnt" \
+	    "mkdir -p $efi_mnt \
+	    && mount -v ${usb_dev}2 $efi_mnt" || cleanUp 10
 fi
 
 # Mount data partition
-printf 'Mounting data partition on %s... ' "$data_mnt"
-if mkdir -p "$data_mnt" \
-    && mount -v "${usb_dev}${data_part}" "$data_mnt" >> "$log_file" 2>&1; then
-	printf 'OK\n'
-else
-	printf 'FAILED\n'
-	cleanUp 10
-fi
+tryCMD "Mounting data partition on $data_mnt" \
+    "mkdir -p $data_mnt \
+    && mount -v ${usb_dev}${data_part} $data_mnt" || cleanUp 10
 
 if [ "$eficonfig" -eq 1 ]; then
 	# Install GRUB for EFI
-	printf 'Installing GRUB for EFI on %s... ' "$usb_dev"
-	if $grub_cmd --target=x86_64-efi --efi-directory=$efi_mnt \
-	    --boot-directory=${data_mnt}boot --removable --recheck >> "$log_file" 2>&1; then
-		printf 'OK\n'
-	else
-		printf 'FAILED\n'
-		cleanUp 10
-	fi
+	tryCMD "Installing GRUB for EFI on $usb_dev" \
+	    "$grub_cmd --target=x86_64-efi --efi-directory=$efi_mnt \
+	    --boot-directory=${data_mnt}boot --removable --recheck" || cleanUp 10
 
 	# Unmount EFI System partition
-	printf 'Unmounting EFI System partition on %s... ' "$efi_mnt"
-	if umount -v $efi_mnt >> "$log_file" 2>&1; then
-		printf 'OK\n'
-	else
-		printf 'FAILED\n'
-		cleanUp 10
-	fi
+	tryCMD "Unmounting EFI System partition on $efi_mnt" "umount -v $efi_mnt" \
+	    || cleanUp 10
 fi
 
 # Install GRUB for BIOS
-printf 'Installing GRUB for BIOS on %s... ' "$usb_dev"
-if $grub_cmd --force --target=i386-pc \
+tryCMD "Installing GRUB for BIOS on $usb_dev" \
+    "$grub_cmd --force --target=i386-pc \
     --boot-directory=${data_mnt}boot \
-    --recheck "$usb_dev" >> "$log_file" 2>&1; then
-	printf 'OK\n'
-else
-	printf 'FAILED\n'
-	cleanUp 10
-fi
+    --recheck $usb_dev" || cleanUp 10
 
 # Install fallback GRUB
-printf 'Installing fallback GRUB on %s... ' "${usb_dev}${data_part}"
-if $grub_cmd --force --target=i386-pc \
+tryCMD "Installing fallback GRUB on ${usb_dev}${data_part}" \
+    "$grub_cmd --force --target=i386-pc \
     --boot-directory=${data_mnt}boot \
-    --recheck "${usb_dev}${data_part}" >> "$log_file" 2>&1; then
-	printf 'OK\n'
-else
-	printf 'FAILED\n'
-fi
+    --recheck ${usb_dev}${data_part}"
 
 # Create necessary directories
-printf 'Creating directories on %s... ' "${data_mnt}boot"
-if mkdir -p ${data_mnt}boot/bin ${data_mnt}boot/isos >> "$log_file" 2>&1; then
-	printf 'OK\n'
-else
-	printf 'FAILED\n'
-	cleanUp 10
-fi
+tryCMD "Creating directories on ${data_mnt}boot" \
+    "mkdir -p ${data_mnt}boot/bin ${data_mnt}boot/isos" || cleanUp 10
 
 # Detect GRUB directory name
 if [ -d "${data_mnt}boot/grub" ]; then
@@ -371,44 +301,24 @@ else
 fi
 
 # Copy files
-printf 'Copying files to %s... ' "${data_mnt}boot"
-if cp -rf ./grub.cfg ./grub.d ./multiboot.* "$grub_dir" >> "$log_file" 2>&1; then
-	printf 'OK\n'
-else
-	printf 'FAILED\n'
-	cleanUp 10
-fi
+tryCMD "Copying files to ${data_mnt}boot" \
+    "cp -rf ./grub.cfg ./grub.d ./multiboot.* $grub_dir" || cleanUp 10
 
 # Download memdisk
-printf 'Downloading memdisk to %s... ' "${data_mnt}boot/grub"
-if wget -qO - \
+tryCMD "Downloading memdisk to ${data_mnt}boot/grub" \
+    "wget -qO - \
     'https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.gz' \
-    | tar -xz -C "${data_mnt}boot/grub" --no-same-owner --strip-components 3 \
-    'syslinux-6.03/bios/memdisk/memdisk' 2>> "$log_file"; then
-	printf 'OK\n'
-else
-	printf 'FAILED\n'
-	cleanUp 10
-fi
+    | tar -xz -C ${data_mnt}boot/grub --no-same-owner --strip-components 3 \
+    'syslinux-6.03/bios/memdisk/memdisk'"
 
 # Download Memtest86+
-printf 'Downloading Memtest86+ to %s... ' "${data_mnt}boot/bin"
-if wget -qO - 'http://www.memtest.org/download/5.01/memtest86+-5.01.bin.gz' \
-    | gunzip -c > "${data_mnt}boot/bin/memtest86+.bin" 2>> "$log_file"; then
-	printf 'OK\n'
-else
-	printf 'FAILED\n'
-	cleanUp 10
-fi
+tryCMD "Downloading Memtest86+ to ${data_mnt}boot/bin" \
+    "wget -qO - 'http://www.memtest.org/download/5.01/memtest86+-5.01.bin.gz' \
+    | gunzip -c > ${data_mnt}boot/bin/memtest86+.bin"
 
 # Unmount data partition
-printf 'Unmounting data partition on %s... ' "$data_mnt"
-if umount -v $data_mnt >> "$log_file" 2>&1; then
-	printf 'OK\n'
-else
-	printf 'FAILED\n'
-	cleanUp 10
-fi
+tryCMD "Unmounting data partition on $data_mnt" "umount -v $data_mnt" \
+    || cleanUp 10
 
 # Clean up and exit
 cleanUp
