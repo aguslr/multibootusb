@@ -51,7 +51,7 @@ cleanUp() {
 
 # Make sure USB drive is not mounted
 unmountUSB() {
-	umount --force ${1}* 2>/dev/null || true
+	umount --force "${1}"* 2>/dev/null || true
 }
 
 # Try running a command
@@ -132,7 +132,7 @@ dd_cmd=$(command -v dd)                 || cleanUp 3
 wget_cmd=$(command -v wget)             || cleanUp 3
 gunzip_cmd=$(command -v gunzip)         || cleanUp 3
 tar_cmd=$(command -v tar)               || cleanUp 3
-command -v mkfs.${data_fmt} >/dev/null  || cleanUp 3
+command -v mkfs."${data_fmt}" >/dev/null  || cleanUp 3
 
 # Check for GRUB installation binary
 grub_cmd=$(command -v grub-install) \
@@ -140,7 +140,7 @@ grub_cmd=$(command -v grub-install) \
     || cleanUp 3
 
 # Unmount device
-unmountUSB $usb_dev
+unmountUSB "$usb_dev"
 
 # Confirm the device
 read -r -p "Are you sure you want to use $usb_dev? [y/N] " answer1
@@ -202,7 +202,7 @@ tryCMD "Creating data partition on $usb_dev" \
     --change-name ${data_part}:\"$part_name\" $usb_dev" || cleanUp 10
 
 # Unmount device
-unmountUSB $usb_dev
+unmountUSB "$usb_dev"
 
 # Create hybrid MBR
 if [ "$hybrid" -eq 1 ]; then
@@ -226,7 +226,7 @@ tryCMD "Setting bootable flag on ${usb_dev}${data_part}" \
    "$sgdisk_cmd --attributes ${data_part}:set:2 $usb_dev" || cleanUp 10
 
 # Unmount device
-unmountUSB $usb_dev
+unmountUSB "$usb_dev"
 
 # Format BIOS boot partition
 tryCMD "Formatting BIOS boot partition on ${usb_dev}1" \
@@ -249,7 +249,7 @@ tryCMD "Formatting data partition as $data_fmt on ${usb_dev}${data_part}" \
     "mkfs $mkfs_args ${usb_dev}${data_part}" || cleanUp 10
 
 # Unmount device
-unmountUSB $usb_dev
+unmountUSB "$usb_dev"
 
 if [ "$eficonfig" -eq 1 ]; then
 	# Mount EFI System partition
