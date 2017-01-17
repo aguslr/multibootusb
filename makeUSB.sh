@@ -2,14 +2,12 @@
 
 # Description: Script to prepare multiboot USB drive
 
-# Exit if any variable is not set
+# Exit if there is an unbound variable or an error
 set -o nounset
+set -o errexit
 
 # show line number when execute by bash -x makeUSB.sh
 export PS4='        +\t $BASH_SOURCE:$LINENO: ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
-
-# Exit if any return code is not zero
-set -e
 
 # Defaults
 scriptname=$(basename "$0")
