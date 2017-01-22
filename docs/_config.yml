@@ -1,0 +1,20 @@
+# Site settings
+title: MultiBoot USB
+email: contact@aguslr.com
+description: >
+  This repository stores the files needed to create a pendrive capable of
+  booting different ISO files using GRUB2
+baseurl: ""
+url: ""
+twitter_username: aguslr
+github_username:  aguslr
+
+# Build settings
+markdown: kramdown
+theme: jekyll-theme-cayman
+exclude:
+  - Gemfile
+  - Gemfile.lock
+
+# Theme settings
+show_downloads: true
