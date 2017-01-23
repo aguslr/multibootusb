@@ -28,7 +28,7 @@ cd multibootusb && git pull
 If Git is not installed, we can still get the files as long as we have a basic Unix environment available:
 
 ~~~
-wget https://github.com/aguslr/multibootusb/tarball/master -O - | tar -xzv --strip-components 1 --exclude={README.md}
+wget https://github.com/aguslr/multibootusb/tarball/master -O - | tar -xzv --strip-components 1 --exclude={README.md,docs}
 ~~~
 
 
@@ -43,27 +43,31 @@ Follow the instructions to create a [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bi
 
 #### Copying the files to the USB drive
 
-1. Mount the data partition:
+1. Set variables to avoid errors:
 
-        mount --target <mountpoint> <partition>
+        export mntusb=<mountpoint> partusb=<partition>
 
-    Where `<mountpoint>` is any directory you want the partition to be mounted at, and `<partition>` is the name of the data partition (e.g. */dev/sdh3*). Run `dmesg` to get this information.
+    Where `<mountpoint>` is any directory you want the partition to be mounted at (e.g. */media/usb*), and `<partition>` is the name of the data partition (e.g. */dev/sdh3*). Run `dmesg` to get this information.
 
-2. Create a directory named *boot* to store GRUB's configuration files, a directory named *bin* for binary files and another named *isos* for the kernel/ISO files:
+2. Mount the data partition:
 
-        mkdir -p <mountpoint>/boot/{grub/grub.d/,bin,isos}
+        mount --target $mntusb $partusb
 
-3. Copy the necessary GRUB files:
+3. Create a directory named *boot* to store GRUB's configuration files, a directory named *bin* for binary files and another named *isos* for the kernel/ISO files:
 
-        cd multibootusb && cp -rf {grub.cfg,grub.d,multiboot.*} <mountpoint>/boot/grub/
+        mkdir -p $mntusb/boot/{grub/grub.d/,bin,isos}
 
-4. Download [memdisk][] from [kernel.org][]:
+4. Copy the necessary GRUB files:
 
-        wget -qO - 'https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.gz' | tar -xz -C <mountpoint>/boot/grub/ --no-same-owner --strip-components 3 'syslinux-6.03/bios/memdisk/memdisk'
+        cd multibootusb && cp -rf {grub.cfg,grub.d,multiboot.*} $mntusb/boot/grub/
 
-5. Download [Memtest86+][]:
+5. Download [memdisk][] from [kernel.org][]:
 
-        wget -qO - 'http://www.memtest.org/download/5.01/memtest86+-5.01.bin.gz' | gunzip -c > <mountpoint>/boot/bin/memtest86+.bin
+        wget -qO - 'https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.gz' | tar -xz -C $mntusb/boot/grub/ --no-same-owner --strip-components 3 'syslinux-6.03/bios/memdisk/memdisk'
+
+6. Download [Memtest86+][]:
+
+        wget -qO - 'http://www.memtest.org/download/5.01/memtest86+-5.01.bin.gz' | gunzip -c > $mntusb/boot/bin/memtest86+.bin
 
 
 ### Using the script
@@ -96,7 +100,7 @@ Usage: makeUSB.sh [options] device [fs-type]
 
 ## Get bootable files
 
-Currently, the following bootable files are supported (save to `<mountpoint>/boot/isos`):
+Currently, the following bootable files are supported (save to `$mntusb/boot/isos`):
 
 * **[Antergos][]**: a modern, elegant, and powerful operating system based on one of the best Linux distributions available, Arch Linux.
 
