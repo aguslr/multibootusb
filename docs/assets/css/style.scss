@@ -1,0 +1,15 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* Center images */
+img {
+  display:block;
+  margin: 0 auto;
+}
+
+/* Header background */
+.page-header {
+  background-image: linear-gradient(120deg, #000000, #00a800);
+}
