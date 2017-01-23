@@ -2,7 +2,7 @@
 
 ## About
 
-This repository stores the files needed to create a pendrive capable of booting different ISO files using GRUB2.
+This is a project that contains a collection of [GRUB][] files and scripts that will allow you to create a pendrive capable of booting different ISO files.
 
 
 ## Documentation
@@ -10,4 +10,5 @@ This repository stores the files needed to create a pendrive capable of booting 
 Visit the [project's website for more information][website].
 
 
+[grub]: https://www.gnu.org/software/grub/
 [website]: https://aguslr.github.com/multibootusb/
