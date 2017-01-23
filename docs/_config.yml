@@ -18,3 +18,8 @@ exclude:
 
 # Theme settings
 show_downloads: true
+
+# Kramdown settings
+kramdown:
+  syntax_highlighter_opts:
+    default_lang: shell

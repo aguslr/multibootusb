@@ -13,23 +13,23 @@ layout: default
 
 If we have Git installed on the system, we can get the files directly from the repository:
 
-```sh
+~~~
 git clone git://github.com/aguslr/multibootusb.git
-```
+~~~
 
 After this, every time we want to update the files we do:
 
-```sh
+~~~
 cd multibootusb && git pull
-```
+~~~
 
 ### Without Git
 
 If Git is not installed, we can still get the files as long as we have a basic Unix environment available:
 
-```sh
+~~~
 wget https://github.com/aguslr/multibootusb/tarball/master -O - | tar -xzv --strip-components 1 --exclude={README.md}
-```
+~~~
 
 
 ## Creating the USB drive
@@ -45,44 +45,34 @@ Follow the instructions to create a [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bi
 
 1. Mount the data partition:
 
-    ```sh
-    mount --target <mountpoint> <partition>
-    ```
+        mount --target <mountpoint> <partition>
 
     Where `<mountpoint>` is any directory you want the partition to be mounted at, and `<partition>` is the name of the data partition (e.g. */dev/sdh3*). Run `dmesg` to get this information.
 
 2. Create a directory named *boot* to store GRUB's configuration files, a directory named *bin* for binary files and another named *isos* for the kernel/ISO files:
 
-    ```sh
-    mkdir -p <mountpoint>/boot/{grub/grub.d/,bin,isos}
-    ```
+        mkdir -p <mountpoint>/boot/{grub/grub.d/,bin,isos}
 
 3. Copy the necessary GRUB files:
 
-    ```sh
-    cd multibootusb && cp -rf {grub.cfg,grub.d,multiboot.*} <mountpoint>/boot/grub/
-    ```
+        cd multibootusb && cp -rf {grub.cfg,grub.d,multiboot.*} <mountpoint>/boot/grub/
 
 4. Download [memdisk][] from [kernel.org][]:
 
-    ```sh
-    wget -qO - 'https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.gz' | tar -xz -C <mountpoint>/boot/grub/ --no-same-owner --strip-components 3 'syslinux-6.03/bios/memdisk/memdisk'
-    ```
+        wget -qO - 'https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.gz' | tar -xz -C <mountpoint>/boot/grub/ --no-same-owner --strip-components 3 'syslinux-6.03/bios/memdisk/memdisk'
 
 5. Download [Memtest86+][]:
 
-    ```sh
-    wget -qO - 'http://www.memtest.org/download/5.01/memtest86+-5.01.bin.gz' | gunzip -c > <mountpoint>/boot/bin/memtest86+.bin
-    ```
+        wget -qO - 'http://www.memtest.org/download/5.01/memtest86+-5.01.bin.gz' | gunzip -c > <mountpoint>/boot/bin/memtest86+.bin
 
 
 ### Using the script
 
 Simply run as root:
 
-```sh
+~~~
 ./makeUSB.sh <device>
-```
+~~~
 
 Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to get this information.
 
@@ -90,7 +80,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 
 These are the options for the script:
 
-```
+~~~ null
 Script to prepare multiboot USB drive
 Usage: makeUSB.sh [options] device [fs-type]
 
@@ -101,7 +91,7 @@ Usage: makeUSB.sh [options] device [fs-type]
   -i,  --interactive            Launch gdisk to create a hybrid MBR
   -l,  --log                    Save debug information to log
   -h,  --help                   Display this message
-```
+~~~
 
 
 ## Get bootable files
@@ -189,9 +179,9 @@ Currently, the following bootable files are supported (save to `<mountpoint>/boo
 
 To test the newly created USB drive in a virtual environment with [QEMU][], run:
 
-```sh
+~~~
 qemu-system-x86_64 -enable-kvm -localtime -m 2G -vga std -drive file=<device>,cache=none,if=virtio
-```
+~~~
 
 Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to get this information.
 
