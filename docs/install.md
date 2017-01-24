@@ -160,6 +160,8 @@ Currently, the following bootable files are supported (save to `$mntusb/boot/iso
 
 * **[Sabayon Linux][sabayon]**: a beginner-friendly Gentoo-based Open Source Linux distribution.
 
+* **[Seagate SeaTools][seatools]**: a quick diagnostic tool that checks the health of your drive.
+
 * **[Slax Linux][slax]**: a modern, portable, small and fast Linux operating system with a modular approach and outstanding design.
 
 * **[SliTaz][]**: a secure and high performance operating system using the Linux Kernel and GNU software.
@@ -225,6 +227,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [qemu]: http://qemu.org/
 [raspixel]: https://www.raspberrypi.org/blog/pixel-pc-mac/
 [sabayon]: https://www.sabayon.org/
+[seatools]: http://www.seagate.com/support/downloads/seatools/
 [slax]: http://www.slax.org/
 [slitaz]: http://www.slitaz.org/
 [sysrescuecd]: http://www.sysresccd.org/
