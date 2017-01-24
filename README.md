@@ -107,6 +107,8 @@ Currently, the following bootable files are supported (save to `<mountpoint>/boo
 
 * **[Antergos][]**: a modern, elegant, and powerful operating system based on one of the best Linux distributions available, Arch Linux.
 
+* **[Arch-Anywhere][]**: an automated install script giving you the ability to install a fully custom Arch Linux system in minutes.
+
 * **[Arch Linux][arch]**: a lightweight and flexible Linux® distribution that tries to Keep It Simple.
 
 * **[AVG Rescue CD][avgrescue]**: a tool to repair system crashes and return your systems to operating at full capacity.
@@ -218,6 +220,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 - [Grub2 loopback ISO support - Ultimate Boot CD][ubcdiso]
 
 [antergos]: https://antergos.com/
+[arch-anywhere]: https://arch-anywhere.org/
 [arch]: https://www.archlinux.org/
 [avgrescue]: http://www.avg.com/ww-en/rescue-cd-business-edition
 [backbox]: https://backbox.org/
