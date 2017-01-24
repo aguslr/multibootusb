@@ -11,6 +11,7 @@ This is a project that contains a collection of [GRUB][] files and scripts that 
 ## Documentation
 
 - [Installation][]
+- [Contributing][]
 - [Resources][]
 
 
@@ -23,6 +24,7 @@ This is a project that contains a collection of [GRUB][] files and scripts that 
 
 
 [installation]: install.md
+[contributing]: contrib.md
 [resources]: resources.md
 [easy2boot]: http://www.easy2boot.com/
 [grub]: https://www.gnu.org/software/grub/
