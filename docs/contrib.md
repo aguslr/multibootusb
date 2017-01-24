@@ -24,7 +24,7 @@ If you find a bug (and you don't know how to fix it), have trouble following the
 
 ## Submitting a Pull Request
 
-If you think you can solve the issue or want to add support for another distro, feel free to make a pull request with the code:
+If you think you can solve the issue or want to [add support for another distro][how-to], feel free to make a pull request with the code:
 
 1. Fork and clone the repository.
 2. Create a new branch: `git checkout -b my-branch-name`.
@@ -46,6 +46,7 @@ If you think you can solve the issue or want to add support for another distro, 
 - [How to Write a Git Commit Message][commits]
 
 
+[how-to]: howto.md
 [contribos]: https://guides.github.com/activities/contributing-to-open-source/
 [freesoft]: https://en.wikipedia.org/wiki/Free_software
 [commits]: http://chris.beams.io/posts/git-commit/
