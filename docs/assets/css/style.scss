@@ -13,3 +13,17 @@ img {
 .page-header {
   background-image: linear-gradient(120deg, #000000, #00a800);
 }
+
+/* SVG icons */
+/* http://google.github.io/material-design-icons/ */
+/* http://stackoverflow.com/a/25184858 */
+svg path {
+  fill: $body-text-color;
+}
+svg:hover path {
+  fill: $body-link-color;
+}
+.icon {
+  height: 24px;
+  width: 24px;
+}
