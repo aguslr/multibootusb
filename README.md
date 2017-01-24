@@ -224,8 +224,8 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [arch]: https://www.archlinux.org/
 [avgrescue]: http://www.avg.com/ww-en/rescue-cd-business-edition
 [backbox]: https://backbox.org/
-[brd]: https://sourceforge.net/p/boot-repair-cd/home/Home/
 [boot.rackspace.com]: http://boot.rackspace.com/
+[brd]: https://sourceforge.net/p/boot-repair-cd/home/Home/
 [byzantium]: http://project-byzantium.org/
 [centos]: http://www.centos.org/
 [clonezilla]: http://clonezilla.org/clonezilla-live.php
@@ -269,8 +269,8 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [syslinux]: http://www.syslinux.org/
 [sysrescuecd]: http://www.sysresccd.org/
 [tails]: https://tails.boum.org/
-[trisquel]: https://trisquel.info/
 [tinycore]: http://tinycorelinux.net/
+[trisquel]: https://trisquel.info/
 [ubcd]: http://www.ultimatebootcd.com/
 [ubcdiso]: http://www.ultimatebootcd.com/forums/viewtopic.php?p=9108#p9108
 [ubuntu]: http://www.ubuntu.com/
