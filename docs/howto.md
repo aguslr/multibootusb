@@ -125,7 +125,7 @@ Unfortunately, many distributions use different parameters. Some known examples:
 | `from=$isofile` | Byzantium, Slax |
 | `iso-scan/filename=$isofile` | CentOS, Fedora, Trisquel GNU/Linux, Ubuntu, Void |
 | `findiso=$isofile` | Clonezilla Live, Debian, GParted Live, Kali Linux, Tails |
-| `isoboot=$isofile` | Gentoo, Sabayon Linux |
+| `isoboot=$isofile` | Gentoo, Pentoo, Sabayon Linux |
 | `isofrom_system=$isofile` | openSUSE |
 | `iso_filename=$isofile` | Parted Magic |
 | `isoloop=$isofile` | SystemRescueCd |

@@ -143,6 +143,7 @@ Once the USB drive is created, it only remains to copy the bootable files (ISO o
 | [openSUSE][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][opensuse-cfg] | only Tumbleweed ISO |
 | [Parabola GNU/Linux-libre][parabola] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][parabola-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][parabola-dl] | only Dual ISO |
 | [Parted Magic][partedmagic] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][partedmagic-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][partedmagic-dl] | |
+| [Pentoo][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][pentoo-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][pentoo-dl] | |
 | [Raspberry PIXEL][raspixel] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][raspixel-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][raspixel-dl] | with [loopback.cfg][] |
 | [Sabayon Linux][sabayon] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][sabayon-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][sabayon-dl] | only Desktop ISO |
 | [Seagate SeaTools][seatools] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][seatools-cfg] | with [MEMDISK][] |
@@ -281,6 +282,9 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [partedmagic-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/pmagic.d "Configuration"
 [partedmagic-dl]: https://partedmagic.com/downloads/ "Download"
 [partedmagic]: http://partedmagic.com/
+[pentoo-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/pentoo.d "Configuration"
+[pentoo-dl]: http://www.pentoo.ch/download/ "Download"
+[pentoo]: http://www.pentoo.ch/
 [qemu]: http://qemu.org/
 [raspixel-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/pixel.d "Configuration"
 [raspixel-dl]: http://downloads.raspberrypi.org/pixel_x86/ "Download"
