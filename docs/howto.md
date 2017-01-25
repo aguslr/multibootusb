@@ -168,7 +168,7 @@ menuentry "Ultimate Boot CD v5.3.6" {
 
 - Search the home page for the project that created the ISO. They might provide further information on how to boot directly from the ISO file. This should actually be our first course of action.
 - Use your favorite search engine to scour the Internet for a solution. Search for *"grub loopback"* or *"grub iso"*, followed by the name of the distribution or software utility.
-- Browse the [repository tree][repo] and check the existing GRUB configurations files.
+- Browse the [repository tree][repo] and check the existing GRUB configuration files.
 
 
 ## Resources
@@ -193,7 +193,7 @@ menuentry "Ultimate Boot CD v5.3.6" {
 [mntwin]: http://www.howtogeek.com/howto/windows-vista/mount-an-iso-image-in-windows-vista/
 [multiboot-usb]: http://www.circuidipity.com/multi-boot-usb.html
 [panticz-mbusb]: http://www.panticz.de/MultiBootUSB
-[repo]: {{ site.github.repository_url }}
+[repo]: {{ site.github.repository_url }}/tree/master/grub.d
 [syslinux-include]: http://www.syslinux.org/wiki/index.php?title=SYSLINUX#INCLUDE_filename
 [syslinux]: http://www.syslinux.org/
 [tarball]: https://en.wikipedia.org/wiki/Tar_(computing)

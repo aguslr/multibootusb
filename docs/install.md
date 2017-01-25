@@ -61,7 +61,7 @@ Follow the instructions to create a [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bi
 
         cd multibootusb && cp -rf {grub.cfg,grub.d,multiboot.*} $mntusb/boot/grub/
 
-5. Download [memdisk][] from [kernel.org][]:
+5. Download [MEMDISK][] from [kernel.org][]:
 
         wget -qO - 'https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.gz' | tar -xz -C $mntusb/boot/grub/ --no-same-owner --strip-components 3 'syslinux-6.03/bios/memdisk/memdisk'
 
