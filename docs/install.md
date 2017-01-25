@@ -119,15 +119,15 @@ Once the USB drive is created, it only remains to copy the bootable files (ISO o
 | [Arch-Anywhere][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][arch-anywhere-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][arch-anywhere-dl] | only Dual ISO |
 | [Arch Linux][arch] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][arch-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][arch-dl] | only Dual ISO |
 | [AVG Rescue CD][avgrescue] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][avgrescue-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][avgrescue-dl] | with [MEMDISK][] |
-| [BackBox][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][BackBox-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][BackBox-dl] | with [loopback.cfg][] |
+| [BackBox][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][backbox-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][backbox-dl] | with [loopback.cfg][] |
 | [BlackArch Linux][blackarch] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][blackarch-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][blackarch-dl] | |
 | [boot.rackspace.com][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][boot.rackspace.com-cfg] | with [MEMDISK][] |
 | [Boot-repair-disk][brd] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][brd-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][brd-dl] | with [loopback.cfg][] |
-| [Byzantium][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][Byzantium-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][Byzantium-dl] | |
-| [CentOS][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][CentOS-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][CentOS-dl] | only Live ISO |
+| [Byzantium][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][byzantium-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][byzantium-dl] | |
+| [CentOS][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][centos-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][centos-dl] | only Live ISO |
 | [Clonezilla Live][clonezilla] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][clonezilla-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][clonezilla-dl] | |
-| [DBAN][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][DBAN-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][DBAN-dl] | with [MEMDISK][] |
-| [Debian][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][Debian-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][Debian-dl] | only Live and NetInstall[^note1] ISOs |
+| [DBAN][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][dban-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][dban-dl] | with [MEMDISK][] |
+| [Debian][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][debian-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][debian-dl] | only Live and NetInstall[^note1] ISOs |
 | [elementary OS][elementary] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][elementary-cfg] | with [loopback.cfg][] |
 | [Fedora][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][fedora-cfg] | only Workstation and Server ISOs |
 | [Gentoo Linux][gentoo] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][gentoo-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][gentoo-dl] | only LiveDVD ISO |
@@ -139,7 +139,7 @@ Once the USB drive is created, it only remains to copy the bootable files (ISO o
 | [Linux Mint][mint] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][mint-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][mint-dl] | with [loopback.cfg][] |
 | [Manjaro Linux][manjaro] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][manjaro-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][manjaro-dl] | with [MEMDISK][] |
 | [netboot.xyz][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][netboot.xyz-cfg] | with [MEMDISK][] |
-| [OpenBSD][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][OpenBSD-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][OpenBSD-dl] | only Install ISO[^note3]; with [MEMDISK][] |
+| [OpenBSD][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][openbsd-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][openbsd-dl] | only Install ISO[^note3]; with [MEMDISK][] |
 | [openSUSE][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][opensuse-cfg] | only Tumbleweed ISO |
 | [Parabola GNU/Linux-libre][parabola] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][parabola-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][parabola-dl] | only Dual ISO |
 | [Parted Magic][partedmagic] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][partedmagic-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][partedmagic-dl] | |
@@ -148,14 +148,14 @@ Once the USB drive is created, it only remains to copy the bootable files (ISO o
 | [Sabayon Linux][sabayon] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][sabayon-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][sabayon-dl] | only Desktop ISO |
 | [Seagate SeaTools][seatools] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][seatools-cfg] | with [MEMDISK][] |
 | [Slax Linux][slax] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][slax-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][slax-dl] | |
-| [SliTaz][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][SliTaz-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][SliTaz-dl] | with [MEMDISK][] |
+| [SliTaz][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][slitaz-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][slitaz-dl] | with [MEMDISK][] |
 | [SystemRescueCd][sysrescuecd] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][sysrescuecd-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][sysrescuecd-dl] | |
-| [Tails][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][Tails-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][Tails-dl] | |
+| [Tails][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][tails-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][tails-dl] | |
 | [Tiny Core Linux][tinycore] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][tinycore-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][tinycore-dl] | |
 | [Trisquel GNU/Linux][trisquel] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][trisquel-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][trisquel-dl] | only Live CD and DVD ISOs |
-| [Ubuntu][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][Ubuntu-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][Ubuntu-dl] | only Desktop and Netboot[^note4] ISOs |
+| [Ubuntu][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][ubuntu-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][ubuntu-dl] | only Desktop and Netboot[^note4] ISOs |
 | [Ultimate Boot CD][ubcd] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][ubcd-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][ubcd-dl] | with [MEMDISK][] |
-| [Void][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][Void-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][Void-dl] | only Live ISO |
+| [Void][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][void-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][void-dl] | only Live ISO |
 
 
 ## Testing USB drive with QEMU
