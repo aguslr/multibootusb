@@ -121,7 +121,7 @@ Unfortunately, many distributions use different parameters. Some known examples:
 
 | Parameter  | Distributions |
 |:-----------|:--------------|
-| `img_loop=$isofile` | Antergos, Arch Linux, Manjaro Linux, Parabola GNU/Linux-libre |
+| `img_loop=$isofile` | Antergos, Arch Linux, BlackArch Linux, Manjaro Linux, Parabola GNU/Linux-libre |
 | `from=$isofile` | Byzantium, Slax |
 | `iso-scan/filename=$isofile` | CentOS, Fedora, Trisquel GNU/Linux, Ubuntu, Void |
 | `findiso=$isofile` | Clonezilla Live, Debian, GParted Live, Kali Linux, Tails |

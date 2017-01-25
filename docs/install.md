@@ -120,6 +120,7 @@ Once the USB drive is created, it only remains to copy the bootable files (ISO o
 | [Arch Linux][arch] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][arch-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][arch-dl] | only Dual ISO |
 | [AVG Rescue CD][avgrescue] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][avgrescue-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][avgrescue-dl] | with [MEMDISK][] |
 | [BackBox][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][BackBox-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][BackBox-dl] | with [loopback.cfg][] |
+| [BlackArch Linux][blackarch] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][blackarch-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][blackarch-dl] | |
 | [boot.rackspace.com][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][boot.rackspace.com-cfg] | with [MEMDISK][] |
 | [Boot-repair-disk][brd] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][brd-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][brd-dl] | with [loopback.cfg][] |
 | [Byzantium][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][Byzantium-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][Byzantium-dl] | |
@@ -203,6 +204,9 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [backbox-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/backbox.d "Configuration"
 [backbox-dl]: http://www.backbox.org/downloads "Download"
 [backbox]: https://backbox.org/
+[blackarch-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/blackarch.d "Configuration"
+[blackarch-dl]: https://blackarch.org/downloads.html "Download"
+[blackarch]: https://blackarch.org/
 [boot.rackspace.com-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/boot.rackspace.com.d "Configuration"
 [boot.rackspace.com]: http://boot.rackspace.com/
 [brd-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/boot-repair-disk.d "Configuration"
