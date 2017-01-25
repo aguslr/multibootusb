@@ -127,7 +127,7 @@ Once the USB drive is created, it only remains to copy the bootable files (ISO o
 | [CentOS][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][centos-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][centos-dl] | only Live ISO |
 | [Clonezilla Live][clonezilla] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][clonezilla-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][clonezilla-dl] | |
 | [DBAN][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][dban-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][dban-dl] | with [MEMDISK][] |
-| [Debian][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][debian-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][debian-dl] | only Live and NetInstall[^note1] ISOs |
+| [Debian][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][debian-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][debian-dl] | only Live and Netboot[^note1] ISOs |
 | [elementary OS][elementary] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][elementary-cfg] | with [loopback.cfg][] |
 | [Fedora][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][fedora-cfg] | only Workstation and Server ISOs |
 | [Gentoo Linux][gentoo] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][gentoo-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][gentoo-dl] | only LiveDVD ISO |
@@ -185,7 +185,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 
 ## Notes
 
-[^note1]: Rename [Debian][] NetInstall ISO files (e.g. from `mini.iso` to `debian-8.6.0-i386-mini.iso`).
+[^note1]: Rename [Debian][] Netboot ISO files (e.g. from `mini.iso` to `debian-8.6.0-i386-mini.iso`).
 [^note2]: Rename [Hiren's BootCD][hirens] ISO files to remove the apostrophe which causes problems with [globbing][] (e.g. `Hirens.BootCD.15.2.iso`).
 [^note3]: Rename [OpenBSD][] install ISO files (e.g. from `install60.iso` to `openbsd-install60-i386.iso`).
 [^note4]: Rename [Ubuntu][] Netboot ISO files (e.g. from `mini.iso` to `ubuntu-16.04.1-mini-i386.iso`).
