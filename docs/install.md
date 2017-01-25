@@ -167,6 +167,20 @@ qemu-system-x86_64 -enable-kvm -localtime -m 2G -vga std -drive file=<device>,ca
 Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to get this information.
 
 
+## Resources
+
+- [Grub2 Loop Boot Solution][loop-boot]
+- [Grub2 loopback ISO support - Ultimate Boot CD][ubcdiso]
+- [Hybrid MBRs][hybridmbr]
+- [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bios]
+- [Man page of SGDISK][sgdisk]
+- [MultiBoot USB with Grub2 (boot directly from iso files)][panticz-mbusb]
+- [Multiboot USB-Stick: grml 2014.11 einrichten][grml-usb-stick]
+- [Super Grub Disk Wiki - Loopback.cfg][loopback.cfg]
+- [Transform a USB stick into a boot device packing multiple Linux distros][multiboot-usb]
+- [Using Syslinux and memdisk][usingmemdisk]
+
+
 ## Notes
 
 [^note1]: Rename [Debian][] NetInstall ISO files (e.g. from `mini.iso` to `debian-8.6.0-i386-mini.iso`).
@@ -223,10 +237,12 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [gparted]: http://gparted.sourceforge.net/livecd.php
 [grml-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/grml.d "Configuration"
 [grml-dl]: https://grml.org/download/ "Download"
+[grml-usb-stick]: http://www.gtkdb.de/index_7_2627.html
 [grml]: https://grml.org/
 [hirens-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/hbcd.d "Configuration"
 [hirens-dl]: http://www.hirensbootcd.org/download/ "Download"
 [hirens]: http://www.hirensbootcd.org/
+[hybridmbr]: http://www.rodsbooks.com/gdisk/hybrid.html
 [hybridmbr]: http://www.rodsbooks.com/gdisk/hybrid.html
 [kali-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/kali.d "Configuration"
 [kali-dl]: http://www.kali.org/downloads/ "Download"
@@ -235,6 +251,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [kdeneon-dl]: https://neon.kde.org/download "Download"
 [kdeneon]: https://neon.kde.org/
 [kernel.org]: https://www.kernel.org/pub/linux/utils/boot/syslinux/
+[loop-boot]: http://forums.kali.org/showthread.php?1025-Grub2-Loop-Boot-Solution
 [loopback.cfg]: http://www.supergrubdisk.org/wiki/Loopback.cfg
 [manjaro-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/manjaro.d "Configuration"
 [manjaro-dl]: http://manjaro.org/get-manjaro/ "Download"
@@ -244,6 +261,8 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [mint-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/linuxmint.d "Configuration"
 [mint-dl]: https://linuxmint.com/download.php "Download"
 [mint]: https://linuxmint.com/
+[multiboot-usb]: http://www.circuidipity.com/multi-boot-usb.html
+[multipass-usb]: https://github.com/Thermionix/multipass-usb
 [netboot.xyz-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/netboot.xyz.d "Configuration"
 [netboot.xyz]: https://netboot.xyz/
 [openbsd-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/openbsd.d "Configuration"
@@ -251,6 +270,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [openbsd]: http://www.openbsd.org/
 [opensuse-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/opensuse.d "Configuration"
 [opensuse]: https://www.opensuse.org/
+[panticz-mbusb]: http://www.panticz.de/MultiBootUSB
 [parabola-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/parabola.d "Configuration"
 [parabola-dl]: https://parabola.nu/download/ "Download"
 [parabola]: https://www.parabola.nu/
@@ -266,6 +286,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [sabayon]: https://www.sabayon.org/
 [seatools-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/seatools.d "Configuration"
 [seatools]: http://www.seagate.com/support/downloads/seatools/
+[sgdisk]: http://www.rodsbooks.com/gdisk/sgdisk.html
 [slax-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/slax.d "Configuration"
 [slax-dl]: http://www.slax.org/download.php "Download"
 [slax]: http://www.slax.org/
@@ -287,9 +308,11 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [ubcd-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/ubcd.d "Configuration"
 [ubcd-dl]: http://www.ultimatebootcd.com/download.html "Download"
 [ubcd]: http://www.ultimatebootcd.com/
+[ubcdiso]: http://www.ultimatebootcd.com/forums/viewtopic.php?p=9108#p9108
 [ubuntu-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/ubuntu.d "Configuration"
 [ubuntu-dl]: https://www.ubuntu.com/download "Download"
 [ubuntu]: http://www.ubuntu.com/
+[usingmemdisk]: https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Using_Syslinux_and_memdisk
 [void-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/void.d "Configuration"
 [void-dl]: http://www.voidlinux.eu/download/ "Download"
 [void]: http://www.voidlinux.eu/

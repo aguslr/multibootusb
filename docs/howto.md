@@ -171,6 +171,15 @@ menuentry "Ultimate Boot CD v5.3.6" {
 - Browse the [repository tree][repo] and check the existing GRUB configurations files.
 
 
+## Resources
+
+- [Grub2 loopback ISO support - Ultimate Boot CD][ubcdiso]
+- [MultiBoot USB with Grub2 (boot directly from iso files)][panticz-mbusb]
+- [Super Grub Disk Wiki - Loopback.cfg][loopback.cfg]
+- [Transform a USB stick into a boot device packing multiple Linux distros][multiboot-usb]
+- [Using Syslinux and memdisk][usingmemdisk]
+
+
 [boot-loader]: https://en.wikipedia.org/wiki/Boot_loader
 [grub.cfg]: https://www.gnu.org/software/grub/manual/html_node/Multi_002dboot-manual-config.html
 [grub]: https://www.gnu.org/software/grub/
@@ -182,7 +191,11 @@ menuentry "Ultimate Boot CD v5.3.6" {
 [memdisk]: http://www.syslinux.org/wiki/index.php?title=MEMDISK
 [mntlinux]: http://www.howtogeek.com/168137/mount-an-iso-image-in-linux/
 [mntwin]: http://www.howtogeek.com/howto/windows-vista/mount-an-iso-image-in-windows-vista/
+[multiboot-usb]: http://www.circuidipity.com/multi-boot-usb.html
+[panticz-mbusb]: http://www.panticz.de/MultiBootUSB
 [repo]: {{ site.github.repository_url }}
 [syslinux-include]: http://www.syslinux.org/wiki/index.php?title=SYSLINUX#INCLUDE_filename
 [syslinux]: http://www.syslinux.org/
 [tarball]: https://en.wikipedia.org/wiki/Tar_(computing)
+[ubcdiso]: http://www.ultimatebootcd.com/forums/viewtopic.php?p=9108#p9108
+[usingmemdisk]: https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Using_Syslinux_and_memdisk

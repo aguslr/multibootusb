@@ -13,7 +13,6 @@ This is a project that contains a collection of [GRUB][] files and scripts that 
 - [Installation][]
 - [Contributing][]
 - [How-to][]
-- [Resources][]
 
 
 ## Similar projects
