@@ -18,6 +18,8 @@ td a[title="Configuration"] {
   background-size: contain;
   direction: ltr;
   display: inline-block;
+  filter: grayscale(1);
+  -webkit-filter: grayscale(1);
   height: 24px;
   text-indent: -9999px;
   width: 24px;
@@ -28,7 +30,13 @@ td a[title="Download"] {
   background-size: contain;
   direction: ltr;
   display: inline-block;
+  filter: grayscale(1);
+  -webkit-filter: grayscale(1);
   height: 24px;
   text-indent: -9999px;
   width: 24px;
+}
+td a[title="Configuration"]:hover, td a[title="Download"]:hover {
+  filter: hue-rotate(24deg) saturate(300%) brightness(72%);
+  -webkit-filter: hue-rotate(24deg) saturate(300%) brightness(72%);
 }
