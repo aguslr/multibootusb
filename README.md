@@ -4,6 +4,8 @@
 
 This is a project that contains a collection of [GRUB][] files and scripts that will allow you to create a pendrive capable of booting [different ISO files][isos].
 
+![Demo GIF](docs/assets/img/demo.gif "Demo")
+
 
 ## Documentation
 
