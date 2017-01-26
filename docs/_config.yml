@@ -10,6 +10,7 @@ url: ""
 markdown: kramdown
 theme: jekyll-theme-minimal
 exclude:
+  - CNAME
   - Gemfile
   - Gemfile.lock
 

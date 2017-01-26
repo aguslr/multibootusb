@@ -11,5 +11,5 @@ Visit the [project's website for more information][website].
 
 
 [grub]: https://www.gnu.org/software/grub/
-[isos]: http://blog.aguslr.com/multibootusb/install.html#get-bootable-files
-[website]: https://aguslr.github.com/multibootusb/
+[isos]: http://mbusb.aguslr.com/install.html#get-bootable-files
+[website]: http://mbusb.aguslr.com/
