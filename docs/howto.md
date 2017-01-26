@@ -88,29 +88,22 @@ Which could be converted as:
 submenu "Debian 8 Live ->" {
   isofile="/boot/isos/debian-live-8.7.1-i386-standard.iso"
   loopback loop "$isofile"
-  menuentry "Live (586)" "$isofile" {
-    isofile="$2"
-    bootoptions="findiso=$isofile boot=live components quiet splash"
-    linux (loop)/live/vmlinuz1 $bootoptions
-    initrd (loop)/live/initrd1.img
+  root=(loop)
+  menuentry "Live (586)" {
+    linux /live/vmlinuz1 findiso=$isofile boot=live components quiet splash
+    initrd /live/initrd1.img
   }
-  menuentry "Live (586 failsafe)" "$isofile" {
-    isofile="$2"
-    bootoptions="findiso=$isofile boot=live components memtest noapic noapm nodma nomce nolapic nomodeset nosmp nosplash vga=normal"
-    linux (loop)/live/vmlinuz1 $bootoptions
-    initrd (loop)/live/initrd1.img
+  menuentry "Live (586 failsafe)" {
+    linux /live/vmlinuz1 findiso=$isofile boot=live components memtest noapic noapm nodma nomce nolapic nomodeset nosmp nosplash vga=normal
+    initrd /live/initrd1.img
   }
-  menuentry "Live (686-pae)" "$isofile" {
-    isofile="$2"
-    bootoptions="findiso=$isofile boot=live components quiet splash"
-    linux (loop)/live/vmlinuz2 $bootoptions
-    initrd (loop)/live/initrd2.img
+  menuentry "Live (686-pae)" {
+    linux /live/vmlinuz2 findiso=$isofile boot=live components quiet splash
+    initrd /live/initrd2.img
   }
-  menuentry "Live (686-pae failsafe)" "$isofile" {
-    isofile="$2"
-    bootoptions="findiso=$isofile boot=live components memtest noapic noapm nodma nomce nolapic nomodeset nosmp nosplash vga=normal"
-    linux (loop)/live/vmlinuz2 $bootoptions
-    initrd (loop)/live/initrd2.img
+  menuentry "Live (686-pae failsafe)" {
+    linux /live/vmlinuz2 findiso=$isofile boot=live components memtest noapic noapm nodma nomce nolapic nomodeset nosmp nosplash vga=normal
+    initrd /live/initrd2.img
   }
 }
 ```
@@ -146,8 +139,7 @@ As an example, we can load into memory the ISO for *DBAN 2.3.0* (only 17MB) usin
 ```
 menuentry "DBAN 2.3.0" {
   isofile="/boot/isos/dban-2.3.0_i586.iso"
-  bootoptions="iso raw"
-  linux16 $prefix/memdisk $bootoptions
+  linux16 $prefix/memdisk iso raw
   initrd16 $isofile
 }
 ```
@@ -157,8 +149,7 @@ If our ISO is bigger than 128MB and we have a 32-bit OS, then we have to increas
 ```
 menuentry "Ultimate Boot CD v5.3.6" {
   isofile="/boot/isos/ubcd536.iso"
-  bootoptions="iso raw vmalloc=650M"
-  linux16 $prefix/memdisk $bootoptions
+  linux16 $prefix/memdisk iso raw vmalloc=650M
   initrd16 $isofile
 }
 ```
