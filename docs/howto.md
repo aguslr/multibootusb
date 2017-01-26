@@ -26,7 +26,7 @@ Some ISO files include a file named *[loopback.cfg][]* specifically designed to 
 
 As an example, we can load the `/boot/grub/loopback.cfg` file for *Ubuntu 16.04* like so:
 
-~~~
+```
 submenu "Ubuntu 16.04 ->" {
   iso_path="/boot/isos/ubuntu-16.04.1-desktop-i386.iso"
   export iso_path
@@ -36,7 +36,7 @@ submenu "Ubuntu 16.04 ->" {
   configfile /boot/grub/loopback.cfg
   loopback --delete loop
 }
-~~~
+```
 
 
 ### Converting ISOLINUX entries
@@ -47,15 +47,15 @@ The process involves creating a file named [isolinux.cfg][] that contains the me
 
 This file is usually located in `/isolinux/` or `/boot/syslinux/` but the location can vary, therefore it's recommended to search the directory where our ISO is mounted (e.g. `/mnt/loop`) with the following command:
 
-~~~
+```
 find /mnt/loop -type f -name 'isolinux.cfg'
-~~~
+```
 
 However, `isolinux.cfg` usually loads other files via an [INCLUDE][syslinux-include] clause. If so, we'll need to follow these files in order to find the one containing the actual menu entries. Then, we can manually convert the entries from [ISOLINUX's format][isolinux.cfg] to [GRUB's format][grub.cfg].
 
 As an example, these are the menu entries for *Debian 8 Live* (file `/isolinux/live.cfg`):
 
-~~~ null
+```null
 label live-586
         menu label ^Live (586)
         menu default
@@ -80,11 +80,11 @@ label live-686-pae-failsafe
         linux /live/vmlinuz2
         initrd /live/initrd2.img
         append boot=live components memtest noapic noapm nodma nomce nolapic nomodeset nosmp nosplash vga=normal
-~~~
+```
 
 Which could be converted as:
 
-~~~
+```
 submenu "Debian 8 Live ->" {
   isofile="/boot/isos/debian-live-8.7.1-i386-standard.iso"
   loopback loop "$isofile"
@@ -113,22 +113,22 @@ submenu "Debian 8 Live ->" {
     initrd (loop)/live/initrd2.img
   }
 }
-~~~
+```
 
 Notice, however, that we've had to add the parameter `findiso=$isofile` so the kernel can mount and access the contents of the ISO during boot. Otherwise the boot process will fail.
 
 Unfortunately, many distributions use different parameters. Some known examples:
 
-| Parameter  | Distributions |
-|:-----------|:--------------|
-| `img_loop=$isofile` | Antergos, Arch Linux, BlackArch Linux, Manjaro Linux, Parabola GNU/Linux-libre |
-| `from=$isofile` | Byzantium, Slax |
-| `iso-scan/filename=$isofile` | CentOS, Fedora, Trisquel GNU/Linux, Ubuntu, Void |
-| `findiso=$isofile` | Clonezilla Live, Debian, GParted Live, Kali Linux, Tails |
-| `isoboot=$isofile` | Gentoo, Pentoo, Sabayon Linux |
-| `isofrom_system=$isofile` | openSUSE |
-| `iso_filename=$isofile` | Parted Magic |
-| `isoloop=$isofile` | SystemRescueCd |
+Parameter | Distributions
+----------|--------------
+`img_loop=$isofile` | Antergos, Arch Linux, BlackArch Linux, Manjaro Linux, Parabola GNU/Linux-libre
+`from=$isofile` | Byzantium, Slax
+`iso-scan/filename=$isofile` | CentOS, Fedora, Trisquel GNU/Linux, Ubuntu, Void
+`findiso=$isofile` | Clonezilla Live, Debian, GParted Live, Kali Linux, Tails
+`isoboot=$isofile` | Gentoo, Pentoo, Sabayon Linux
+`isofrom_system=$isofile` | openSUSE
+`iso_filename=$isofile` | Parted Magic
+`isoloop=$isofile` | SystemRescueCd
 
 Distributions based on these might work with its corresponding parameter, so it's a matter of trial and error.
 
@@ -143,25 +143,25 @@ Alternatively, we can download the official [tarball][] from [kernel.org][], in 
 
 As an example, we can load into memory the ISO for *DBAN 2.3.0* (only 17MB) using this:
 
-~~~
+```
 menuentry "DBAN 2.3.0" {
   isofile="/boot/isos/dban-2.3.0_i586.iso"
   bootoptions="iso raw"
   linux16 $prefix/memdisk $bootoptions
   initrd16 $isofile
 }
-~~~
+```
 
 If our ISO is bigger than 128MB and we have a 32-bit OS, then we have to increase the maximum memory usage, by adding the parameter `vmalloc` with (at least) the size of the ISO file. For instance, for *Ultimate Boot CD v5.3.6*:
 
-~~~
+```
 menuentry "Ultimate Boot CD v5.3.6" {
   isofile="/boot/isos/ubcd536.iso"
   bootoptions="iso raw vmalloc=650M"
   linux16 $prefix/memdisk $bootoptions
   initrd16 $isofile
 }
-~~~
+```
 
 
 ## If nothing works

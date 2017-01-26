@@ -13,23 +13,23 @@ layout: default
 
 If we have Git installed on the system, we can get the files directly from the repository:
 
-~~~
+```
 git clone git://github.com/aguslr/multibootusb.git
-~~~
+```
 
 After this, every time we want to update the files we do:
 
-~~~
+```
 cd multibootusb && git pull
-~~~
+```
 
 ### Without Git
 
 If Git is not installed, we can still get the files as long as we have a basic Unix environment available:
 
-~~~
+```
 wget https://github.com/aguslr/multibootusb/tarball/master -O - | tar -xzv --strip-components 1 --exclude={README.md,docs}
-~~~
+```
 
 
 ## Creating the USB drive
@@ -74,9 +74,9 @@ Follow the instructions to create a [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bi
 
 Simply run as root:
 
-~~~
+```
 ./makeUSB.sh <device>
-~~~
+```
 
 Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to get this information.
 
@@ -84,7 +84,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 
 These are the options for the script:
 
-~~~ null
+```null
 Script to prepare multiboot USB drive
 Usage: makeUSB.sh [options] device [fs-type]
 
@@ -95,7 +95,7 @@ Usage: makeUSB.sh [options] device [fs-type]
   -i,  --interactive            Launch gdisk to create a hybrid MBR
   -l,  --log                    Save debug information to log
   -h,  --help                   Display this message
-~~~
+```
 
 
 ## Get bootable files
@@ -113,58 +113,58 @@ Usage: makeUSB.sh [options] device [fs-type]
 
 Once the USB drive is created, it only remains to copy the bootable files (ISO or kernel) to the pendrive. Currently, the following utilities are supported (save to `$mntusb/boot/isos`):
 
-| Distribution  | Links  | Notes  |
-|:--------------|:-------|:-------|
-| [Antergos][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][antergos-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][antergos-dl] | only Live ISO |
-| [Arch-Anywhere][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][arch-anywhere-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][arch-anywhere-dl] | only Dual ISO |
-| [Arch Linux][arch] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][arch-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][arch-dl] | only Dual ISO |
-| [AVG Rescue CD][avgrescue] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][avgrescue-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][avgrescue-dl] | with [MEMDISK][] |
-| [BackBox][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][backbox-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][backbox-dl] | with [loopback.cfg][] |
-| [BlackArch Linux][blackarch] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][blackarch-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][blackarch-dl] | |
-| [boot.rackspace.com][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][boot.rackspace.com-cfg] | with [MEMDISK][] |
-| [Boot-repair-disk][brd] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][brd-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][brd-dl] | with [loopback.cfg][] |
-| [Byzantium][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][byzantium-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][byzantium-dl] | |
-| [CentOS][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][centos-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][centos-dl] | only Live ISO |
-| [Clonezilla Live][clonezilla] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][clonezilla-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][clonezilla-dl] | |
-| [DBAN][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][dban-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][dban-dl] | with [MEMDISK][] |
-| [Debian][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][debian-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][debian-dl] | only Live and Netboot[^note1] ISOs |
-| [elementary OS][elementary] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][elementary-cfg] | with [loopback.cfg][] |
-| [Fedora][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][fedora-cfg] | only Workstation and Server ISOs |
-| [Gentoo Linux][gentoo] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][gentoo-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][gentoo-dl] | only LiveDVD ISO |
-| [GParted Live][gparted] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][gparted-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][gparted-dl] | |
-| [Grml Live Linux][grml] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][grml-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][grml-dl] | with [loopback.cfg][] |
-| [Hiren's BootCD][hirens] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][hirens-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][hirens-dl] | with [MEMDISK][][^note2] |
-| [Kali Linux][kali] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][kali-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][kali-dl] | with [loopback.cfg][] |
-| [KDE neon][kdeneon] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][kdeneon-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][kdeneon-dl] | with [loopback.cfg][] |
-| [Linux Mint][mint] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][mint-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][mint-dl] | with [loopback.cfg][] |
-| [Manjaro Linux][manjaro] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][manjaro-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][manjaro-dl] | with [MEMDISK][] |
-| [netboot.xyz][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][netboot.xyz-cfg] | with [MEMDISK][] |
-| [OpenBSD][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][openbsd-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][openbsd-dl] | only Install ISO[^note3]; with [MEMDISK][] |
-| [openSUSE][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][opensuse-cfg] | only Tumbleweed ISO |
-| [Parabola GNU/Linux-libre][parabola] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][parabola-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][parabola-dl] | only Dual ISO |
-| [Parted Magic][partedmagic] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][partedmagic-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][partedmagic-dl] | |
-| [Pentoo][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][pentoo-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][pentoo-dl] | |
-| [Raspberry PIXEL][raspixel] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][raspixel-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][raspixel-dl] | with [loopback.cfg][] |
-| [Sabayon Linux][sabayon] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][sabayon-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][sabayon-dl] | only Desktop ISO |
-| [Seagate SeaTools][seatools] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][seatools-cfg] | with [MEMDISK][] |
-| [Slax Linux][slax] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][slax-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][slax-dl] | |
-| [SliTaz][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][slitaz-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][slitaz-dl] | with [MEMDISK][] |
-| [SystemRescueCd][sysrescuecd] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][sysrescuecd-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][sysrescuecd-dl] | |
-| [Tails][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][tails-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][tails-dl] | |
-| [Tiny Core Linux][tinycore] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][tinycore-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][tinycore-dl] | |
-| [Trisquel GNU/Linux][trisquel] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][trisquel-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][trisquel-dl] | only Live CD and DVD ISOs |
-| [Ubuntu][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][ubuntu-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][ubuntu-dl] | only Desktop and Netboot[^note4] ISOs |
-| [Ultimate Boot CD][ubcd] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][ubcd-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][ubcd-dl] | with [MEMDISK][] |
-| [Void][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][void-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][void-dl] | only Live ISO |
+Distribution | Links | Notes
+-------------|-------|------
+[Antergos][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][antergos-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][antergos-dl] | only Live ISO
+[Arch-Anywhere][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][arch-anywhere-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][arch-anywhere-dl] | only Dual ISO
+[Arch Linux][arch] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][arch-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][arch-dl] | only Dual ISO
+[AVG Rescue CD][avgrescue] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][avgrescue-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][avgrescue-dl] | with [MEMDISK][]
+[BackBox][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][backbox-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][backbox-dl] | with [loopback.cfg][]
+[BlackArch Linux][blackarch] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][blackarch-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][blackarch-dl] |
+[boot.rackspace.com][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][boot.rackspace.com-cfg] | with [MEMDISK][]
+[Boot-repair-disk][brd] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][brd-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][brd-dl] | with [loopback.cfg][]
+[Byzantium][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][byzantium-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][byzantium-dl] |
+[CentOS][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][centos-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][centos-dl] | only Live ISO
+[Clonezilla Live][clonezilla] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][clonezilla-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][clonezilla-dl] |
+[DBAN][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][dban-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][dban-dl] | with [MEMDISK][]
+[Debian][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][debian-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][debian-dl] | only Live and Netboot[^note1] ISOs
+[elementary OS][elementary] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][elementary-cfg] | with [loopback.cfg][]
+[Fedora][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][fedora-cfg] | only Workstation and Server ISOs
+[Gentoo Linux][gentoo] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][gentoo-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][gentoo-dl] | only LiveDVD ISO
+[GParted Live][gparted] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][gparted-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][gparted-dl] |
+[Grml Live Linux][grml] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][grml-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][grml-dl] | with [loopback.cfg][]
+[Hiren's BootCD][hirens] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][hirens-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][hirens-dl] | with [MEMDISK][][^note2]
+[Kali Linux][kali] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][kali-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][kali-dl] | with [loopback.cfg][]
+[KDE neon][kdeneon] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][kdeneon-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][kdeneon-dl] | with [loopback.cfg][]
+[Linux Mint][mint] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][mint-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][mint-dl] | with [loopback.cfg][]
+[Manjaro Linux][manjaro] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][manjaro-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][manjaro-dl] | with [MEMDISK][]
+[netboot.xyz][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][netboot.xyz-cfg] | with [MEMDISK][]
+[OpenBSD][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][openbsd-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][openbsd-dl] | only Install ISO[^note3]; with [MEMDISK][]
+[openSUSE][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][opensuse-cfg] | only Tumbleweed ISO
+[Parabola GNU/Linux-libre][parabola] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][parabola-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][parabola-dl] | only Dual ISO
+[Parted Magic][partedmagic] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][partedmagic-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][partedmagic-dl] |
+[Pentoo][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][pentoo-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][pentoo-dl] |
+[Raspberry PIXEL][raspixel] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][raspixel-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][raspixel-dl] | with [loopback.cfg][]
+[Sabayon Linux][sabayon] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][sabayon-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][sabayon-dl] | only Desktop ISO
+[Seagate SeaTools][seatools] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][seatools-cfg] | with [MEMDISK][]
+[Slax Linux][slax] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][slax-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][slax-dl] |
+[SliTaz][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][slitaz-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][slitaz-dl] | with [MEMDISK][]
+[SystemRescueCd][sysrescuecd] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][sysrescuecd-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][sysrescuecd-dl] |
+[Tails][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][tails-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][tails-dl] |
+[Tiny Core Linux][tinycore] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][tinycore-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][tinycore-dl] |
+[Trisquel GNU/Linux][trisquel] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][trisquel-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][trisquel-dl] | only Live CD and DVD ISOs
+[Ubuntu][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][ubuntu-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][ubuntu-dl] | only Desktop and Netboot[^note4] ISOs
+[Ultimate Boot CD][ubcd] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][ubcd-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][ubcd-dl] | with [MEMDISK][]
+[Void][] | [<svg class="icon"><use xlink:href="#cfg-icon"/></svg>][void-cfg] [<svg class="icon"><use xlink:href="#dl-icon"/></svg>][void-dl] | only Live ISO
 
 
 ## Testing USB drive with QEMU
 
 To test the newly created USB drive in a virtual environment with [QEMU][], run:
 
-~~~
+```
 qemu-system-x86_64 -enable-kvm -localtime -m 2G -vga std -drive file=<device>,cache=none,if=virtio
-~~~
+```
 
 Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to get this information.
 
