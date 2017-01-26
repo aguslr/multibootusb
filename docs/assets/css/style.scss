@@ -11,14 +11,24 @@ img {
 
 /* SVG icons */
 /* http://google.github.io/material-design-icons/ */
-/* http://stackoverflow.com/a/25184858 */
-svg path {
-  fill: #727272;
-}
-svg:hover path {
-  fill: #069;
-}
-.icon {
+/* https://css-tricks.com/using-svg/ */
+td a[title="Configuration"] {
+  background: url(../img/cfg-icon.png);
+  background-image: url(../img/cfg-icon.svg), none;
+  background-size: contain;
+  direction: ltr;
+  display: inline-block;
   height: 24px;
+  text-indent: -9999px;
+  width: 24px;
+}
+td a[title="Download"] {
+  background: url(../img/dl-icon.png);
+  background-image: url(../img/dl-icon.svg), none;
+  background-size: contain;
+  direction: ltr;
+  display: inline-block;
+  height: 24px;
+  text-indent: -9999px;
   width: 24px;
 }
