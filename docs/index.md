@@ -17,12 +17,12 @@ This is a project that contains a collection of [GRUB][] files and scripts that 
 
 ## Similar projects
 
-- [Easy2Boot][];
-- [GLIM][];
-- [MultiBootUSB][];
-- [MultiPass-USB][];
-- [SARDU][];
-- [YUMI][].
+- [Easy2Boot][]
+- [GLIM][]
+- [MultiBootUSB][]
+- [MultiPass-USB][]
+- [SARDU][]
+- [YUMI][]
 
 
 [installation]: install.md
