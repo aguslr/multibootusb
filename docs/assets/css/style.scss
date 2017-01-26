@@ -13,8 +13,8 @@ img {
 /* http://google.github.io/material-design-icons/ */
 /* https://css-tricks.com/using-svg/ */
 td a[title="Configuration"] {
-  background: url(../img/cfg-icon.png);
-  background-image: url(../img/cfg-icon.svg), none;
+  background: url({{ "assets/img/cfg-icon.png" | relative_url }});
+  background-image: url({{ "assets/img/cfg-icon.svg" | relative_url }}), none;
   background-size: contain;
   direction: ltr;
   display: inline-block;
@@ -23,8 +23,8 @@ td a[title="Configuration"] {
   width: 24px;
 }
 td a[title="Download"] {
-  background: url(../img/dl-icon.png);
-  background-image: url(../img/dl-icon.svg), none;
+  background: url({{ "assets/img/dl-icon.png" | relative_url }});
+  background-image: url({{ "assets/img/dl-icon.svg" | relative_url }}), none;
   background-size: contain;
   direction: ltr;
   display: inline-block;
