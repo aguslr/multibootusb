@@ -9,19 +9,14 @@ img {
   margin: 0 auto;
 }
 
-/* Header background */
-.page-header {
-  background-image: linear-gradient(120deg, #000000, #00a800);
-}
-
 /* SVG icons */
 /* http://google.github.io/material-design-icons/ */
 /* http://stackoverflow.com/a/25184858 */
 svg path {
-  fill: $body-text-color;
+  fill: #727272;
 }
 svg:hover path {
-  fill: $body-link-color;
+  fill: #069;
 }
 .icon {
   height: 24px;

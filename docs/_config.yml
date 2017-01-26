@@ -11,7 +11,7 @@ github_username:  aguslr
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-cayman
+theme: jekyll-theme-minimal
 exclude:
   - Gemfile
   - Gemfile.lock
