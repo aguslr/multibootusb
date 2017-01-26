@@ -3,7 +3,7 @@ layout: default
 ---
 # MultiBoot USB
 
-This is a project that contains a collection of [GRUB][] files and scripts that will allow you to create a pendrive capable of booting different ISO files.
+This is a project that contains a collection of [GRUB][] files and scripts that will allow you to create a pendrive capable of booting [different ISO files][isos].
 
 ![Demo GIF]({{ "/assets/img/demo.gif" | relative_url }} "Demo")
 
@@ -26,9 +26,9 @@ This is a project that contains a collection of [GRUB][] files and scripts that 
 
 
 [installation]: install.md
+[isos]: {{ "install.html" | relative_url }}#get-bootable-files
 [contributing]: contrib.md
 [how-to]: howto.md
-[resources]: resources.md
 [easy2boot]: http://www.easy2boot.com/
 [glim]: https://github.com/thias/glim
 [grub]: https://www.gnu.org/software/grub/

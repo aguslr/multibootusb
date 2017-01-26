@@ -1,8 +1,8 @@
 # Site settings
 title: MultiBoot USB
 description: >
-  This repository stores the files needed to create a pendrive capable of
-  booting different ISO files using GRUB2
+  This is a project that contains a collection of GRUB files and scripts that
+  will allow you to create a pendrive capable of booting different ISO files.
 baseurl: ""
 url: ""
 
