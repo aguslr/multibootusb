@@ -307,7 +307,7 @@ tryCMD "Copying files to ${data_mnt}boot" \
 tryCMD "Downloading memdisk to ${data_mnt}boot/grub" \
     "$wget_cmd -qO - \
     'https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.gz' \
-    | $tar_cmd -xz -C ${data_mnt}boot/grub --no-same-owner --strip-components 3 \
+    | $tar_cmd -xz -C $grub_dir --no-same-owner --strip-components 3 \
     'syslinux-6.03/bios/memdisk/memdisk'"
 
 # Download Memtest86+
