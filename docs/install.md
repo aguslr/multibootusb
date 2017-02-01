@@ -1,11 +1,11 @@
 ---
-title: Installation
+title: Preparing the multiboot USB
 layout: default
 ---
 * auto-gen TOC:
 {:toc}
 
-# Installation
+# {{ page.title }}
 
 ## Getting the files
 

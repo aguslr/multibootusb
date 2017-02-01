@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+
 # MultiBoot USB
 
 This is a project that contains a collection of [GRUB][] files and scripts that will allow you to create a pendrive capable of booting [different ISO files][isos].
@@ -10,9 +11,9 @@ This is a project that contains a collection of [GRUB][] files and scripts that 
 
 ## Documentation
 
-- [Installation][]
-- [Contributing][]
-- [How-to][]
+- [Preparing the multiboot USB][install]
+- [Contributing to the project][contrib]
+- [Adding support for an ISO][howto]
 
 
 ## Similar projects
@@ -25,10 +26,10 @@ This is a project that contains a collection of [GRUB][] files and scripts that 
 - [YUMI][]
 
 
-[installation]: install.md
 [isos]: {{ "install.html" | relative_url }}#get-bootable-files
-[contributing]: contrib.md
-[how-to]: howto.md
+[install]: install.md
+[contrib]: contrib.md
+[howto]: howto.md
 [easy2boot]: http://www.easy2boot.com/
 [glim]: https://github.com/thias/glim
 [grub]: https://www.gnu.org/software/grub/

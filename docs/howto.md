@@ -1,11 +1,11 @@
 ---
-title: How-to
+title: Adding support for an ISO
 layout: default
 ---
 * auto-gen TOC:
 {:toc}
 
-# How-to
+# {{ page.title }}
 
 This how-to will explain how we can configure [GRUB][] so it can directly boot an [ISO file][iso] for a specific distribution or software utility. There are several ways to achieve this, listed below in order of preference.
 
