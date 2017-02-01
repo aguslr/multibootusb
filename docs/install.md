@@ -103,51 +103,51 @@ Usage: makeUSB.sh [options] device [fs-type]
 Once the USB drive is created, it only remains to copy the bootable files (ISO or kernel) to the pendrive. Currently, the following utilities are supported (save to `$mntusb/boot/isos`):
 
 Distribution | Links | Notes
--------------|-------|------
+:------------|-------|-----:
 [Antergos][] | [Configuration][antergos-cfg] [Download][antergos-dl] | Live ISO
 [Arch-Anywhere][] | [Configuration][arch-anywhere-cfg] [Download][arch-anywhere-dl] | Dual ISO
 [Arch Linux][arch] | [Configuration][arch-cfg] [Download][arch-dl] | Dual ISO
-[AVG Rescue CD][avgrescue] | [Configuration][avgrescue-cfg] [Download][avgrescue-dl] | with [MEMDISK][]
-[BackBox][] | [Configuration][backbox-cfg] [Download][backbox-dl] | with [loopback.cfg][]
+[AVG Rescue CD][avgrescue] | [Configuration][avgrescue-cfg] [Download][avgrescue-dl] | [MEMDISK][]
+[BackBox][] | [Configuration][backbox-cfg] [Download][backbox-dl] | [loopback.cfg][]
 [BlackArch Linux][blackarch] | [Configuration][blackarch-cfg] [Download][blackarch-dl] |
-[boot.rackspace.com][] | [Configuration][boot.rackspace.com-cfg] | with [MEMDISK][]
-[Boot-repair-disk][brd] | [Configuration][brd-cfg] [Download][brd-dl] | with [loopback.cfg][]
+[boot.rackspace.com][] | [Configuration][boot.rackspace.com-cfg] | [MEMDISK][]
+[Boot-repair-disk][brd] | [Configuration][brd-cfg] [Download][brd-dl] | [loopback.cfg][]
 [Byzantium][] | [Configuration][byzantium-cfg] [Download][byzantium-dl] |
 [CentOS][] | [Configuration][centos-cfg] [Download][centos-dl] | Live ISO
 [Clonezilla Live][clonezilla] | [Configuration][clonezilla-cfg] [Download][clonezilla-dl] |
-[DBAN][] | [Configuration][dban-cfg] [Download][dban-dl] | with [MEMDISK][]
-[Debian][] | [Configuration][debian-cfg] [Download][debian-dl] | Live and Netboot[^note1] ISOs
-[elementary OS][elementary] | [Configuration][elementary-cfg] | with [loopback.cfg][]
+[DBAN][] | [Configuration][dban-cfg] [Download][dban-dl] | [MEMDISK][]
+[Debian][] | [Configuration][debian-cfg] [Download][debian-dl] | Live ISO and Netboot[^note1] ISO ([MEMDISK][])
+[elementary OS][elementary] | [Configuration][elementary-cfg] | [loopback.cfg][]
 [Fedora][] | [Configuration][fedora-cfg] | Workstation and Server ISOs
 [Gentoo Linux][gentoo] | [Configuration][gentoo-cfg] [Download][gentoo-dl] | LiveDVD ISO
 [GParted Live][gparted] | [Configuration][gparted-cfg] [Download][gparted-dl] |
-[Grml Live Linux][grml] | [Configuration][grml-cfg] [Download][grml-dl] | with [loopback.cfg][]
-[Hiren's BootCD][hirens] | [Configuration][hirens-cfg] [Download][hirens-dl] | with [MEMDISK][][^note2]
-[Kali Linux][kali] | [Configuration][kali-cfg] [Download][kali-dl] | with [loopback.cfg][]
-[KDE neon][kdeneon] | [Configuration][kdeneon-cfg] [Download][kdeneon-dl] | with [loopback.cfg][]
-[Kubuntu][] | [Configuration][kubuntu-cfg] [Download][kubuntu-dl] | Desktop ISO; with [loopback.cfg][]
-[Linux Mint][mint] | [Configuration][mint-cfg] [Download][mint-dl] | with [loopback.cfg][]
-[Lubuntu][] | [Configuration][lubuntu-cfg] [Download][lubuntu-dl] | Desktop ISO; with [loopback.cfg][]
-[Manjaro Linux][manjaro] | [Configuration][manjaro-cfg] [Download][manjaro-dl] | with [MEMDISK][]
-[netboot.xyz][] | [Configuration][netboot.xyz-cfg] | with [MEMDISK][]
-[OpenBSD][] | [Configuration][openbsd-cfg] [Download][openbsd-dl] | Install ISO[^note3]; with [MEMDISK][]
+[Grml Live Linux][grml] | [Configuration][grml-cfg] [Download][grml-dl] | [loopback.cfg][]
+[Hiren's BootCD][hirens] | [Configuration][hirens-cfg] [Download][hirens-dl] | [MEMDISK][][^note2]
+[Kali Linux][kali] | [Configuration][kali-cfg] [Download][kali-dl] | [loopback.cfg][]
+[KDE neon][kdeneon] | [Configuration][kdeneon-cfg] [Download][kdeneon-dl] | [loopback.cfg][]
+[Kubuntu][] | [Configuration][kubuntu-cfg] [Download][kubuntu-dl] | Desktop ISO ([loopback.cfg][])
+[Linux Mint][mint] | [Configuration][mint-cfg] [Download][mint-dl] | [loopback.cfg][]
+[Lubuntu][] | [Configuration][lubuntu-cfg] [Download][lubuntu-dl] | Desktop ISO ([loopback.cfg][])
+[Manjaro Linux][manjaro] | [Configuration][manjaro-cfg] [Download][manjaro-dl] | [MEMDISK][]
+[netboot.xyz][] | [Configuration][netboot.xyz-cfg] | [MEMDISK][]
+[OpenBSD][] | [Configuration][openbsd-cfg] [Download][openbsd-dl] | Install ISO[^note3] ([MEMDISK][])
 [openSUSE][] | [Configuration][opensuse-cfg] | Tumbleweed ISO
 [Parabola GNU/Linux-libre][parabola] | [Configuration][parabola-cfg] [Download][parabola-dl] | Dual ISO
 [Parted Magic][partedmagic] | [Configuration][partedmagic-cfg] [Download][partedmagic-dl] |
 [Pentoo][] | [Configuration][pentoo-cfg] [Download][pentoo-dl] |
-[Raspberry PIXEL][raspixel] | [Configuration][raspixel-cfg] [Download][raspixel-dl] | with [loopback.cfg][]
+[Raspberry PIXEL][raspixel] | [Configuration][raspixel-cfg] [Download][raspixel-dl] | [loopback.cfg][]
 [Sabayon Linux][sabayon] | [Configuration][sabayon-cfg] [Download][sabayon-dl] | Desktop ISO
-[Seagate SeaTools][seatools] | [Configuration][seatools-cfg] | with [MEMDISK][]
+[Seagate SeaTools][seatools] | [Configuration][seatools-cfg] | [MEMDISK][]
 [Slax Linux][slax] | [Configuration][slax-cfg] [Download][slax-dl] |
-[SliTaz][] | [Configuration][slitaz-cfg] [Download][slitaz-dl] | with [MEMDISK][]
+[SliTaz][] | [Configuration][slitaz-cfg] [Download][slitaz-dl] | [MEMDISK][]
 [SystemRescueCd][sysrescuecd] | [Configuration][sysrescuecd-cfg] [Download][sysrescuecd-dl] |
 [Tails][] | [Configuration][tails-cfg] [Download][tails-dl] |
 [Tiny Core Linux][tinycore] | [Configuration][tinycore-cfg] [Download][tinycore-dl] |
 [Trisquel GNU/Linux][trisquel] | [Configuration][trisquel-cfg] [Download][trisquel-dl] | Live CD and DVD ISOs
-[Ubuntu][] | [Configuration][ubuntu-cfg] [Download][ubuntu-dl] | Desktop and Netboot[^note4] ISOs
-[Ultimate Boot CD][ubcd] | [Configuration][ubcd-cfg] [Download][ubcd-dl] | with [MEMDISK][]
+[Ubuntu][] | [Configuration][ubuntu-cfg] [Download][ubuntu-dl] | Desktop ISO ([loopback.cfg][]) and Netboot[^note4] ISO ([MEMDISK][])
+[Ultimate Boot CD][ubcd] | [Configuration][ubcd-cfg] [Download][ubcd-dl] | [MEMDISK][]
 [Void][] | [Configuration][void-cfg] [Download][void-dl] | Live ISO
-[Xubuntu][] | [Configuration][xubuntu-cfg] [Download][xubuntu-dl] | Desktop ISO; with [loopback.cfg][]
+[Xubuntu][] | [Configuration][xubuntu-cfg] [Download][xubuntu-dl] | Desktop ISO ([loopback.cfg][])
 
 
 ## Testing USB drive with QEMU
