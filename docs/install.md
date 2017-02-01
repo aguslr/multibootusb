@@ -125,7 +125,9 @@ Distribution | Links | Notes
 [Hiren's BootCD][hirens] | [Configuration][hirens-cfg] [Download][hirens-dl] | with [MEMDISK][][^note2]
 [Kali Linux][kali] | [Configuration][kali-cfg] [Download][kali-dl] | with [loopback.cfg][]
 [KDE neon][kdeneon] | [Configuration][kdeneon-cfg] [Download][kdeneon-dl] | with [loopback.cfg][]
+[Kubuntu][] | [Configuration][kubuntu-cfg] [Download][kubuntu-dl] | Desktop ISO; with [loopback.cfg][]
 [Linux Mint][mint] | [Configuration][mint-cfg] [Download][mint-dl] | with [loopback.cfg][]
+[Lubuntu][] | [Configuration][lubuntu-cfg] [Download][lubuntu-dl] | Desktop ISO; with [loopback.cfg][]
 [Manjaro Linux][manjaro] | [Configuration][manjaro-cfg] [Download][manjaro-dl] | with [MEMDISK][]
 [netboot.xyz][] | [Configuration][netboot.xyz-cfg] | with [MEMDISK][]
 [OpenBSD][] | [Configuration][openbsd-cfg] [Download][openbsd-dl] | Install ISO[^note3]; with [MEMDISK][]
@@ -145,6 +147,7 @@ Distribution | Links | Notes
 [Ubuntu][] | [Configuration][ubuntu-cfg] [Download][ubuntu-dl] | Desktop and Netboot[^note4] ISOs
 [Ultimate Boot CD][ubcd] | [Configuration][ubcd-cfg] [Download][ubcd-dl] | with [MEMDISK][]
 [Void][] | [Configuration][void-cfg] [Download][void-dl] | Live ISO
+[Xubuntu][] | [Configuration][xubuntu-cfg] [Download][xubuntu-dl] | Desktop ISO; with [loopback.cfg][]
 
 
 ## Testing USB drive with QEMU
@@ -245,8 +248,14 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [kdeneon-dl]: https://neon.kde.org/download "Download"
 [kdeneon]: https://neon.kde.org/
 [kernel.org]: https://www.kernel.org/pub/linux/utils/boot/syslinux/
+[kubuntu-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/kubuntu.d "Configuration"
+[kubuntu-dl]: https://www.kubuntu.org/getkubuntu/ "Download"
+[kubuntu]: https://www.kubuntu.org/
 [loop-boot]: http://forums.kali.org/showthread.php?1025-Grub2-Loop-Boot-Solution
 [loopback.cfg]: http://www.supergrubdisk.org/wiki/Loopback.cfg
+[lubuntu-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/lubuntu.d "Configuration"
+[lubuntu-dl]: http://lubuntu.me/downloads/ "Download"
+[lubuntu]: http://lubuntu.me/
 [manjaro-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/manjaro.d "Configuration"
 [manjaro-dl]: http://manjaro.org/get-manjaro/ "Download"
 [manjaro]: https://manjaro.org/
@@ -313,3 +322,6 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [void-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/void.d "Configuration"
 [void-dl]: http://www.voidlinux.eu/download/ "Download"
 [void]: http://www.voidlinux.eu/
+[xubuntu-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/xubuntu.d "Configuration"
+[xubuntu-dl]: https://xubuntu.org/getxubuntu/ "Download"
+[xubuntu]: https://xubuntu.org/
