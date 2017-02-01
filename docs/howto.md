@@ -10,7 +10,7 @@ layout: default
 This how-to will explain how we can configure [GRUB][] so it can directly boot an [ISO file][iso] for a specific distribution or software utility. There are several ways to achieve this, listed below in order of preference.
 
 
-## Previous steps
+## Getting the ISO
 
 First of all, we'll need to download the ISO file and mount it so we can access its contents to find out what the best method is:
 
