@@ -140,6 +140,7 @@ Distribution | Links | Notes
 [Seagate SeaTools][seatools] | [Configuration][seatools-cfg] | [MEMDISK][]
 [Slax Linux][slax] | [Configuration][slax-cfg] [Download][slax-dl] |
 [SliTaz][] | [Configuration][slitaz-cfg] [Download][slitaz-dl] | [MEMDISK][]
+[Subgraph OS][subgraphos] | [Configuration][subgraphos-cfg] [Download][subgraphos-dl] | [loopback.cfg][]
 [SystemRescueCd][sysrescuecd] | [Configuration][sysrescuecd-cfg] [Download][sysrescuecd-dl] |
 [Tails][] | [Configuration][tails-cfg] [Download][tails-dl] |
 [Tiny Core Linux][tinycore] | [Configuration][tinycore-cfg] [Download][tinycore-dl] |
@@ -299,6 +300,9 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [slitaz-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/slitaz.d "Configuration"
 [slitaz-dl]: http://www.slitaz.org/en/get/ "Download"
 [slitaz]: http://www.slitaz.org/
+[subgraphos-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/subgraphos.d "Configuration"
+[subgraphos-dl]: https://subgraph.com/sgos/download/ "Download"
+[subgraphos]: https://subgraph.com/
 [sysrescuecd-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/systemrescuecd.d "Configuration"
 [sysrescuecd-dl]: http://www.sysresccd.org/Download "Download"
 [sysrescuecd]: http://www.sysresccd.org/
