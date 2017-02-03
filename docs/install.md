@@ -164,6 +164,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 
 ## Resources
 
+- [dracut.cmdline(7) - Linux manual page][dracutcmd]
 - [Grub2 Loop Boot Solution][loop-boot]
 - [Grub2 loopback ISO support - Ultimate Boot CD][ubcdiso]
 - [Hybrid MBRs][hybridmbr]
@@ -221,6 +222,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [debian-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/debian.d "Configuration"
 [debian-dl]: https://www.debian.org/CD/ "Download"
 [debian]: https://www.debian.org/
+[dracutcmd]: http://man7.org/linux/man-pages/man7/dracut.cmdline.7.html
 [efi+bios]: https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Hybrid_UEFI_GPT_.2B_BIOS_GPT.2FMBR_boot
 [elementary-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/elementaryos.d "Configuration"
 [elementary]: https://elementary.io/
