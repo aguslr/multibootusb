@@ -135,6 +135,7 @@ Distribution | Links | Notes
 [Parabola GNU/Linux-libre][parabola] | [Configuration][parabola-cfg] [Download][parabola-dl] | Dual ISO
 [Parted Magic][partedmagic] | [Configuration][partedmagic-cfg] [Download][partedmagic-dl] |
 [Pentoo][] | [Configuration][pentoo-cfg] [Download][pentoo-dl] |
+[Qubes OS][qubesos] | [Configuration][qubesos-cfg] [Download][qubesos-dl] |
 [Raspberry PIXEL][raspixel] | [Configuration][raspixel-cfg] [Download][raspixel-dl] | [loopback.cfg][]
 [Sabayon Linux][sabayon] | [Configuration][sabayon-cfg] [Download][sabayon-dl] | Desktop ISO
 [Seagate SeaTools][seatools] | [Configuration][seatools-cfg] | [MEMDISK][]
@@ -167,6 +168,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 - [dracut.cmdline(7) - Linux manual page][dracutcmd]
 - [Grub2 Loop Boot Solution][loop-boot]
 - [Grub2 loopback ISO support - Ultimate Boot CD][ubcdiso]
+- [how to multiboot xen with grub2 on Ubuntu][xengrub]
 - [Hybrid MBRs][hybridmbr]
 - [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bios]
 - [Man page of SGDISK][sgdisk]
@@ -286,6 +288,9 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [pentoo-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/pentoo.d "Configuration"
 [pentoo-dl]: http://www.pentoo.ch/download/ "Download"
 [pentoo]: http://www.pentoo.ch/
+[qubesos-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/qubesos.d "Configuration"
+[qubesos-dl]: https://www.qubes-os.org/downloads/ "Download"
+[qubesos]: https://www.qubes-os.org/
 [qemu]: http://qemu.org/
 [raspixel-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/pixel.d "Configuration"
 [raspixel-dl]: http://downloads.raspberrypi.org/pixel_x86/ "Download"
@@ -328,6 +333,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [void-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/void.d "Configuration"
 [void-dl]: http://www.voidlinux.eu/download/ "Download"
 [void]: http://www.voidlinux.eu/
+[xengrub]: https://lists.gnu.org/archive/html/help-grub/2011-03/msg00009.html
 [xubuntu-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/xubuntu.d "Configuration"
 [xubuntu-dl]: https://xubuntu.org/getxubuntu/ "Download"
 [xubuntu]: https://xubuntu.org/
