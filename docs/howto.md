@@ -86,42 +86,42 @@ Which could be converted as:
 
 ```
 submenu "Debian 8 Live ->" {
-  isofile="/boot/isos/debian-live-8.7.1-i386-standard.iso"
-  loopback loop "$isofile"
+  iso_path="/boot/isos/debian-live-8.7.1-i386-standard.iso"
+  loopback loop "$iso_path"
   root=(loop)
   menuentry "Live (586)" {
-    linux /live/vmlinuz1 findiso=$isofile boot=live components quiet splash
+    linux /live/vmlinuz1 findiso=$iso_path boot=live components quiet splash
     initrd /live/initrd1.img
   }
   menuentry "Live (586 failsafe)" {
-    linux /live/vmlinuz1 findiso=$isofile boot=live components memtest noapic noapm nodma nomce nolapic nomodeset nosmp nosplash vga=normal
+    linux /live/vmlinuz1 findiso=$iso_path boot=live components memtest noapic noapm nodma nomce nolapic nomodeset nosmp nosplash vga=normal
     initrd /live/initrd1.img
   }
   menuentry "Live (686-pae)" {
-    linux /live/vmlinuz2 findiso=$isofile boot=live components quiet splash
+    linux /live/vmlinuz2 findiso=$iso_path boot=live components quiet splash
     initrd /live/initrd2.img
   }
   menuentry "Live (686-pae failsafe)" {
-    linux /live/vmlinuz2 findiso=$isofile boot=live components memtest noapic noapm nodma nomce nolapic nomodeset nosmp nosplash vga=normal
+    linux /live/vmlinuz2 findiso=$iso_path boot=live components memtest noapic noapm nodma nomce nolapic nomodeset nosmp nosplash vga=normal
     initrd /live/initrd2.img
   }
 }
 ```
 
-Notice, however, that we've had to add the parameter `findiso=$isofile` so the kernel can mount and access the contents of the ISO during boot. Otherwise the boot process will fail.
+Notice, however, that we've had to add the parameter `findiso=$iso_path` so the kernel can mount and access the contents of the ISO during boot. Otherwise the boot process will fail.
 
 Unfortunately, many distributions use different parameters. Some known examples:
 
 Parameter | Distributions
 ----------|--------------
-`img_loop=$isofile` | Antergos, Arch Linux, BlackArch Linux, Manjaro Linux, Parabola GNU/Linux-libre
-`from=$isofile` | Byzantium, Slax
-`iso-scan/filename=$isofile` | CentOS, Fedora, Trisquel GNU/Linux, Ubuntu, Void
-`findiso=$isofile` | Clonezilla Live, Debian, GParted Live, Kali Linux, Tails
-`isoboot=$isofile` | Gentoo, Pentoo, Sabayon Linux
-`isofrom_system=$isofile` | openSUSE
-`iso_filename=$isofile` | Parted Magic
-`isoloop=$isofile` | SystemRescueCd
+`img_loop=$iso_path` | Antergos, Arch Linux, BlackArch Linux, Manjaro Linux, Parabola GNU/Linux-libre
+`from=$iso_path` | Byzantium, Slax
+`iso-scan/filename=$iso_path` | CentOS, Fedora, Trisquel GNU/Linux, Ubuntu, Void
+`findiso=$iso_path` | Clonezilla Live, Debian, GParted Live, Kali Linux, Tails
+`isoboot=$iso_path` | Gentoo, Pentoo, Sabayon Linux
+`isofrom_system=$iso_path` | openSUSE
+`iso_filename=$iso_path` | Parted Magic
+`isoloop=$iso_path` | SystemRescueCd
 
 Distributions based on these might work with its corresponding parameter, so it's a matter of trial and error.
 
@@ -138,9 +138,9 @@ As an example, we can load into memory the ISO for *DBAN 2.3.0* (only 17MB) usin
 
 ```
 menuentry "DBAN 2.3.0" {
-  isofile="/boot/isos/dban-2.3.0_i586.iso"
+  iso_path="/boot/isos/dban-2.3.0_i586.iso"
   linux16 $prefix/memdisk iso raw
-  initrd16 $isofile
+  initrd16 $iso_path
 }
 ```
 
@@ -148,9 +148,9 @@ If our ISO is bigger than 128MB and we have a 32-bit OS, then we have to increas
 
 ```
 menuentry "Ultimate Boot CD v5.3.6" {
-  isofile="/boot/isos/ubcd536.iso"
+  iso_path="/boot/isos/ubcd536.iso"
   linux16 $prefix/memdisk iso raw vmalloc=650M
-  initrd16 $isofile
+  initrd16 $iso_path
 }
 ```
 
