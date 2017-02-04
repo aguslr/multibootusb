@@ -158,7 +158,7 @@ Distribution | Links | Notes
 To test the newly created USB drive in a virtual environment with [QEMU][], run:
 
 ```
-qemu-system-x86_64 -enable-kvm -localtime -m 2G -vga std -drive file=<device>,cache=none,format=raw,if=scsi
+qemu-system-x86_64 -enable-kvm -localtime -m 2G -vga std -drive file=<device>,cache=none,format=raw,if=virtio
 ```
 
 Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to get this information.
