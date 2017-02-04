@@ -157,7 +157,7 @@ Distribution | Links | Notes
 To test the newly created USB drive in a virtual environment with [QEMU][], run:
 
 ```
-qemu-system-x86_64 -enable-kvm -localtime -m 2G -vga std -drive file=<device>,cache=none,if=virtio
+qemu-system-x86_64 -enable-kvm -localtime -m 2G -vga std -drive file=<device>,cache=none,format=raw,if=scsi
 ```
 
 Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to get this information.
@@ -174,8 +174,10 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 - [Man page of SGDISK][sgdisk]
 - [MultiBoot USB with Grub2 (boot directly from iso files)][panticz-mbusb]
 - [Multiboot USB-Stick: grml 2014.11 einrichten][grml-usb-stick]
+- [QEMU Emulator User Documentation][qemudocs]
 - [Super Grub Disk Wiki - Loopback.cfg][loopback.cfg]
 - [Transform a USB stick into a boot device packing multiple Linux distros][multiboot-usb]
+- [Tuning KVM - KVM][kvmtuning]
 - [Using Syslinux and memdisk][usingmemdisk]
 
 
@@ -256,6 +258,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [kubuntu-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/kubuntu.d "Configuration"
 [kubuntu-dl]: https://www.kubuntu.org/getkubuntu/ "Download"
 [kubuntu]: https://www.kubuntu.org/
+[kvmtuning]: http://www.linux-kvm.org/page/Tuning_KVM
 [loop-boot]: http://forums.kali.org/showthread.php?1025-Grub2-Loop-Boot-Solution
 [loopback.cfg]: http://www.supergrubdisk.org/wiki/Loopback.cfg
 [lubuntu-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/lubuntu.d "Configuration"
@@ -288,10 +291,11 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [pentoo-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/pentoo.d "Configuration"
 [pentoo-dl]: http://www.pentoo.ch/download/ "Download"
 [pentoo]: http://www.pentoo.ch/
+[qemu]: http://qemu.org/
+[qemudocs]: https://qemu.weilnetz.de/doc/qemu-doc.html
 [qubesos-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/qubesos.d "Configuration"
 [qubesos-dl]: https://www.qubes-os.org/downloads/ "Download"
 [qubesos]: https://www.qubes-os.org/
-[qemu]: http://qemu.org/
 [raspixel-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/pixel.d "Configuration"
 [raspixel-dl]: http://downloads.raspberrypi.org/pixel_x86/ "Download"
 [raspixel]: https://www.raspberrypi.org/blog/pixel-pc-mac/
