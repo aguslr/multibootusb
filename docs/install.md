@@ -141,6 +141,7 @@ Distribution | Links | Notes
 [Seagate SeaTools][seatools] | [Configuration][seatools-cfg] | [MEMDISK][]
 [Slax Linux][slax] | [Configuration][slax-cfg] [Download][slax-dl] |
 [SliTaz][] | [Configuration][slitaz-cfg] [Download][slitaz-dl] | [MEMDISK][]
+[SmartOS][smartos] | [Configuration][smartos-cfg] [Download][smartos-dl] |
 [Subgraph OS][subgraphos] | [Configuration][subgraphos-cfg] [Download][subgraphos-dl] | [loopback.cfg][]
 [SystemRescueCd][sysrescuecd] | [Configuration][sysrescuecd-cfg] [Download][sysrescuecd-dl] |
 [Tails][] | [Configuration][tails-cfg] [Download][tails-dl] |
@@ -165,6 +166,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 
 ## Resources
 
+- [Booting SmartOS from GRUB2 - SmartOS Documentation - SmartOS Wiki][smartosiso]
 - [dracut.cmdline(7) - Linux manual page][dracutcmd]
 - [Grub2 Loop Boot Solution][loop-boot]
 - [Grub2 loopback ISO support - Ultimate Boot CD][ubcdiso]
@@ -311,6 +313,10 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [slitaz-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/slitaz.d "Configuration"
 [slitaz-dl]: http://www.slitaz.org/en/get/ "Download"
 [slitaz]: http://www.slitaz.org/
+[smartos-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/smartos.d "Configuration"
+[smartos-dl]: https://wiki.smartos.org/display/DOC/Download+SmartOS "Download"
+[smartos]: https://smartos.org/
+[smartosiso]: https://wiki.smartos.org/display/DOC/Booting+SmartOS+from+GRUB2#BootingSmartOSfromGRUB2-FromtheISO
 [subgraphos-cfg]: {{ site.github.repository_url }}/tree/master/grub.d/subgraphos.d "Configuration"
 [subgraphos-dl]: https://subgraph.com/sgos/download/ "Download"
 [subgraphos]: https://subgraph.com/
