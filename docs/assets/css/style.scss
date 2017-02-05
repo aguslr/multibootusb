@@ -36,7 +36,19 @@ td a[title="Download"] {
   text-indent: -9999px;
   width: 24px;
 }
-td a[title="Configuration"]:hover, td a[title="Download"]:hover {
+td a[title="Homepage"] {
+  background: url({{ "assets/img/home-icon.png" | relative_url }});
+  background-image: url({{ "assets/img/home-icon.svg" | relative_url }}), none;
+  background-size: contain;
+  direction: ltr;
+  display: inline-block;
+  filter: grayscale(1);
+  -webkit-filter: grayscale(1);
+  height: 24px;
+  text-indent: -9999px;
+  width: 24px;
+}
+td a[title="Configuration"]:hover, td a[title="Download"]:hover, td a[title="Homepage"]:hover {
   filter: hue-rotate(24deg) saturate(300%) brightness(72%);
   -webkit-filter: hue-rotate(24deg) saturate(300%) brightness(72%);
 }

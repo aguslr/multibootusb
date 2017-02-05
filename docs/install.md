@@ -114,7 +114,7 @@ Once the USB drive is created, it only remains to copy the bootable files (ISO o
   [{{ distro.title }}]({{ distro.url }})
   </td>
   <td markdown="1">
-  {% if distro.download %}[Download]({{ distro.download }} "Download") {% endif %}{% if distro.cfgdir %}[Configuration]({{ site.github.repository_url | append: "/tree/master/grub.d/" | append: distro.cfgdir }} "Configuration"){% endif %}
+  {% if distro.download %}[Download]({{ distro.download }} "Download") {% endif %}{% if distro.homepage %}[Homepage]({{ distro.homepage }} "Homepage") {% endif %}{% if distro.cfgdir %}[Configuration]({{ site.github.repository_url | append: "/tree/master/grub.d/" | append: distro.cfgdir }} "Configuration"){% endif %}
   </td>
   </tr>
   {% endfor %}
