@@ -33,7 +33,7 @@ layout: default
 
 ## Supported releases
 
-- MEMDISK ISO (using [MEMDISK][])
+- Standard ISO (using [MEMDISK][])
 
 
 ## Links
