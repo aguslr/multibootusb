@@ -18,6 +18,14 @@ img {
   text-align: right;
 }
 
+/* Change border size of table header and color of odd rows */
+th {
+  border-bottom-width: 2px;
+}
+tbody > tr:nth-child(odd) {
+  background-color: rgba(0,0,0,0.03);
+}
+
 /* SVG icons */
 /* http://google.github.io/material-design-icons/ */
 /* https://css-tricks.com/using-svg/ */
