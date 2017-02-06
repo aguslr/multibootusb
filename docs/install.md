@@ -105,7 +105,7 @@ Once the USB drive is created, it only remains to copy the bootable files (ISO o
 {% if site.distros %}
 <table class="distro-list">
   <thead>
-  <tr><th>Distribution</th><th>Links</th></tr>
+  <tr><th colspan="2">Distribution</th></tr>
   </thead>
   <tbody>
   {% for distro in site.distros %}
