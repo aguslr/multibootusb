@@ -1,5 +1,5 @@
 ---
-title: CentOS Project
+title: CentOS
 homepage: https://www.centos.org/
 download: https://wiki.centos.org/Download
 cfgdir: centos.d
