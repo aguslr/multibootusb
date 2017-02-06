@@ -28,11 +28,15 @@ layout: default
 - Standard ISO (using [MEMDISK][])
 
 
+## Resources
+
+- [Ultimate Boot CD - grub2 loopback iso support][ubcdgrub]
+
+
 ## Links
 
 - [Official homepage]({{ page.homepage }})
 - [Official download page]({{ page.download }})
-- [Ultimate Boot CD - grub2 loopback iso support][ubcdgrub]
 
 
 [config]: {{ site.github.repository_url | append: "/tree/master/grub.d/" | append: page.cfgdir }}

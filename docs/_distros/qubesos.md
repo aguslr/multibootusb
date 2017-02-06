@@ -30,13 +30,17 @@ layout: default
 - Standard ISO
 
 
+## Resources
+
+- [How to multiboot xen with grub2 on Ubuntu][xengrub]
+
+
 ## Links
 
 - [Official homepage]({{ page.homepage }})
 - [Official download page]({{ page.download }})
 - [{{ page.title }} at DistroWatch][distrowatch]
 - [{{ page.title }} at Wikipedia][wikipedia]
-- [How to multiboot xen with grub2 on Ubuntu][xengrub]
 
 
 [config]: {{ site.github.repository_url | append: "/tree/master/grub.d/" | append: page.cfgdir }}

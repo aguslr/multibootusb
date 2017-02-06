@@ -32,13 +32,17 @@ layout: default
 - Standard ISO
 
 
+## Resources
+
+- [Booting SmartOS from GRUB2 -  SmartOS Wiki][smartosboot]
+
+
 ## Links
 
 - [Official homepage]({{ page.homepage }})
 - [Official download page]({{ page.download }})
 - [{{ page.title }} at DistroWatch][distrowatch]
 - [{{ page.title }} at Wikipedia][wikipedia]
-- [Booting SmartOS from GRUB2 -  SmartOS Wiki][smartosboot]
 
 
 [config]: {{ site.github.repository_url | append: "/tree/master/grub.d/" | append: page.cfgdir }}
