@@ -8,10 +8,15 @@ layout: default
 
 # {{ page.title }}
 
-> Byzantium is a live Linux distribution that delivers easy-to-use, secure, and
-> robust mesh networking capabilities.
+> Byzantium is a live Linux distribution based on Porteus Linux that delivers
+> easy-to-use, secure, and robust mesh networking capabilities. The goal of
+> Project Byzantium is to develop a communication system by which users can
+> connect to each other and share information in the absence of convenient
+> access to the Internet. This is done by setting up an ad-hoc wireless mesh
+> network that offers services which replace popular websites often used for
+> this purpose, such as Twitter and IRC.
 >
-> -- <cite markdown="1">[Official homepage]({{ page.homepage }})</cite>
+> -- <cite markdown="1">[Wikipedia][]</cite>
 
 
 {% if page.cfgdir %}
