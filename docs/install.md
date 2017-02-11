@@ -59,7 +59,7 @@ Follow the instructions to create a [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bi
 
 4. Copy the necessary GRUB files:
 
-        cd multibootusb && cp -rf {grub.cfg,grub.d,multiboot.*} $mntusb/boot/grub/
+        cd multibootusb && cp -rf grub.* $mntusb/boot/grub/
 
 5. Download [MEMDISK][] from [kernel.org][]:
 

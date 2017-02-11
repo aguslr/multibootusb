@@ -301,7 +301,7 @@ fi
 
 # Copy files
 tryCMD "Copying files to ${data_mnt}boot" \
-    "cp -rf ./grub.cfg ./grub.d ./multiboot.* $grub_dir" || cleanUp 10
+    "cp -rf ./grub.* $grub_dir" || cleanUp 10
 
 # Download memdisk
 tryCMD "Downloading memdisk to ${data_mnt}boot/grub" \
