@@ -135,8 +135,8 @@ tar_cmd=$(command -v tar)               || cleanUp 3
 command -v mkfs."${data_fmt}" >/dev/null  || cleanUp 3
 
 # Check for GRUB installation binary
-grub_cmd=$(command -v grub-install) \
-    || grub_cmd=$(command -v grub2-install) \
+grub_cmd=$(command -v grub2-install) \
+    || grub_cmd=$(command -v grub-install) \
     || cleanUp 3
 
 # Unmount device
@@ -291,10 +291,10 @@ tryCMD "Creating directories on ${data_mnt}boot" \
     "mkdir -p ${data_mnt}boot/bin ${data_mnt}boot/isos" || cleanUp 10
 
 # Detect GRUB directory name
-if [ -d "${data_mnt}boot/grub" ]; then
-	grub_dir="${data_mnt}boot/grub/"
-elif [ -d "${data_mnt}boot/grub2" ]; then
+if [ -d "${data_mnt}boot/grub2" ]; then
 	grub_dir="${data_mnt}boot/grub2/"
+elif [ -d "${data_mnt}boot/grub" ]; then
+	grub_dir="${data_mnt}boot/grub/"
 else
 	cleanUp 10
 fi
