@@ -1,3 +1,4 @@
+*.local
 *.log
 /fonts
 /i386-pc
