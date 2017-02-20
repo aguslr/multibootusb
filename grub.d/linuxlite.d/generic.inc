@@ -1,0 +1,19 @@
+menuentry "Start Linux Lite" {
+  bootoptions="iso-scan/filename=$iso_path file=/cdrom/preseed/custom.seed boot=casper quiet splash --"
+  linux (loop)/casper/vmlinuz $bootoptions
+  initrd (loop)/casper/initrd.gz
+}
+menuentry "Start Linux Lite in safe mode" {
+  bootoptions="iso-scan/filename=$iso_path file=/cdrom/preseed/custom.seed boot=casper xforcevesa nomodeset ramdisk_size=1048576 root=/dev/ram rw noapic noapci nosplash irqpoll --"
+  linux (loop)/casper/vmlinuz $bootoptions
+  initrd (loop)/casper/initrd.gz
+}
+menuentry "Check Install Media" {
+  bootoptions="iso-scan/filename=$iso_path file=/cdrom/preseed/custom.seed boot=casper integrity-check quiet splash --"
+  linux (loop)/casper/vmlinuz $bootoptions
+  initrd (loop)/casper/initrd.gz
+}
+menuentry "Run memtest (memory tester)" {
+  bootoptions="-"
+  linux16 (loop)/isolinux/memtest $bootoptions
+}
