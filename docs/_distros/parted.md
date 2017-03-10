@@ -26,7 +26,7 @@ layout: default
 
 ## Supported releases
 
-- Standard ISO
+- Last ISO avaliable as free download ([pmagic_2013_08_01][isofile]).
 
 
 ## Links
@@ -40,3 +40,4 @@ layout: default
 [config]: {{ site.github.repository_url | append: "/tree/master/grub.d/" | append: page.cfgdir }}
 [distrowatch]: https://distrowatch.com/table.php?distribution=partedmagic
 [wikipedia]: https://en.wikipedia.org/wiki/Parted_Magic
+[isofile]: https://archive.org/details/pmagic_2013_08_01
