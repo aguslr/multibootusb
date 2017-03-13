@@ -103,6 +103,21 @@ Usage: makeUSB.sh [options] device [fs-type]
 Once the USB drive is created, it only remains to copy the bootable files (ISO or kernel) to the pendrive. Currently, the following utilities are supported (save to `$mntusb/boot/isos`):
 
 {% if site.distros %}
+<svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="cfg-icon" viewBox="0 0 24 24">
+    <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>
+  </symbol>
+</svg>
+<svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="dl-icon" viewBox="0 0 24 24">
+    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+  </symbol>
+</svg>
+<svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="home-icon" viewBox="0 0 24 24">
+    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+  </symbol>
+</svg>
 <table class="distro-list">
   <thead>
   <tr><th colspan="2">Distribution</th></tr>
@@ -114,7 +129,9 @@ Once the USB drive is created, it only remains to copy the bootable files (ISO o
   [{{ distro.title }}]({{ distro.url }})
   </td>
   <td markdown="1">
-  {% if distro.download %}[Download]({{ distro.download }} "Download") {% endif %}{% if distro.homepage %}[Homepage]({{ distro.homepage }} "Homepage") {% endif %}{% if distro.cfgdir %}[Configuration]({{ site.github.repository_url | append: "/tree/master/grub.d/" | append: distro.cfgdir }} "Configuration"){% endif %}
+  {% if distro.download %}<a href="{{ distro.download }}" alt="Download" title="Download"><svg class="icon"><use xlink:href="#dl-icon"/></svg></a>{% endif %}
+  {% if distro.homepage %}<a href="{{ distro.homepage }}" alt="Homepage" title="Homepage"><svg class="icon"><use xlink:href="#home-icon"/></svg></a>{% endif %}
+  {% if distro.cfgdir %}<a href="{{ site.github.repository_url | append: "/tree/master/grub.d/" | append: distro.cfgdir }}" alt="Configuration" title="Configuration"><svg class="icon"><use xlink:href="#cfg-icon"/></svg></a>{% endif %}
   </td>
   </tr>
   {% endfor %}

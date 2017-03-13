@@ -27,45 +27,13 @@ tbody > tr:nth-child(odd) {
 }
 
 /* SVG icons */
-/* http://google.github.io/material-design-icons/ */
-/* https://css-tricks.com/using-svg/ */
-td a[title="Configuration"] {
-  background: url({{ "assets/img/cfg-icon.png" | relative_url }});
-  background-image: url({{ "assets/img/cfg-icon.svg" | relative_url }}), none;
-  background-size: contain;
-  direction: rtl;
+/* http://stackoverflow.com/a/25184858 */
+svg.icon {
   display: inline-block;
-  filter: grayscale(1);
-  -webkit-filter: grayscale(1);
+  fill: #39c;
   height: 24px;
-  text-indent: -9999px;
   width: 24px;
 }
-td a[title="Download"] {
-  background: url({{ "assets/img/dl-icon.png" | relative_url }});
-  background-image: url({{ "assets/img/dl-icon.svg" | relative_url }}), none;
-  background-size: contain;
-  direction: rtl;
-  display: inline-block;
-  filter: grayscale(1);
-  -webkit-filter: grayscale(1);
-  height: 24px;
-  text-indent: -9999px;
-  width: 24px;
-}
-td a[title="Homepage"] {
-  background: url({{ "assets/img/home-icon.png" | relative_url }});
-  background-image: url({{ "assets/img/home-icon.svg" | relative_url }}), none;
-  background-size: contain;
-  direction: rtl;
-  display: inline-block;
-  filter: grayscale(1);
-  -webkit-filter: grayscale(1);
-  height: 24px;
-  text-indent: -9999px;
-  width: 24px;
-}
-td a[title="Configuration"]:hover, td a[title="Download"]:hover, td a[title="Homepage"]:hover {
-  filter: hue-rotate(24deg) saturate(300%) brightness(72%);
-  -webkit-filter: hue-rotate(24deg) saturate(300%) brightness(72%);
+svg.icon:hover {
+  fill: #069;
 }
