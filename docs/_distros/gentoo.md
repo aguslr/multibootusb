@@ -28,7 +28,7 @@ layout: default
 
 ## Supported releases
 
-- LiveDVD ISO
+- LiveDVD ISO[^note1]
 
 
 ## Links
@@ -37,6 +37,11 @@ layout: default
 - [Official download page]({{ page.download }})
 - [{{ page.title }} at DistroWatch][distrowatch]
 - [{{ page.title }} at Wikipedia][wikipedia]
+
+
+## Notes
+
+[^note1]: Rename LiveDVD ISO files (e.g. from `livedvd-x86-amd64-32ul.iso` to `gentoo-livedvd-x86-amd64-32ul.iso`)
 
 
 [config]: {{ site.github.repository_url | append: "/tree/master/grub.d/" | append: page.cfgdir }}
