@@ -1,15 +1,5 @@
-menuentry "Run Slax - Persistent changes, Graphical desktop, Copy to RAM, Act as PXE server" {
-  bootoptions="from=$iso_path vga=normal load_ramdisk=1 prompt_ramdisk=0 rw printk.time=0 slax.flags=perch,xmode,toram,pxe"
-  linux (loop)/slax/boot/vmlinuz $bootoptions
-  initrd (loop)/slax/boot/initrfs.img
-}
 menuentry "Run Slax" {
   bootoptions="from=$iso_path vga=normal load_ramdisk=1 prompt_ramdisk=0 rw printk.time=0 slax.flags="
-  linux (loop)/slax/boot/vmlinuz $bootoptions
-  initrd (loop)/slax/boot/initrfs.img
-}
-menuentry "Run Slax - Persistent changes" {
-  bootoptions="from=$iso_path vga=normal load_ramdisk=1 prompt_ramdisk=0 rw printk.time=0 slax.flags=perch"
   linux (loop)/slax/boot/vmlinuz $bootoptions
   initrd (loop)/slax/boot/initrfs.img
 }
