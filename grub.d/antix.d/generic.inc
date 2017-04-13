@@ -3,6 +3,11 @@ menuentry "antiX" {
   linux (loop)/antiX/vmlinuz $bootoptions
   initrd (loop)/antiX/initrd.gz
 }
+menuentry "antiX Persistent" {
+  bootoptions="from=hd,usb root=UUID=$rootuuid fromiso=$iso_path quiet splash=v disable=lx persist=hd,usb,r,h"
+  linux (loop)/antiX/vmlinuz $bootoptions
+  initrd (loop)/antiX/initrd.gz
+}
 menuentry "antiX Customize Boot (text menus)" {
   bootoptions="from=hd,usb root=UUID=$rootuuid fromiso=$iso_path quiet splash=v disable=lx menus"
   linux (loop)/antiX/vmlinuz $bootoptions

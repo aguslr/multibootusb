@@ -37,6 +37,8 @@ layout: default
 ## Resources
 
 - [Installation Tips - antiX][tips]
+- [RMPrepUSB, Easy2Boot and USB booting: Add antiX 15 with persistence to
+Easy2Boot][persistence]
 
 
 ## Links
@@ -51,3 +53,4 @@ layout: default
 [distrowatch]: https://distrowatch.com/table.php?distribution=antix
 [wikipedia]: https://en.wikipedia.org/wiki/AntiX
 [tips]: http://antix.mepis.org/index.php?title=Installation_Tips
+[persistence]: https://rmprepusb.blogspot.com.es/2015/10/add-antix-15-with-persistence-to.html
