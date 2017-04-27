@@ -155,6 +155,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 
 - [Hybrid MBRs][hybridmbr]
 - [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bios]
+- [grub.cfg · Jimmy-Z/grub-iso-boot][grub-iso-boot]
 - [Man page of SGDISK][sgdisk]
 - [MultiBoot USB with Grub2 (boot directly from iso files)][panticz-mbusb]
 - [QEMU Emulator User Documentation][qemudocs]
@@ -165,6 +166,7 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 
 
 [efi+bios]: https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Hybrid_UEFI_GPT_.2B_BIOS_GPT.2FMBR_boot
+[grub-iso-boot]: https://github.com/Jimmy-Z/grub-iso-boot/blob/master/grub.cfg
 [hybridmbr]: http://www.rodsbooks.com/gdisk/hybrid.html
 [kernel.org]: https://www.kernel.org/pub/linux/utils/boot/syslinux/
 [kvmtuning]: http://www.linux-kvm.org/page/Tuning_KVM
