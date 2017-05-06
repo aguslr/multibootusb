@@ -25,6 +25,7 @@ layout: default
 
 ## Supported releases
 
+- 15.2 ISO
 - Standard ISO[^note1] (using [MEMDISK][])
 
 
