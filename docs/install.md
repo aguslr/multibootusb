@@ -59,9 +59,13 @@ Follow the instructions to create a [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bi
 
 4. Copy the necessary GRUB files:
 
-        cd multibootusb && cp -rf grub.* mbusb.* $mntusb/boot/grub/
+        cd multibootusb && cp -rf mbusb.* $mntusb/boot/grub/
 
-5. Download [MEMDISK][] from [kernel.org][]:
+5. Copy the provided `grub.cfg`:
+
+        cp -f grub.cfg.example $mntusb/boot/grub/grub.cfg
+
+6. Download [MEMDISK][] from [kernel.org][]:
 
         wget -qO - 'https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.gz' | tar -xz -C $mntusb/boot/grub/ --no-same-owner --strip-components 3 'syslinux-6.03/bios/memdisk/memdisk'
 

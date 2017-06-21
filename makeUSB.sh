@@ -300,8 +300,12 @@ else
 fi
 
 # Copy files
-tryCMD "Copying files to ${data_mnt}boot" \
-    "cp -rf ./grub.* ./mbusb.* $grub_dir" || cleanUp 10
+tryCMD "Copying files to ${grub_dir}" \
+    "cp -rf ./mbusb.* $grub_dir" || cleanUp 10
+
+# Copy example configuration for GRUB
+tryCMD "Copying grub.cfg to ${grub_dir}" \
+    "cp -f ./grub.cfg.example ${grub_dir}/grub.cfg" || cleanUp 10
 
 # Download memdisk
 tryCMD "Downloading memdisk to ${data_mnt}boot/grub" \
