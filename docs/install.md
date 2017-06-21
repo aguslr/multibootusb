@@ -31,8 +31,7 @@ If Git is not installed, we can still get the files as long as we have a basic U
 wget https://github.com/aguslr/multibootusb/tarball/master -O - | tar -xzv --strip-components 1 --exclude={README.md,docs}
 ```
 
-
-## Creating the USB drive
+## Creating new USB drive
 
 ### Manually prepare the drive
 
@@ -98,9 +97,27 @@ Usage: makeUSB.sh [options] device [fs-type]
 ```
 
 
+## Adding to existing USB drive
+
+If you already have your own bootable USB drive that uses GRUB to boot, you can simply add the following lines into your custom `grub.cfg`:
+
+```
+# Load MBUSB configuration
+if [ -e "$prefix/mbusb.cfg" ]; then
+  source "$prefix/mbusb.cfg"
+fi
+```
+
+And then copy the project's configuration files to your drive's GRUB directory:
+
+```
+cd multibootusb && cp -rf mbusb.* $mntusb/boot/grub/
+```
+
+
 ## Get bootable files
 
-Once the USB drive is created, it only remains to copy the bootable files (ISO or kernel) to the pendrive. Currently, the following utilities are supported (save to `$mntusb/boot/isos`):
+Once you have a bootable USB drive, it only remains to copy the bootable files (ISO or kernel) to the pendrive. Currently, the following utilities are supported (save to `$mntusb/boot/isos`):
 
 {% if site.distros %}
 <svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
