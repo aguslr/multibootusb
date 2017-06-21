@@ -55,11 +55,11 @@ Follow the instructions to create a [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bi
 
 3. Create a directory named *boot* to store GRUB's configuration files and a directory named *isos* for the kernel/ISO files:
 
-        mkdir -p $mntusb/boot/{grub/grub.d/,isos}
+        mkdir -p $mntusb/boot/{grub/mbusb.d/,isos}
 
 4. Copy the necessary GRUB files:
 
-        cd multibootusb && cp -rf grub.* $mntusb/boot/grub/
+        cd multibootusb && cp -rf grub.* mbusb.* $mntusb/boot/grub/
 
 5. Download [MEMDISK][] from [kernel.org][]:
 
@@ -127,7 +127,7 @@ Once the USB drive is created, it only remains to copy the bootable files (ISO o
   <td markdown="1">
   {% if distro.download %}<a href="{{ distro.download }}" alt="Download" title="Download"><svg class="icon"><use xlink:href="#dl-icon"/></svg></a>{% endif %}
   {% if distro.homepage %}<a href="{{ distro.homepage }}" alt="Homepage" title="Homepage"><svg class="icon"><use xlink:href="#home-icon"/></svg></a>{% endif %}
-  {% if distro.cfgdir %}<a href="{{ site.github.repository_url | append: "/tree/master/grub.d/" | append: distro.cfgdir }}" alt="Configuration" title="Configuration"><svg class="icon"><use xlink:href="#cfg-icon"/></svg></a>{% endif %}
+  {% if distro.cfgdir %}<a href="{{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: distro.cfgdir }}" alt="Configuration" title="Configuration"><svg class="icon"><use xlink:href="#cfg-icon"/></svg></a>{% endif %}
   </td>
   </tr>
   {% endfor %}
