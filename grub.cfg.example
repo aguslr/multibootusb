@@ -1,5 +1,3 @@
-# MultiBoot USB with Grub2
-
 # Config for GNU GRand Unified Bootloader (GRUB)
 
 insmod font
@@ -22,37 +20,8 @@ if loadfont unicode ; then
   fi
 fi
 
-# Partition modules
-insmod part_acorn
-insmod part_amiga
-insmod part_apple
-insmod part_bsd
-insmod part_dfly
-insmod part_dvh
-insmod part_gpt
-insmod part_msdos
-insmod part_plan
-insmod part_sun
-insmod part_sunpc
-
 # Timeout for menu
 set timeout=30
-# Default boot entry
-set default=default_entry
-
-# Menu Colours
-set color_normal=white/black
-set color_highlight=white/green
-export color_normal
-export color_highlight
-
-# Enable pager for GRUB command-line
-set pager=1
-
-# Boot from disk by default
-menuentry "Boot from First HD" --id default_entry {
-  chainloader +1
-}
 
 # Load MBUSB configuration
 if [ -e "$prefix/mbusb.cfg" ]; then
