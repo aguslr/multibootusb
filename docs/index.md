@@ -29,7 +29,7 @@ This is a project that contains a collection of [GRUB][] files and scripts that 
 - [YUMI][]
 
 
-[isos]: {{ "install.html" | relative_url }}#get-bootable-files
+[isos]: {{ "install.html" | relative_url }}#distro-list
 [install]: install.md
 [contrib]: contrib.md
 [howto]: howto.md

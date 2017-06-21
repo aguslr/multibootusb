@@ -10,10 +10,10 @@ img {
 }
 
 /* Align table for distros */
-.distro-list td:first-child, .distro-list th:first-child {
+#distro-list td:first-child, #distro-list th:first-child {
   text-align: left;
 }
-.distro-list td, .distro-list th {
+#distro-list td, #distro-list th {
   overflow: hidden;
   text-align: right;
 }
