@@ -53,9 +53,9 @@ Follow the instructions to create a [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bi
 
         mount --target $mntusb $partusb
 
-3. Create a directory named *boot* to store GRUB's configuration files, a directory named *bin* for binary files and another named *isos* for the kernel/ISO files:
+3. Create a directory named *boot* to store GRUB's configuration files and a directory named *isos* for the kernel/ISO files:
 
-        mkdir -p $mntusb/boot/{grub/grub.d/,bin,isos}
+        mkdir -p $mntusb/boot/{grub/grub.d/,isos}
 
 4. Copy the necessary GRUB files:
 
@@ -64,10 +64,6 @@ Follow the instructions to create a [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bi
 5. Download [MEMDISK][] from [kernel.org][]:
 
         wget -qO - 'https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.gz' | tar -xz -C $mntusb/boot/grub/ --no-same-owner --strip-components 3 'syslinux-6.03/bios/memdisk/memdisk'
-
-6. Download [Memtest86+][]:
-
-        wget -qO - 'http://www.memtest.org/download/5.01/memtest86+-5.01.bin.gz' | gunzip -c > $mntusb/boot/bin/memtest86+.bin
 
 
 ### Using the script
@@ -172,7 +168,6 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 [kvmtuning]: http://www.linux-kvm.org/page/Tuning_KVM
 [loopback.cfg]: http://www.supergrubdisk.org/wiki/Loopback.cfg
 [memdisk]: http://www.syslinux.org/wiki/index.php?title=MEMDISK
-[memtest86+]: http://www.memtest.org/
 [multiboot-usb]: http://www.circuidipity.com/multi-boot-usb.html
 [multipass-usb]: https://github.com/Thermionix/multipass-usb
 [panticz-mbusb]: http://www.panticz.de/MultiBootUSB

@@ -288,7 +288,7 @@ tryCMD "Installing fallback GRUB on ${usb_dev}${data_part}" \
 
 # Create necessary directories
 tryCMD "Creating directories on ${data_mnt}boot" \
-    "mkdir -p ${data_mnt}boot/bin ${data_mnt}boot/isos" || cleanUp 10
+    "mkdir -p ${data_mnt}boot/isos" || cleanUp 10
 
 # Detect GRUB directory name
 if [ -d "${data_mnt}boot/grub2" ]; then
@@ -309,11 +309,6 @@ tryCMD "Downloading memdisk to ${data_mnt}boot/grub" \
     'https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.gz' \
     | $tar_cmd -xz -C $grub_dir --no-same-owner --strip-components 3 \
     'syslinux-6.03/bios/memdisk/memdisk'"
-
-# Download Memtest86+
-tryCMD "Downloading Memtest86+ to ${data_mnt}boot/bin" \
-    "$wget_cmd -qO - 'http://www.memtest.org/download/5.01/memtest86+-5.01.bin.gz' \
-    | $gunzip_cmd -c > ${data_mnt}boot/bin/memtest86+.bin"
 
 # Unmount data partition
 tryCMD "Unmounting data partition on $data_mnt" "umount -v $data_mnt" \
