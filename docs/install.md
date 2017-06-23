@@ -135,7 +135,7 @@ Once you have a bootable USB drive, it only remains to copy the bootable files (
     <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
   </symbol>
 </svg>
-<table id="distro-list">
+<table class="distro-list">
   <thead>
   <tr><th colspan="2">Distribution</th></tr>
   </thead>

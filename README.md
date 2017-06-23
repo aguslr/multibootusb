@@ -15,5 +15,5 @@ Visit the [project's website for more information][website].
 
 
 [grub]: https://www.gnu.org/software/grub/
-[isos]: http://mbusb.aguslr.com/install.html#distro-list
+[isos]: http://mbusb.aguslr.com/install.html#get-bootable-files
 [website]: http://mbusb.aguslr.com/
