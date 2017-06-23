@@ -119,7 +119,6 @@ cd multibootusb && cp -rf mbusb.* $mntusb/boot/grub/
 
 Once you have a bootable USB drive, it only remains to copy the bootable files (ISO or kernel) to the pendrive. Currently, the following utilities are supported (save to `$mntusb/boot/isos`):
 
-{% if site.distros %}
 <svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
   <symbol id="cfg-icon" viewBox="0 0 24 24">
     <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>
@@ -135,20 +134,66 @@ Once you have a bootable USB drive, it only remains to copy the bootable files (
     <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
   </symbol>
 </svg>
-<table class="distro-list">
+
+{% if site.linux %}
+<table class="item-list">
   <thead>
-  <tr><th colspan="2">Distribution</th></tr>
+  <tr><th colspan="2">Linux</th></tr>
   </thead>
   <tbody>
-  {% for distro in site.distros %}
+  {% for item in site.linux %}
   <tr>
   <td markdown="1">
-  [{{ distro.title }}]({{ distro.url }})
+  [{{ item.title }}]({{ item.url }})
   </td>
   <td markdown="1">
-  {% if distro.download %}<a href="{{ distro.download }}" alt="Download" title="Download"><svg class="icon"><use xlink:href="#dl-icon"/></svg></a>{% endif %}
-  {% if distro.homepage %}<a href="{{ distro.homepage }}" alt="Homepage" title="Homepage"><svg class="icon"><use xlink:href="#home-icon"/></svg></a>{% endif %}
-  {% if distro.cfgdir %}<a href="{{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: distro.cfgdir }}" alt="Configuration" title="Configuration"><svg class="icon"><use xlink:href="#cfg-icon"/></svg></a>{% endif %}
+  {% if item.download %}<a href="{{ item.download }}" alt="Download" title="Download"><svg class="icon"><use xlink:href="#dl-icon"/></svg></a>{% endif %}
+  {% if item.homepage %}<a href="{{ item.homepage }}" alt="Homepage" title="Homepage"><svg class="icon"><use xlink:href="#home-icon"/></svg></a>{% endif %}
+  {% if item.cfgdir %}<a href="{{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: item.cfgdir }}" alt="Configuration" title="Configuration"><svg class="icon"><use xlink:href="#cfg-icon"/></svg></a>{% endif %}
+  </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+{% if site.unix %}
+<table class="item-list">
+  <thead>
+  <tr><th colspan="2">Unix</th></tr>
+  </thead>
+  <tbody>
+  {% for item in site.unix %}
+  <tr>
+  <td markdown="1">
+  [{{ item.title }}]({{ item.url }})
+  </td>
+  <td markdown="1">
+  {% if item.download %}<a href="{{ item.download }}" alt="Download" title="Download"><svg class="icon"><use xlink:href="#dl-icon"/></svg></a>{% endif %}
+  {% if item.homepage %}<a href="{{ item.homepage }}" alt="Homepage" title="Homepage"><svg class="icon"><use xlink:href="#home-icon"/></svg></a>{% endif %}
+  {% if item.cfgdir %}<a href="{{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: item.cfgdir }}" alt="Configuration" title="Configuration"><svg class="icon"><use xlink:href="#cfg-icon"/></svg></a>{% endif %}
+  </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+{% if site.misc %}
+<table class="item-list">
+  <thead>
+  <tr><th colspan="2">Utility</th></tr>
+  </thead>
+  <tbody>
+  {% for item in site.misc %}
+  <tr>
+  <td markdown="1">
+  [{{ item.title }}]({{ item.url }})
+  </td>
+  <td markdown="1">
+  {% if item.download %}<a href="{{ item.download }}" alt="Download" title="Download"><svg class="icon"><use xlink:href="#dl-icon"/></svg></a>{% endif %}
+  {% if item.homepage %}<a href="{{ item.homepage }}" alt="Homepage" title="Homepage"><svg class="icon"><use xlink:href="#home-icon"/></svg></a>{% endif %}
+  {% if item.cfgdir %}<a href="{{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: item.cfgdir }}" alt="Configuration" title="Configuration"><svg class="icon"><use xlink:href="#cfg-icon"/></svg></a>{% endif %}
   </td>
   </tr>
   {% endfor %}

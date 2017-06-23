@@ -25,5 +25,9 @@ kramdown:
 
 # Collections
 collections:
-  distros:
+  linux:
+    output: true
+  unix:
+    output: true
+  misc:
     output: true

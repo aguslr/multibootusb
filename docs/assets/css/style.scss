@@ -9,11 +9,11 @@ img {
   margin: 0 auto;
 }
 
-/* Align table for distros */
-.distro-list td:first-child, .distro-list th:first-child {
+/* Align table for items */
+.item-list td:first-child, .item-list th:first-child {
   text-align: left;
 }
-.distro-list td, .distro-list th {
+.item-list td, .item-list th {
   overflow: hidden;
   text-align: right;
 }
