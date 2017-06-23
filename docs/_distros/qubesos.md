@@ -43,7 +43,7 @@ layout: default
 - [{{ page.title }} at Wikipedia][wikipedia]
 
 
-[config]: {{ site.github.repository_url | append: "/tree/master/grub.d/" | append: page.cfgdir }}
+[config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
 [distrowatch]: https://distrowatch.com/table.php?distribution=qubes
 [wikipedia]: https://en.wikipedia.org/wiki/Qubes_OS
 [xengrub]: https://lists.gnu.org/archive/html/help-grub/2011-03/msg00009.html

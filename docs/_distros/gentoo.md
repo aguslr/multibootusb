@@ -46,6 +46,6 @@ layout: default
 [^note2]: Rename Installation ISO files (e.g. from `install-x86-minimal.iso` to `gentoo-install-x86-minimal.iso`)
 
 
-[config]: {{ site.github.repository_url | append: "/tree/master/grub.d/" | append: page.cfgdir }}
+[config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
 [distrowatch]: https://distrowatch.com/table.php?distribution=gentoo
 [wikipedia]: https://en.wikipedia.org/wiki/Gentoo_Linux

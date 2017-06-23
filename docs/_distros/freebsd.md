@@ -49,7 +49,7 @@ layout: default
 [^note1]: Unsupported on [UEFI][] systems.
 
 
-[config]: {{ site.github.repository_url | append: "/tree/master/grub.d/" | append: page.cfgdir }}
+[config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
 [distrowatch]: https://distrowatch.com/table.php?distribution=freebsd
 [wikipedia]: https://en.wikipedia.org/wiki/FreeBSD
 [uefi]: https://en.wikipedia.org/wiki/UEFI

@@ -38,5 +38,5 @@ layout: default
 - [Official download page]({{ page.download }})
 
 
-[config]: {{ site.github.repository_url | append: "/tree/master/grub.d/" | append: page.cfgdir }}
+[config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
 [memdisk]: http://www.syslinux.org/wiki/index.php?title=MEMDISK

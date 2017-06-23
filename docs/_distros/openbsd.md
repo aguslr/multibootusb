@@ -43,7 +43,7 @@ layout: default
 [^note1]: Rename install ISO files (e.g. from `install60.iso` to `openbsd-install60-i386.iso`)
 
 
-[config]: {{ site.github.repository_url | append: "/tree/master/grub.d/" | append: page.cfgdir }}
+[config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
 [distrowatch]: https://distrowatch.com/table.php?distribution=openbsd
 [memdisk]: http://www.syslinux.org/wiki/index.php?title=MEMDISK
 [wikipedia]: https://en.wikipedia.org/wiki/OpenBSD

@@ -42,7 +42,7 @@ layout: default
 - [{{ page.title }} at Wikipedia][wikipedia]
 
 
-[config]: {{ site.github.repository_url | append: "/tree/master/grub.d/" | append: page.cfgdir }}
+[config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
 [distrowatch]: https://distrowatch.com/table.php?distribution=androidx86
 [wikipedia]: https://en.wikipedia.org/wiki/Android-x86
 [bootable]: https://sourceforge.net/p/android-x86/bootable_newinstaller/ci/24dd719b53c25d0a3825d8bae29ce43cfa305c77/

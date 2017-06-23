@@ -52,7 +52,7 @@ layout: default
 - [{{ page.title }} at Wikipedia][wikipedia]
 
 
-[config]: {{ site.github.repository_url | append: "/tree/master/grub.d/" | append: page.cfgdir }}
+[config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
 [distrowatch]: https://distrowatch.com/table.php?distribution=slackware
 [wikipedia]: https://en.wikipedia.org/wiki/Slackware
 [installfromiso]: https://docs.slackware.com/howtos:slackware_admin:booting_install_from_hdd#boot_iso_with_grub2

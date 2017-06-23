@@ -49,7 +49,7 @@ Easy2Boot][persistence]
 - [{{ page.title }} at Wikipedia][wikipedia]
 
 
-[config]: {{ site.github.repository_url | append: "/tree/master/grub.d/" | append: page.cfgdir }}
+[config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
 [distrowatch]: https://distrowatch.com/table.php?distribution=antix
 [wikipedia]: https://en.wikipedia.org/wiki/AntiX
 [tips]: http://antix.mepis.org/index.php?title=Installation_Tips

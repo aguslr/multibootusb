@@ -34,4 +34,4 @@ layout: default
 - [Official homepage]({{ page.homepage }})
 - [Official download page]({{ page.download }})
 
-[config]: {{ site.github.repository_url | append: "/tree/master/grub.d/" | append: page.cfgdir }}
+[config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}

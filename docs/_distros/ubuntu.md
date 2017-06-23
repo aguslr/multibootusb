@@ -46,7 +46,7 @@ layout: default
 [^note1]: Rename Netboot ISO files (e.g. from `mini.iso` to `ubuntu-16.04.1-mini-i386.iso`)
 
 
-[config]: {{ site.github.repository_url | append: "/tree/master/grub.d/" | append: page.cfgdir }}
+[config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
 [distrowatch]: https://distrowatch.com/table.php?distribution=ubuntu
 [loopback.cfg]: http://www.supergrubdisk.org/wiki/Loopback.cfg
 [memdisk]: http://www.syslinux.org/wiki/index.php?title=MEMDISK
