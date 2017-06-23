@@ -3,14 +3,17 @@
 insmod font
 if loadfont unicode ; then
   if keystatus --shift ; then true ; else
-    if [ "${grub_platform}" == "efi" ]; then
+    if [ x"${grub_platform}" = xefi ]; then
       insmod efi_gop
       insmod efi_uga
+      insmod videotest
+      insmod videoinfo
     else
       insmod vbe
       insmod vga
     fi
     insmod gfxterm
+    insmod gfxmenu
     set gfxmode=auto
     set gfxpayload=auto
     terminal_output gfxterm
