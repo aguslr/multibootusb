@@ -24,6 +24,7 @@ layout: default
 
 ## Supported releases
 
+- CDROM "standard" installer ISO.
 - USB "Lite" installer image (using [MEMDISK][])
 
 
