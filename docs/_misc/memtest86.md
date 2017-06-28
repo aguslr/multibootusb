@@ -11,9 +11,9 @@ layout: default
 > Memtest86 and Memtest86+ are memory test software programs designed to test
 > and stress test an x86 architecture computer's random access memory (RAM) for
 > errors, by writing a series of test patterns to most memory addresses, then
-> reading back the data written, and comparing for errors.[1] Each tries to
-> verify that the RAM will accept and correctly retain arbitrary patterns of
-> data written to it, that there are no errors where different bits of memory
+> reading back the data written, and comparing for errors. Each tries to verify
+> that the RAM will accept and correctly retain arbitrary patterns of data
+> written to it, that there are no errors where different bits of memory
 > interact, and that there are no conflicts between memory addresses.
 >
 > -- <cite markdown="1">[Wikipedia][]</cite>
