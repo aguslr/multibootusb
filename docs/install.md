@@ -144,7 +144,7 @@ Once you have a bootable USB drive, it only remains to copy the bootable files (
   {% for item in site.linux %}
   <tr>
   <td markdown="1">
-  [{{ item.title }}]({{ item.url }})
+  [{{ item.title }}]({{ item.url | relative_url }})
   </td>
   <td markdown="1">
   {% if item.download %}<a href="{{ item.download }}" alt="Download" title="Download"><svg class="icon"><use xlink:href="#dl-icon"/></svg></a>{% endif %}
@@ -166,7 +166,7 @@ Once you have a bootable USB drive, it only remains to copy the bootable files (
   {% for item in site.unix %}
   <tr>
   <td markdown="1">
-  [{{ item.title }}]({{ item.url }})
+  [{{ item.title }}]({{ item.url | relative_url }})
   </td>
   <td markdown="1">
   {% if item.download %}<a href="{{ item.download }}" alt="Download" title="Download"><svg class="icon"><use xlink:href="#dl-icon"/></svg></a>{% endif %}
@@ -188,7 +188,7 @@ Once you have a bootable USB drive, it only remains to copy the bootable files (
   {% for item in site.misc %}
   <tr>
   <td markdown="1">
-  [{{ item.title }}]({{ item.url }})
+  [{{ item.title }}]({{ item.url | relative_url }})
   </td>
   <td markdown="1">
   {% if item.download %}<a href="{{ item.download }}" alt="Download" title="Download"><svg class="icon"><use xlink:href="#dl-icon"/></svg></a>{% endif %}
