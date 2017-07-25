@@ -20,6 +20,9 @@ First of all, we'll need to download the ISO file and mount it so we can access 
 
 ## Methods
 
+**As a previous step, we should check the home page for the project that created the ISO. They might provide further information on how to boot directly from the ISO file. Also, we should try contacting the project's developers via their support channels to ask for help.**
+
+
 ### Using loopback.cfg
 
 Some ISO files include a file named *[loopback.cfg][]* specifically designed to be read by GRUB. This file should be located in `/boot/grub/`.
@@ -157,7 +160,6 @@ menuentry "Ultimate Boot CD v5.3.6" {
 
 ## If nothing works
 
-- Search the home page for the project that created the ISO. They might provide further information on how to boot directly from the ISO file. This should actually be our first course of action.
 - Use your favorite search engine to scour the Internet for a solution. Search for *"grub loopback"* or *"grub iso"*, followed by the name of the distribution or software utility.
 - Browse the [repository tree][repo] and check the existing GRUB configuration files.
 
