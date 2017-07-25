@@ -184,7 +184,7 @@ menuentry "Ultimate Boot CD v5.3.6" {
 [mntwin]: http://www.howtogeek.com/howto/windows-vista/mount-an-iso-image-in-windows-vista/
 [multiboot-usb]: http://www.circuidipity.com/multi-boot-usb.html
 [panticz-mbusb]: http://www.panticz.de/MultiBootUSB
-[repo]: {{ site.github.repository_url }}/tree/master/grub.d
+[repo]: {{ site.github.repository_url }}/tree/master/mbusb.d
 [syslinux-include]: http://www.syslinux.org/wiki/index.php?title=SYSLINUX#INCLUDE_filename
 [syslinux]: http://www.syslinux.org/
 [tarball]: https://en.wikipedia.org/wiki/Tar_(computing)
