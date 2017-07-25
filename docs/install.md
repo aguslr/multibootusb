@@ -85,10 +85,11 @@ These are the options for the script:
 
 ```null
 Script to prepare multiboot USB drive
-Usage: makeUSB.sh [options] device [fs-type]
+Usage: makeUSB.sh [options] device [fs-type] [data-size]
 
  device                         Device to modify (e.g. /dev/sdb)
  fs-type                        Filesystem type for the data partition [ext3|ext4|vfat|ntfs]
+ data-size                      Data partition size (e.g. 5G)
   -b,  --hybrid                 Create a hybrid MBR
   -e,  --efi                    Enable EFI compatibility
   -i,  --interactive            Launch gdisk to create a hybrid MBR
