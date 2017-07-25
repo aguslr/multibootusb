@@ -28,8 +28,13 @@ layout: default
 
 ## Supported releases
 
-- LiveGNOME ISO
-- LiveKDE ISO
+- Live ISOs
+- DVD/Everything/Minimal ISOs
+
+
+## Resources
+
+- [Anaconda Boot Options — Anaconda 25.14 documentation][bootopt]
 
 
 ## Links
@@ -42,4 +47,5 @@ layout: default
 
 [config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
 [distrowatch]: https://distrowatch.com/table.php?distribution=centos
+[bootopt]: https://rhinstaller.github.io/anaconda/boot-options.html#installation-source
 [wikipedia]: https://en.wikipedia.org/wiki/CentOS
