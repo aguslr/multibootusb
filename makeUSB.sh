@@ -134,7 +134,7 @@ fi
 
 # Check for required binaries
 sgdisk_cmd=$(command -v sgdisk)         || cleanUp 3
-dd_cmd=$(command -v dd)                 || cleanUp 3
+wipefs_cmd=$(command -v wipefs)         || cleanUp 3
 wget_cmd=$(command -v wget)             || cleanUp 3
 gunzip_cmd=$(command -v gunzip)         || cleanUp 3
 tar_cmd=$(command -v tar)               || cleanUp 3
@@ -238,11 +238,13 @@ tryCMD "Setting bootable flag on ${usb_dev}${data_part}" \
 unmountUSB "$usb_dev"
 
 # Format BIOS boot partition
-tryCMD "Formatting BIOS boot partition on ${usb_dev}1" \
-    "$dd_cmd if=/dev/zero of=${usb_dev}1 bs=1M count=1" || cleanUp 10
+tryCMD "Wipe any file system signatures on ${usb_dev}1" \
+    "$wipefs_cmd -af ${usb_dev}1" || cleanup 10
 
 if [ "$eficonfig" -eq 1 ]; then
 	# Format EFI System partition
+	tryCMD "Wipe any file system signatures on ${usb_dev}2" \
+	    "$wipefs_cmd -af ${usb_dev}2" || cleanup 10
 	tryCMD "Formatting EFI System partition on ${usb_dev}2" \
 	    "mkfs.vfat -v -F 32 ${usb_dev}2" || cleanUp 10
 fi
@@ -254,6 +256,8 @@ if [ "$data_fmt" = "ntfs" ]; then
 else
 	mkfs_args="-t $data_fmt"
 fi
+tryCMD "Wipe any file system signatures on ${usb_dev}${data_part}" \
+    "$wipefs_cmd -af ${usb_dev}${data_part}" || cleanup 10
 tryCMD "Formatting data partition as $data_fmt on ${usb_dev}${data_part}" \
     "mkfs $mkfs_args ${usb_dev}${data_part}" || cleanUp 10
 
