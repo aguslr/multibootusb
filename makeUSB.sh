@@ -136,7 +136,6 @@ fi
 sgdisk_cmd=$(command -v sgdisk)         || cleanUp 3
 wipefs_cmd=$(command -v wipefs)         || cleanUp 3
 wget_cmd=$(command -v wget)             || cleanUp 3
-gunzip_cmd=$(command -v gunzip)         || cleanUp 3
 tar_cmd=$(command -v tar)               || cleanUp 3
 command -v mkfs."${data_fmt}" >/dev/null  || cleanUp 3
 
