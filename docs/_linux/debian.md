@@ -35,7 +35,7 @@ layout: default
 ## Supported releases
 
 - Live ISO
-- Netboot ISO[^note1] (using [MEMDISK][])
+- Netboot ISO[^note1]
 
 
 ## Links
@@ -53,5 +53,4 @@ layout: default
 
 [config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
 [distrowatch]: https://distrowatch.com/table.php?distribution=debian
-[memdisk]: http://www.syslinux.org/wiki/index.php?title=MEMDISK
 [wikipedia]: https://en.wikipedia.org/wiki/Debian
