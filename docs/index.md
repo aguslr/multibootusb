@@ -11,6 +11,7 @@ This is a project that contains a collection of [GRUB][] files and scripts that 
 
 ## Documentation
 
+- [List of supported files][isos]
 - [Preparing the multiboot USB][install]
 - [Contributing to the project][contrib]
 - [Adding support for an ISO][howto]
@@ -29,7 +30,7 @@ This is a project that contains a collection of [GRUB][] files and scripts that 
 - [YUMI][]
 
 
-[isos]: {{ "install.html" | relative_url }}#get-bootable-files
+[isos]: isos.md
 [install]: install.md
 [contrib]: contrib.md
 [howto]: howto.md

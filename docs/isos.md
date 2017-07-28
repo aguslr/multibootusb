@@ -1,0 +1,107 @@
+---
+title: List of supported files
+layout: default
+---
+* auto-gen TOC:
+{:toc}
+
+# {{ page.title }}
+
+These are [ISO][] or [kernel][] files that can either boot a [LiveCD][] or allow for the installation of the OS onto a hard drive.
+
+<svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="cfg-icon" viewBox="0 0 24 24">
+    <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>
+  </symbol>
+</svg>
+<svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="dl-icon" viewBox="0 0 24 24">
+    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+  </symbol>
+</svg>
+<svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="home-icon" viewBox="0 0 24 24">
+    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+  </symbol>
+</svg>
+
+
+## Linux
+
+The following table cotains a list of supported [Linux][]-based
+[distributions][distro]:
+
+{% if site.linux %}
+<table class="item-list">
+  <tbody>
+  {% for item in site.linux %}
+  <tr>
+  <td markdown="1">
+  [{{ item.title }}]({{ item.url | relative_url }})
+  </td>
+  <td markdown="1">
+  {% if item.download %}<a href="{{ item.download }}" alt="Download" title="Download"><svg class="icon"><use xlink:href="#dl-icon"/></svg></a>{% endif %}
+  {% if item.homepage %}<a href="{{ item.homepage }}" alt="Homepage" title="Homepage"><svg class="icon"><use xlink:href="#home-icon"/></svg></a>{% endif %}
+  {% if item.cfgdir %}<a href="{{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: item.cfgdir }}" alt="Configuration" title="Configuration"><svg class="icon"><use xlink:href="#cfg-icon"/></svg></a>{% endif %}
+  </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+
+## Unix
+
+This table contains a list of supported [Unix-like][] OS's:
+
+{% if site.unix %}
+<table class="item-list">
+  <tbody>
+  {% for item in site.unix %}
+  <tr>
+  <td markdown="1">
+  [{{ item.title }}]({{ item.url | relative_url }})
+  </td>
+  <td markdown="1">
+  {% if item.download %}<a href="{{ item.download }}" alt="Download" title="Download"><svg class="icon"><use xlink:href="#dl-icon"/></svg></a>{% endif %}
+  {% if item.homepage %}<a href="{{ item.homepage }}" alt="Homepage" title="Homepage"><svg class="icon"><use xlink:href="#home-icon"/></svg></a>{% endif %}
+  {% if item.cfgdir %}<a href="{{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: item.cfgdir }}" alt="Configuration" title="Configuration"><svg class="icon"><use xlink:href="#cfg-icon"/></svg></a>{% endif %}
+  </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+
+## Misc
+
+Lastly, this table contains a list of miscellaneous utilities:
+
+{% if site.misc %}
+<table class="item-list">
+  <tbody>
+  {% for item in site.misc %}
+  <tr>
+  <td markdown="1">
+  [{{ item.title }}]({{ item.url | relative_url }})
+  </td>
+  <td markdown="1">
+  {% if item.download %}<a href="{{ item.download }}" alt="Download" title="Download"><svg class="icon"><use xlink:href="#dl-icon"/></svg></a>{% endif %}
+  {% if item.homepage %}<a href="{{ item.homepage }}" alt="Homepage" title="Homepage"><svg class="icon"><use xlink:href="#home-icon"/></svg></a>{% endif %}
+  {% if item.cfgdir %}<a href="{{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: item.cfgdir }}" alt="Configuration" title="Configuration"><svg class="icon"><use xlink:href="#cfg-icon"/></svg></a>{% endif %}
+  </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+
+[iso]: https://en.wikipedia.org/wiki/ISO_image
+[kernel]: https://en.wikipedia.org/wiki/Kernel_(operating_system)
+[livecd]: https://en.wikipedia.org/wiki/Live_CD
+[linux]: https://en.wikipedia.org/wiki/Linux
+[distro]: https://en.wikipedia.org/wiki/Linux_distribution
+[unix-like]: https://en.wikipedia.org/wiki/Unix-like
