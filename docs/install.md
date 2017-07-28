@@ -7,7 +7,7 @@ layout: default
 
 # {{ page.title }}
 
-## Getting the files
+## Getting the configuration files
 
 ### Using Git
 
@@ -33,14 +33,14 @@ wget https://github.com/aguslr/multibootusb/tarball/master -O - | tar -xzv --str
 
 ## Creating new USB drive
 
-### Manually prepare the drive
+### Manually preparing the drive
 
 #### Creating a bootable USB drive
 
 Follow the instructions to create a [Hybrid UEFI GPT + BIOS GPT/MBR boot][efi+bios] from the ArchWiki.
 
 
-#### Copying the files to the USB drive
+#### Copying the configuration files to the USB drive
 
 1. Set variables to avoid errors:
 

@@ -10,11 +10,11 @@ layout: default
 This project is [Free Software][freesoft] released under the [GNU General Public License (Version 3)][gpl3], therefore contributions are encouraged.
 
 
-## Create an Issue
+## Creating an Issue
 
 If you find a bug (and you don't know how to fix it), have trouble following the installation process or have a question/suggestion about the project, go ahead and create an issue.
 
-### Issues tips
+### Issue tips
 
 - Check existing issues, both open and closed, for your problem.
 - Be clear about what your problem is: what was the expected outcome, what happened instead?
