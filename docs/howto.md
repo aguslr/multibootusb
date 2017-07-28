@@ -20,7 +20,9 @@ First of all, we'll need to download the ISO file and mount it so we can access 
 
 ## Methods
 
-**As a previous step, we should check the home page for the project that created the ISO. They might provide further information on how to boot directly from the ISO file. Also, we should try contacting the project's developers via their support channels to ask for help.**
+<div class="note">
+As a previous step, we should check the home page for the project that created the ISO. They might provide further information on how to boot directly from the ISO file. Also, we should try contacting the project's developers via their support channels to ask for help.
+</div>
 
 
 ### Using loopback.cfg

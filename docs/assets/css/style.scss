@@ -37,3 +37,13 @@ svg.icon {
 svg.icon:hover {
   fill: #069;
 }
+
+/* Note */
+.note {
+  background: rgba(#39c, 0.1);
+  border: 1px solid #e5e5e5;
+  color: #393939;
+  margin: 0 0 20px;
+  max-width: 100%;
+  padding: 8px 15px;
+}
