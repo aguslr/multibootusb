@@ -30,7 +30,8 @@ layout: default
 ## Supported releases
 
 - Desktop ISO (using [loopback.cfg][])
-- Netboot ISO[^note1] (using [MEMDISK][])
+- Netboot 32-bit ISO[^note1] (using [MEMDISK][])
+- Netboot 64-bit ISO[^note1]
 
 
 ## Links
