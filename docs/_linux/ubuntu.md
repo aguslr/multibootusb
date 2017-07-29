@@ -30,8 +30,7 @@ layout: default
 ## Supported releases
 
 - Desktop ISO (using [loopback.cfg][])
-- Netboot 32-bit ISO[^note1] (using [MEMDISK][])
-- Netboot 64-bit ISO[^note1]
+- Netboot ISO[^note1]
 
 
 ## Links
@@ -50,5 +49,4 @@ layout: default
 [config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
 [distrowatch]: https://distrowatch.com/table.php?distribution=ubuntu
 [loopback.cfg]: http://www.supergrubdisk.org/wiki/Loopback.cfg
-[memdisk]: http://www.syslinux.org/wiki/index.php?title=MEMDISK
 [wikipedia]: https://en.wikipedia.org/wiki/Ubuntu_Linux
