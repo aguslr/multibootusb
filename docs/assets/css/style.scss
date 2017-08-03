@@ -30,12 +30,16 @@ tbody > tr:nth-child(odd) {
 /* http://stackoverflow.com/a/25184858 */
 svg.icon {
   display: inline-block;
-  fill: #39c;
-  height: 24px;
-  width: 24px;
+  fill: none;
+  height: 18px;
+  stroke: #39c;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2px;
+  width: 18px;
 }
 svg.icon:hover {
-  fill: #069;
+  stroke: #069;
 }
 
 /* Note */

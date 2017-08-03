@@ -11,17 +11,21 @@ These are [ISO][] or [kernel][] files that can either boot a [LiveCD][] or allow
 
 <svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
   <symbol id="cfg-icon" viewBox="0 0 24 24">
-    <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>
+    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
   </symbol>
 </svg>
 <svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
   <symbol id="dl-icon" viewBox="0 0 24 24">
-    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+    <path d="M3 17v3a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-3"/>
+    <polyline points="8 12 12 16 16 12"/>
+    <line x1="12" y1="2" x2="12" y2="16"/>
   </symbol>
 </svg>
 <svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
   <symbol id="home-icon" viewBox="0 0 24 24">
-    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+    <circle cx="12" cy="12" r="10"/>
+    <line x1="2" y1="12" x2="22" y2="12"/>
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
   </symbol>
 </svg>
 
