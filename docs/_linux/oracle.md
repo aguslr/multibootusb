@@ -33,7 +33,7 @@ layout: default
 
 ## Resources
 
-- [Anaconda Boot Options — Anaconda 25.14 documentation][bootopt]
+- [Anaconda Boot Options — Anaconda documentation][bootopt]
 
 
 ## Links
