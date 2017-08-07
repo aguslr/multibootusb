@@ -38,6 +38,12 @@ layout: default
 - Netboot ISO[^note1]
 
 
+## Resources
+
+- [#866183 - debian-live: loopback.cfg is not working - Debian Bug report
+logs][issue866183]
+
+
 ## Links
 
 - [Official homepage]({{ page.homepage }})
@@ -54,3 +60,4 @@ layout: default
 [config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
 [distrowatch]: https://distrowatch.com/table.php?distribution=debian
 [wikipedia]: https://en.wikipedia.org/wiki/Debian
+[issue866183]: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=866183
