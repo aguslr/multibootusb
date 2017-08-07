@@ -29,8 +29,8 @@ layout: default
 
 ## Supported releases
 
-- XFCE Edition
-- KDE Edition
+- Official Edition ISOs
+- Community Edition ISOs
 
 
 ## Links
