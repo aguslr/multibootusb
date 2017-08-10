@@ -28,8 +28,8 @@ layout: default
 
 ## Supported releases
 
-- Live ISOs
-- DVD/Everything/Minimal ISOs
+- Centos 7 Live ISOs
+- Centos 7 DVD/Everything/Minimal ISOs
 
 
 ## Resources
