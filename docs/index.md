@@ -27,6 +27,7 @@ This is a project that contains a collection of [GRUB][] files and scripts that 
 - [MultiPass-USB][]
 - [SARDU][]
 - [SMI][]
+- [SystemImageKit][]
 - [YUMI][]
 
 
@@ -43,4 +44,5 @@ This is a project that contains a collection of [GRUB][] files and scripts that 
 [multipass-usb]: https://github.com/Thermionix/multipass-usb
 [sardu]: http://www.sarducd.it/
 [smi]: https://github.com/kilbith/smi
+[systemimagekit]: https://github.com/probonopd/SystemImageKit
 [yumi]: https://www.pendrivelinux.com/yumi-multiboot-usb-creator/
