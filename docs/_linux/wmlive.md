@@ -2,7 +2,7 @@
 title: Window Maker Live
 homepage: http://wmlive.sourceforge.net/
 download: https://sourceforge.net/projects/wmlive/files/
-cfgdir: wmlive
+cfgdir: wmlive.d
 layout: default
 ---
 
