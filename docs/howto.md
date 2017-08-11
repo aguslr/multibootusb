@@ -117,16 +117,16 @@ Notice, however, that we've had to add the parameter `findiso=$iso_path` so the 
 
 Unfortunately, many distributions use different parameters. Some known examples:
 
-Parameter | Distributions
-----------|--------------
-`img_loop=$iso_path` | Antergos, Arch Linux, BlackArch Linux, Manjaro Linux, Parabola GNU/Linux-libre
-`from=$iso_path` | Byzantium, Slax
-`iso-scan/filename=$iso_path` | CentOS, Fedora, Trisquel GNU/Linux, Ubuntu, Void
-`findiso=$iso_path` | Clonezilla Live, Debian, GParted Live, Kali Linux, Tails
-`isoboot=$iso_path` | Gentoo, Pentoo, Sabayon Linux
-`isofrom_system=$iso_path` | openSUSE
-`iso_filename=$iso_path` | Parted Magic
-`isoloop=$iso_path` | SystemRescueCd
+Distributions | Parameters
+--------------|-----------
+[Arch-based][] | `img_dev=$imgdevpath img_loop=$iso_path`
+[Debian-based][] | `findiso=$iso_path`
+[Fedora-based][] | `iso-scan/filename=$iso_path`
+[Gentoo-based][] | `isoboot=$iso_path`
+[openSUSE-based][] | `isofrom_system=$iso_path`
+[PCLinuxOS-based][] | `bootfromiso=$iso_path`
+[Slackware-based][] | `livemedia=$imgdevpath:$iso_path`
+[Ubuntu-based][] | `iso-scan/filename=$iso_path`
 
 Distributions based on these might work with its corresponding parameter, so it's a matter of trial and error.
 
@@ -175,7 +175,11 @@ menuentry "Ultimate Boot CD v5.3.6" {
 - [Using Syslinux and memdisk][usingmemdisk]
 
 
+[arch-based]: https://distrowatch.com/search.php?basedon=Arch&status=All#simple
 [boot-loader]: https://en.wikipedia.org/wiki/Boot_loader
+[debian-based]: https://distrowatch.com/search.php?basedon=Debian&status=All#simple
+[fedora-based]: https://distrowatch.com/search.php?basedon=Fedora&status=All#simple
+[gentoo-based]: https://distrowatch.com/search.php?basedon=Gentoo&status=All#simple
 [grub.cfg]: https://www.gnu.org/software/grub/manual/html_node/Multi_002dboot-manual-config.html
 [grub]: https://www.gnu.org/software/grub/
 [iso]: https://en.wikipedia.org/wiki/ISO_image
@@ -187,10 +191,14 @@ menuentry "Ultimate Boot CD v5.3.6" {
 [mntlinux]: http://www.howtogeek.com/168137/mount-an-iso-image-in-linux/
 [mntwin]: http://www.howtogeek.com/howto/windows-vista/mount-an-iso-image-in-windows-vista/
 [multiboot-usb]: http://www.circuidipity.com/multi-boot-usb.html
+[opensuse-based]: https://distrowatch.com/search.php?basedon=openSUSE&status=All#simple
 [panticz-mbusb]: http://www.panticz.de/MultiBootUSB
+[pclinuxos-based]: https://distrowatch.com/search.php?basedon=PCLinuxOS&status=All#simple
 [repo]: {{ site.github.repository_url }}/tree/master/mbusb.d
+[slackware-based]: https://distrowatch.com/search.php?basedon=Slackware&status=All#simple
 [syslinux-include]: http://www.syslinux.org/wiki/index.php?title=SYSLINUX#INCLUDE_filename
 [syslinux]: http://www.syslinux.org/
 [tarball]: https://en.wikipedia.org/wiki/Tar_(computing)
 [ubcdiso]: http://www.ultimatebootcd.com/forums/viewtopic.php?p=9108#p9108
+[ubuntu-based]: https://distrowatch.com/search.php?basedon=Ubuntu&status=All#simple
 [usingmemdisk]: https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Using_Syslinux_and_memdisk
