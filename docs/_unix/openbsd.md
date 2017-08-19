@@ -27,7 +27,7 @@ layout: default
 
 ## Supported releases
 
-- Install ISO[^note1] (using [MEMDISK][])
+- Install ISO[^note1]
 
 
 ## Links
@@ -45,5 +45,4 @@ layout: default
 
 [config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
 [distrowatch]: https://distrowatch.com/table.php?distribution=openbsd
-[memdisk]: http://www.syslinux.org/wiki/index.php?title=MEMDISK
 [wikipedia]: https://en.wikipedia.org/wiki/OpenBSD

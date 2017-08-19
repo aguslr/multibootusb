@@ -23,6 +23,7 @@ This is a project that contains a collection of [GRUB][] files and scripts that 
 - [GLIM][]
 - [grub-iso-boot][]
 - [grub-iso-multiboot][]
+- [GRUB2-filemanager][]
 - [MultiBootUSB][]
 - [MultiPass-USB][]
 - [SARDU][]
@@ -40,6 +41,7 @@ This is a project that contains a collection of [GRUB][] files and scripts that 
 [grub]: https://www.gnu.org/software/grub/
 [grub-iso-boot]: https://github.com/Jimmy-Z/grub-iso-boot
 [grub-iso-multiboot]: https://github.com/mpolitzer/grub-iso-multiboot
+[grub2-filemanager]: https://github.com/a1ive/grub2-filemanager
 [multibootusb]: http://multibootusb.org/
 [multipass-usb]: https://github.com/Thermionix/multipass-usb
 [sardu]: http://www.sarducd.it/
