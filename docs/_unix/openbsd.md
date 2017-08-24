@@ -27,7 +27,8 @@ layout: default
 
 ## Supported releases
 
-- Install ISO[^note1]
+- CD ISO[^note1]
+- Install ISO[^note2]
 
 
 ## Links
@@ -40,7 +41,8 @@ layout: default
 
 ## Notes
 
-[^note1]: Rename install ISO files (e.g. from `install60.iso` to `openbsd-install60-i386.iso`)
+[^note1]: Rename CD ISO files (e.g. from `cd60.iso` to `openbsd-cd60-i386.iso`)
+[^note2]: Rename install ISO files (e.g. from `install60.iso` to `openbsd-install60-i386.iso`)
 
 
 [config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
