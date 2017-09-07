@@ -30,7 +30,8 @@ layout: default
 
 ## Supported releases
 
-- Tumbleweed ISO
+- Leap/Tumbleweed ISO
+- Tumbleweed Live ISO
 
 
 ## Links
