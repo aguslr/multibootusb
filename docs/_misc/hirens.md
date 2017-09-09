@@ -26,7 +26,7 @@ layout: default
 ## Supported releases
 
 - 15.2 ISO
-- Standard ISO[^note1] (using [MEMDISK][])
+- Standard ISO (using [MEMDISK][])
 
 
 ## Links
@@ -36,12 +36,6 @@ layout: default
 - [{{ page.title }} at Wikipedia][wikipedia]
 
 
-## Notes
-
-[^note1]: Rename ISO files to remove the apostrophe which causes problems with [globbing][] (e.g. `Hirens.BootCD.15.2.iso`)
-
-
 [config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
-[globbing]: https://en.wikipedia.org/wiki/Glob_(programming)
 [memdisk]: http://www.syslinux.org/wiki/index.php?title=MEMDISK
 [wikipedia]: https://en.wikipedia.org/wiki/Hirens_BootCD
