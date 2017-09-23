@@ -25,7 +25,7 @@ layout: default
 
 ## Supported releases
 
-- 2017.1 ISO
+- 2017 ISOs
 - All ISOs (using [loopback.cfg][])
 
 
