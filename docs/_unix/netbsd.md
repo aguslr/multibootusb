@@ -30,6 +30,11 @@ layout: default
 - Standard ISO[^note1]
 
 
+## Resources
+
+- [GNU GRUB Manual: Loopback booting][loopboot]
+
+
 ## Links
 
 - [Official homepage]({{ page.homepage }})
@@ -46,3 +51,4 @@ layout: default
 [config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
 [distrowatch]: https://distrowatch.com/table.php?distribution=netbsd
 [wikipedia]: https://en.wikipedia.org/wiki/NetBSD
+[loopboot]: https://www.gnu.org/software/grub/manual/grub/html_node/Loopback-booting.html
