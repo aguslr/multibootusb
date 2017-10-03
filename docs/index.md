@@ -32,10 +32,10 @@ This is a project that contains a collection of [GRUB][] files and scripts that 
 - [YUMI][]
 
 
-[isos]: isos.md
-[install]: install.md
-[contrib]: contrib.md
-[howto]: howto.md
+[isos]: isos.html
+[install]: install.html
+[contrib]: contrib.html
+[howto]: howto.html
 [easy2boot]: http://www.easy2boot.com/
 [glim]: https://github.com/thias/glim
 [grub]: https://www.gnu.org/software/grub/
