@@ -185,18 +185,17 @@ sgdisk --new ${data_part}::"${data_size}": --typecode ${data_part}:"$type_code" 
 # Unmount device
 unmountUSB "$usb_dev"
 
-# Create hybrid MBR
-if [ "$hybrid" -eq 1 ]; then
-	if [ "$interactive" -eq 0 ]; then
-		if [ "$eficonfig" -eq 1 ]; then
-			sgdisk --hybrid 1:2:3 "$usb_dev" || cleanUp 10
-		else
-			sgdisk --hybrid 1:2 "$usb_dev" || cleanUp 10
-		fi
+# Interactive configuration?
+if [ "$interactive" -eq 1 ]; then
+	# Create hybrid MBR manually
+	# https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Hybrid_UEFI_GPT_.2B_BIOS_GPT.2FMBR_boot
+	gdisk "$usb_dev"
+elif [ "$hybrid" -eq 1 ]; then
+	# Create hybrid MBR
+	if [ "$eficonfig" -eq 1 ]; then
+		sgdisk --hybrid 1:2:3 "$usb_dev" || cleanUp 10
 	else
-		# Create hybrid MBR manually
-		# https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Hybrid_UEFI_GPT_.2B_BIOS_GPT.2FMBR_boot
-		gdisk "$usb_dev"
+		sgdisk --hybrid 1:2 "$usb_dev" || cleanUp 10
 	fi
 fi
 
