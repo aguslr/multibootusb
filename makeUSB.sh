@@ -152,10 +152,9 @@ sgdisk --new 1::+1M --typecode 1:ef02 \
     --change-name 1:"BIOS boot partition" "$usb_dev" || cleanUp 10
 
 # Create EFI System partition (50M)
-if [ "$eficonfig" -eq 1 ]; then
-	sgdisk --new 2::+50M --typecode 2:ef00 --change-name 2:"EFI System" \
-	    "$usb_dev" || cleanUp 10
-fi
+[ "$eficonfig" -eq 1 ] && \
+    { sgdisk --new 2::+50M --typecode 2:ef00 \
+    --change-name 2:"EFI System" "$usb_dev" || cleanUp 10; }
 
 # Create data partition
 if [ ! -z "$data_size" ]; then
@@ -237,14 +236,13 @@ fi
 # Mount data partition
 mount "${usb_dev}${data_part}" "$data_mnt" || cleanUp 10
 
-if [ "$eficonfig" -eq 1 ]; then
-	# Install GRUB for EFI
-	grub2-install --target=x86_64-efi --efi-directory="$efi_mnt" \
-	    --boot-directory="${data_mnt}/boot" --removable --recheck \
-	    || grub-install --target=x86_64-efi --efi-directory="$efi_mnt" \
-	    --boot-directory="${data_mnt}/boot" --removable --recheck \
-	    || cleanUp 10
-fi
+# Install GRUB for EFI
+[ "$eficonfig" -eq 1 ] && \
+    { grub2-install --target=x86_64-efi --efi-directory="$efi_mnt" \
+    --boot-directory="${data_mnt}/boot" --removable --recheck \
+    || grub-install --target=x86_64-efi --efi-directory="$efi_mnt" \
+    --boot-directory="${data_mnt}/boot" --removable --recheck \
+    || cleanUp 10; }
 
 # Install GRUB for BIOS
 grub2-install --force --target=i386-pc \
