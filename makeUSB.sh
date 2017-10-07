@@ -179,7 +179,7 @@ case "$data_fmt" in
 esac
 
 # Create data partition
-sgdisk --new ${data_part}::${data_size}: --typecode ${data_part}:"$type_code" \
+sgdisk --new ${data_part}::"${data_size}": --typecode ${data_part}:"$type_code" \
     --change-name ${data_part}:"$part_name" "$usb_dev" || cleanUp 10
 
 # Unmount device
@@ -221,11 +221,10 @@ wipefs -af "${usb_dev}${data_part}" || cleanup 10
 # Format data partition
 if [ "$data_fmt" = "ntfs" ]; then
 	# Use mkntfs quick format
-	mkfs_args="-t $data_fmt -f"
+	mkfs -t "$data_fmt" -f "${usb_dev}${data_part}" || cleanUp 10
 else
-	mkfs_args="-t $data_fmt"
+	mkfs -t "$data_fmt" "${usb_dev}${data_part}" || cleanUp 10
 fi
-mkfs $mkfs_args "${usb_dev}${data_part}" || cleanUp 10
 
 # Unmount device
 unmountUSB "$usb_dev"
