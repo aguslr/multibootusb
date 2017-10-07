@@ -58,6 +58,15 @@ unmountUSB() {
 # Trap kill signals (SIGHUP, SIGINT, SIGTERM) to do some cleanup and exit
 trap 'cleanUp' 1 2 15
 
+# Check for root
+if [ "$(id -u)" -ne 0 ]; then
+	printf 'This script must be run as root. Using sudo...\n' "$scriptname" >&2
+	exec sudo -k -- /bin/sh "$0" "$@" || cleanUp 2
+fi
+
+# Get original user
+normal_user="${SUDO_USER-$(who am i | awk '{print $1}')}"
+
 # Check arguments
 [ $# -eq 0 ] && showUsage && exit 0
 while [ "$#" -gt 0 ]; do
@@ -99,15 +108,6 @@ while [ "$#" -gt 0 ]; do
 			;;
 	esac
 done
-
-# Check for root
-if [ "$(id -u)" -ne 0 ]; then
-	printf '%s: This script must be run as root.\n' "$scriptname" >&2
-	cleanUp 2
-fi
-
-# Get original user
-normal_user="${SUDO_USER-$(who am i | awk '{print $1}')}"
 
 # Check for required arguments
 if [ ! "$usb_dev" ]; then
