@@ -120,10 +120,12 @@ fi
 unmountUSB "$usb_dev"
 
 # Confirm the device
-read -r -p "Are you sure you want to use $usb_dev? [y/N] " answer1
+printf 'Are you sure you want to use %s? [y/N] ' "$usb_dev"
+read -r answer1
 case "$answer1" in
 	[yY][eE][sS]|[yY])
-		read -r -p "THIS WILL DELETE ALL DATA ON THE DEVICE. Are you sure? [y/N] " answer2
+		printf 'THIS WILL DELETE ALL DATA ON THE DEVICE. Are you sure? [y/N] '
+		read -r answer2
 		case $answer2 in
 			[yY][eE][sS]|[yY])
 				true
