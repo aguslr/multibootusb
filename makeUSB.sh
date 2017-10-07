@@ -2,12 +2,13 @@
 
 # Description: Script to prepare multiboot USB drive
 
+# show line number when execute by bash -x makeUSB.sh
+[ "$BASH" ] && \
+    export PS4='    +\t $BASH_SOURCE:$LINENO: ${FUNCNAME[0]:+${FUNCNAME[0]}():}'
+
 # Exit if there is an unbound variable or an error
 set -o nounset
 set -o errexit
-
-# show line number when execute by bash -x makeUSB.sh
-export PS4='        +\t $BASH_SOURCE:$LINENO: ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 
 # Defaults
 scriptname=$(basename "$0")
