@@ -58,8 +58,8 @@ unmountUSB() {
 
 # Try running a command
 tryCMD() {
-	local msg="$1"
-	local cmd="$2"
+	msg="$1"
+	cmd="$2"
 	printf '%s... ' "$msg"
 	if eval "$cmd" >> "$log_file" 2>&1; then
 		printf 'OK\n'
