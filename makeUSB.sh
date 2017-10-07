@@ -156,10 +156,12 @@ sgdisk --new 1::+1M --typecode 1:ef02 \
     { sgdisk --new 2::+50M --typecode 2:ef00 \
     --change-name 2:"EFI System" "$usb_dev" || cleanUp 10; }
 
-# Create data partition
+# Set data partition size
 if [ ! -z "$data_size" ]; then
 	data_size="+$data_size"
 fi
+
+# Set data partition information
 case "$data_fmt" in
 	ext2|ext3|ext4)
 		type_code="8300"
@@ -175,6 +177,8 @@ case "$data_fmt" in
 		cleanUp 1
 		;;
 esac
+
+# Create data partition
 sgdisk --new ${data_part}::${data_size}: --typecode ${data_part}:"$type_code" \
     --change-name ${data_part}:"$part_name" "$usb_dev" || cleanUp 10
 
@@ -202,14 +206,17 @@ sgdisk --attributes ${data_part}:set:2 "$usb_dev" || cleanUp 10
 # Unmount device
 unmountUSB "$usb_dev"
 
-# Format BIOS boot partition
+# Wipe BIOS boot partition
 wipefs -af "${usb_dev}1" || cleanup 10
 
+# Format EFI System partition
 if [ "$eficonfig" -eq 1 ]; then
-	# Format EFI System partition
 	wipefs -af "${usb_dev}2" || cleanup 10
 	mkfs.vfat -v -F 32 "${usb_dev}2" || cleanUp 10
 fi
+
+# Wipe data partition
+wipefs -af "${usb_dev}${data_part}" || cleanup 10
 
 # Format data partition
 if [ "$data_fmt" = "ntfs" ]; then
@@ -218,7 +225,6 @@ if [ "$data_fmt" = "ntfs" ]; then
 else
 	mkfs_args="-t $data_fmt"
 fi
-wipefs -af "${usb_dev}${data_part}" || cleanup 10
 mkfs $mkfs_args "${usb_dev}${data_part}" || cleanUp 10
 
 # Unmount device
