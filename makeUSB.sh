@@ -236,11 +236,11 @@ data_mnt=$(mktemp -p "$tmp_dir" -d data.XXXX)
 
 if [ "$eficonfig" -eq 1 ]; then
 	# Mount EFI System partition
-	mount -v "${usb_dev}2" "$efi_mnt" || cleanUp 10
+	mount "${usb_dev}2" "$efi_mnt" || cleanUp 10
 fi
 
 # Mount data partition
-mount -v "${usb_dev}${data_part}" "$data_mnt" || cleanUp 10
+mount "${usb_dev}${data_part}" "$data_mnt" || cleanUp 10
 
 if [ "$eficonfig" -eq 1 ]; then
 	# Install GRUB for EFI
@@ -286,7 +286,7 @@ wget -qO - \
 chown --recursive "$normal_user" "${data_mnt}"/* 2>/dev/null || true
 
 # Unmount partitions
-umount -v "$efi_mnt" "$data_mnt" || cleanUp 10
+umount "$efi_mnt" "$data_mnt" || cleanUp 10
 
 # Clean up and exit
 cleanUp
