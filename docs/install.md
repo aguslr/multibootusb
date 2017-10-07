@@ -93,7 +93,6 @@ Usage: makeUSB.sh [options] device [fs-type] [data-size]
   -b,  --hybrid                 Create a hybrid MBR
   -e,  --efi                    Enable EFI compatibility
   -i,  --interactive            Launch gdisk to create a hybrid MBR
-  -l,  --log                    Save debug information to log
   -h,  --help                   Display this message
 ```
 
