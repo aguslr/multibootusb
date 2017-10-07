@@ -17,8 +17,9 @@ interactive=0
 data_part=2
 data_fmt="vfat"
 data_size=""
-efi_mnt="/mnt/MBU-EFI/"
-data_mnt="/mnt/MBU-DATA/"
+efi_mnt=""
+data_mnt=""
+tmp_dir="${TMPDIR-/tmp}"
 
 # Show usage
 showUsage() {
@@ -236,15 +237,17 @@ mkfs $mkfs_args "${usb_dev}${data_part}" || cleanUp 10
 # Unmount device
 unmountUSB "$usb_dev"
 
+# Create temporary mountpoints
+efi_mnt=$(mktemp -p "$tmp_dir" -d efi.XXXX)
+data_mnt=$(mktemp -p "$tmp_dir" -d data.XXXX)
+
 if [ "$eficonfig" -eq 1 ]; then
 	# Mount EFI System partition
-	mkdir -p "$efi_mnt" \
-	    && mount -v "${usb_dev}2" "$efi_mnt" || cleanUp 10
+	mount -v "${usb_dev}2" "$efi_mnt" || cleanUp 10
 fi
 
 # Mount data partition
-mkdir -p "$data_mnt" \
-    && mount -v "${usb_dev}${data_part}" "$data_mnt" || cleanUp 10
+mount -v "${usb_dev}${data_part}" "$data_mnt" || cleanUp 10
 
 if [ "$eficonfig" -eq 1 ]; then
 	# Install GRUB for EFI
