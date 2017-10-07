@@ -116,13 +116,6 @@ if [ ! "$usb_dev" ]; then
 	cleanUp 1
 fi
 
-# Check for required binaries
-sgdisk_cmd=$(command -v sgdisk)         || cleanUp 3
-wipefs_cmd=$(command -v wipefs)         || cleanUp 3
-wget_cmd=$(command -v wget)             || cleanUp 3
-tar_cmd=$(command -v tar)               || cleanUp 3
-command -v mkfs."${data_fmt}" >/dev/null  || cleanUp 3
-
 # Check for GRUB installation binary
 grub_cmd=$(command -v grub2-install) \
     || grub_cmd=$(command -v grub-install) \
@@ -154,18 +147,18 @@ esac
 set -o verbose
 
 # Remove partitions
-$sgdisk_cmd --zap-all "$usb_dev"
+sgdisk --zap-all "$usb_dev"
 
 # Create GUID Partition Table
-$sgdisk_cmd --mbrtogpt "$usb_dev" || cleanUp 10
+sgdisk --mbrtogpt "$usb_dev" || cleanUp 10
 
 # Create BIOS boot partition (1M)
-$sgdisk_cmd --new 1::+1M --typecode 1:ef02 \
+sgdisk --new 1::+1M --typecode 1:ef02 \
     --change-name 1:"BIOS boot partition" "$usb_dev" || cleanUp 10
 
 # Create EFI System partition (50M)
 if [ "$eficonfig" -eq 1 ]; then
-	$sgdisk_cmd --new 2::+50M --typecode 2:ef00 --change-name 2:"EFI System" \
+	sgdisk --new 2::+50M --typecode 2:ef00 --change-name 2:"EFI System" \
 	    "$usb_dev" || cleanUp 10
 fi
 
@@ -188,7 +181,7 @@ case "$data_fmt" in
 		cleanUp 1
 		;;
 esac
-$sgdisk_cmd --new ${data_part}::${data_size}: --typecode ${data_part}:"$type_code" \
+sgdisk --new ${data_part}::${data_size}: --typecode ${data_part}:"$type_code" \
     --change-name ${data_part}:"$part_name" "$usb_dev" || cleanUp 10
 
 # Unmount device
@@ -198,9 +191,9 @@ unmountUSB "$usb_dev"
 if [ "$hybrid" -eq 1 ]; then
 	if [ "$interactive" -eq 0 ]; then
 		if [ "$eficonfig" -eq 1 ]; then
-			$sgdisk_cmd --hybrid 1:2:3 "$usb_dev" || cleanUp 10
+			sgdisk --hybrid 1:2:3 "$usb_dev" || cleanUp 10
 		else
-			$sgdisk_cmd --hybrid 1:2 "$usb_dev" || cleanUp 10
+			sgdisk --hybrid 1:2 "$usb_dev" || cleanUp 10
 		fi
 	else
 		# Create hybrid MBR manually
@@ -210,17 +203,17 @@ if [ "$hybrid" -eq 1 ]; then
 fi
 
 # Set bootable flag for data partion
-$sgdisk_cmd --attributes ${data_part}:set:2 "$usb_dev" || cleanUp 10
+sgdisk --attributes ${data_part}:set:2 "$usb_dev" || cleanUp 10
 
 # Unmount device
 unmountUSB "$usb_dev"
 
 # Format BIOS boot partition
-$wipefs_cmd -af "${usb_dev}1" || cleanup 10
+wipefs -af "${usb_dev}1" || cleanup 10
 
 if [ "$eficonfig" -eq 1 ]; then
 	# Format EFI System partition
-	$wipefs_cmd -af "${usb_dev}2" || cleanup 10
+	wipefs -af "${usb_dev}2" || cleanup 10
 	mkfs.vfat -v -F 32 "${usb_dev}2" || cleanUp 10
 fi
 
@@ -231,7 +224,7 @@ if [ "$data_fmt" = "ntfs" ]; then
 else
 	mkfs_args="-t $data_fmt"
 fi
-$wipefs_cmd -af "${usb_dev}${data_part}" || cleanup 10
+wipefs -af "${usb_dev}${data_part}" || cleanup 10
 mkfs $mkfs_args "${usb_dev}${data_part}" || cleanUp 10
 
 # Unmount device
@@ -284,9 +277,9 @@ cp -rf ./mbusb.* "$grub_dir" || cleanUp 10
 cp -f ./grub.cfg.example "${grub_dir}/grub.cfg" || cleanUp 10
 
 # Download memdisk
-$wget_cmd -qO - \
+wget -qO - \
     'https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.gz' \
-    | $tar_cmd -xz -C "$grub_dir" --no-same-owner --strip-components 3 \
+    | tar -xz -C "$grub_dir" --no-same-owner --strip-components 3 \
     'syslinux-6.03/bios/memdisk/memdisk'
 
 # Change ownership of files
