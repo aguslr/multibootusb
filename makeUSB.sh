@@ -116,11 +116,6 @@ if [ ! "$usb_dev" ]; then
 	cleanUp 1
 fi
 
-# Check for GRUB installation binary
-grub_cmd=$(command -v grub2-install) \
-    || grub_cmd=$(command -v grub-install) \
-    || cleanUp 3
-
 # Unmount device
 unmountUSB "$usb_dev"
 
@@ -244,43 +239,53 @@ mount "${usb_dev}${data_part}" "$data_mnt" || cleanUp 10
 
 if [ "$eficonfig" -eq 1 ]; then
 	# Install GRUB for EFI
-	$grub_cmd --target=x86_64-efi --efi-directory="$efi_mnt" \
-	    --boot-directory="${data_mnt}/boot" --removable --recheck || cleanUp 10
+	grub2-install --target=x86_64-efi --efi-directory="$efi_mnt" \
+	    --boot-directory="${data_mnt}/boot" --removable --recheck \
+	    || grub-install --target=x86_64-efi --efi-directory="$efi_mnt" \
+	    --boot-directory="${data_mnt}/boot" --removable --recheck \
+	    || cleanUp 10
 fi
 
 # Install GRUB for BIOS
-$grub_cmd --force --target=i386-pc \
-    --boot-directory="${data_mnt}/boot" \
-    --recheck "$usb_dev" || cleanUp 10
+grub2-install --force --target=i386-pc \
+    --boot-directory="${data_mnt}/boot" --recheck "$usb_dev" \
+    || grub-install --force --target=i386-pc \
+    --boot-directory="${data_mnt}/boot" --recheck "$usb_dev" \
+    || cleanUp 10
 
 # Install fallback GRUB
-$grub_cmd --force --target=i386-pc \
-    --boot-directory="${data_mnt}/boot" \
-    --recheck "${usb_dev}${data_part}"
+grub2-install --force --target=i386-pc \
+    --boot-directory="${data_mnt}/boot" --recheck "${usb_dev}${data_part}" \
+    || grub-install --force --target=i386-pc \
+    --boot-directory="${data_mnt}/boot" --recheck "${usb_dev}${data_part}" \
 
 # Create necessary directories
 mkdir -p "${data_mnt}/boot/isos" || cleanUp 10
 
-# Detect GRUB directory name
-if [ -d "${data_mnt}boot/grub2" ]; then
-	grub_dir="${data_mnt}boot/grub2/"
-elif [ -d "${data_mnt}boot/grub" ]; then
-	grub_dir="${data_mnt}boot/grub/"
-else
-	cleanUp 10
-fi
-
 # Copy files
-cp -rf ./mbusb.* "$grub_dir" || cleanUp 10
+cp -rf ./mbusb.* "${data_mnt}/boot/grub2" \
+    || cp -rf ./mbusb.* "${data_mnt}/boot/grub" \
+    || cleanUp 10
 
 # Copy example configuration for GRUB
-cp -f ./grub.cfg.example "${grub_dir}/grub.cfg" || cleanUp 10
+cp -f ./grub.cfg.example "${data_mnt}/boot/grub2/grub.cfg" \
+    || cp -f ./grub.cfg.example "${data_mnt}/boot/grub/grub.cfg" \
+    || cleanUp 10
 
 # Download memdisk
 wget -qO - \
     'https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.gz' \
-    | tar -xz -C "$grub_dir" --no-same-owner --strip-components 3 \
-    'syslinux-6.03/bios/memdisk/memdisk'
+    | tar -xz -C "$tmp_dir" --no-same-owner --strip-components 3 \
+    'syslinux-6.03/bios/memdisk/memdisk' \
+    || cleanUp 10
+
+# Copy memdisk to pendrive
+cp -p "${tmp_dir}/memdisk" "${data_mnt}/boot/grub2/" \
+    || cp -p "${tmp_dir}/memdisk" "${data_mnt}/boot/grub/" \
+    || cleanUp 10
+
+# Remove downloaded memdisk
+rm -f "${tmp_dir}/memdisk" || true
 
 # Change ownership of files
 chown --recursive "$normal_user" "${data_mnt}"/* 2>/dev/null || true
