@@ -42,8 +42,8 @@ showUsage() {
 # Clean up when exiting
 cleanUp() {
 	# Unmount everything
-	umount --force "$efi_mnt" 2>/dev/null || true
-	umount --force "$data_mnt" 2>/dev/null || true
+	umount -f "$efi_mnt" 2>/dev/null || true
+	umount -f "$data_mnt" 2>/dev/null || true
 	# Delete mountpoints
 	[ -d "$efi_mnt" ] && rmdir "$efi_mnt"
 	[ -d "$data_mnt" ] && rmdir "$data_mnt"
@@ -53,7 +53,7 @@ cleanUp() {
 
 # Make sure USB drive is not mounted
 unmountUSB() {
-	umount --force "${1}"* 2>/dev/null || true
+	umount -f "${1}"* 2>/dev/null || true
 }
 
 # Trap kill signals (SIGHUP, SIGINT, SIGTERM) to do some cleanup and exit
@@ -66,7 +66,7 @@ if [ "$(id -u)" -ne 0 ]; then
 fi
 
 # Get original user
-normal_user="${SUDO_USER-$(who am i | awk '{print $1}')}"
+normal_user="${SUDO_USER-$(who -m | awk '{print $1}')}"
 
 # Check arguments
 [ $# -eq 0 ] && showUsage && exit 0
@@ -209,16 +209,16 @@ sgdisk --attributes ${data_part}:set:2 "$usb_dev" || cleanUp 10
 unmountUSB "$usb_dev"
 
 # Wipe BIOS boot partition
-wipefs -af "${usb_dev}1" || cleanup 10
+wipefs -af "${usb_dev}1" || true
 
 # Format EFI System partition
 if [ "$eficonfig" -eq 1 ]; then
-	wipefs -af "${usb_dev}2" || cleanup 10
+	wipefs -af "${usb_dev}2" || true
 	mkfs.vfat -v -F 32 "${usb_dev}2" || cleanUp 10
 fi
 
 # Wipe data partition
-wipefs -af "${usb_dev}${data_part}" || cleanup 10
+wipefs -af "${usb_dev}${data_part}" || true
 
 # Format data partition
 if [ "$data_fmt" = "ntfs" ]; then
@@ -268,8 +268,8 @@ grub2-install --force --target=i386-pc \
 mkdir -p "${data_mnt}/boot/isos" || cleanUp 10
 
 # Copy files
-cp -rf ./mbusb.* "${data_mnt}/boot/grub2" \
-    || cp -rf ./mbusb.* "${data_mnt}/boot/grub" \
+cp -R -f ./mbusb.* "${data_mnt}/boot/grub2/" \
+    || cp -R -f ./mbusb.* "${data_mnt}/boot/grub/" \
     || cleanUp 10
 
 # Copy example configuration for GRUB
@@ -293,7 +293,7 @@ cp -p "${tmp_dir}/memdisk" "${data_mnt}/boot/grub2/" \
 rm -f "${tmp_dir}/memdisk" || true
 
 # Change ownership of files
-chown --recursive "$normal_user" "${data_mnt}"/* 2>/dev/null || true
+chown -R "$normal_user" "${data_mnt}"/* 2>/dev/null || true
 
 # Unmount partitions
 umount "$efi_mnt" "$data_mnt" || cleanUp 10
