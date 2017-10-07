@@ -19,7 +19,6 @@ data_fmt="vfat"
 data_size=""
 efi_mnt="/mnt/MBU-EFI/"
 data_mnt="/mnt/MBU-DATA/"
-log_file="/dev/null"
 
 # Show usage
 showUsage() {
@@ -33,7 +32,6 @@ showUsage() {
 	  -b,  --hybrid                 Create a hybrid MBR
 	  -e,  --efi                    Enable EFI compatibility
 	  -i,  --interactive            Launch gdisk to create a hybrid MBR
-	  -l,  --log                    Save debug information to log
 	  -h,  --help                   Display this message
 
 	EOF
@@ -54,19 +52,6 @@ cleanUp() {
 # Make sure USB drive is not mounted
 unmountUSB() {
 	umount --force "${1}"* 2>/dev/null || true
-}
-
-# Try running a command
-tryCMD() {
-	msg="$1"
-	cmd="$2"
-	printf '%s... ' "$msg"
-	if eval "$cmd" >> "$log_file" 2>&1; then
-		printf 'OK\n'
-	else
-		printf 'FAILED\n'
-		return 1
-	fi
 }
 
 # Trap kill signals (SIGHUP, SIGINT, SIGTERM) to do some cleanup and exit
@@ -92,11 +77,6 @@ while [ "$#" -gt 0 ]; do
 			;;
 		-i|--interactive)
 			interactive=1
-			shift
-			;;
-		-l|--log)
-			log_file="${scriptname%.*}.log"
-			printf '' "$log_file"
 			shift
 			;;
 		/dev/*)
@@ -169,24 +149,23 @@ case "$answer1" in
 		;;
 esac
 
+# Print all steps
+set -o verbose
+
 # Remove partitions
-tryCMD "Removing partitions from $usb_dev" \
-    "$sgdisk_cmd --zap-all $usb_dev"
+$sgdisk_cmd --zap-all "$usb_dev"
 
 # Create GUID Partition Table
-tryCMD "Creating GUID Partition Table on $usb_dev" \
-    "$sgdisk_cmd --mbrtogpt $usb_dev" || cleanUp 10
+$sgdisk_cmd --mbrtogpt "$usb_dev" || cleanUp 10
 
 # Create BIOS boot partition (1M)
-tryCMD "Creating BIOS boot partition on $usb_dev" \
-    "$sgdisk_cmd --new 1::+1M --typecode 1:ef02 \
-    --change-name 1:\"BIOS boot partition\" $usb_dev" || cleanUp 10
+$sgdisk_cmd --new 1::+1M --typecode 1:ef02 \
+    --change-name 1:"BIOS boot partition" "$usb_dev" || cleanUp 10
 
+# Create EFI System partition (50M)
 if [ "$eficonfig" -eq 1 ]; then
-	# Create EFI System partition (50M)
-	tryCMD "Creating EFI System partition on $usb_dev" \
-	    "$sgdisk_cmd --new 2::+50M --typecode 2:ef00 --change-name 2:\"EFI System\" \
-	    $usb_dev" || cleanUp 10
+	$sgdisk_cmd --new 2::+50M --typecode 2:ef00 --change-name 2:"EFI System" \
+	    "$usb_dev" || cleanUp 10
 fi
 
 # Create data partition
@@ -208,9 +187,8 @@ case "$data_fmt" in
 		cleanUp 1
 		;;
 esac
-tryCMD "Creating data partition on $usb_dev" \
-    "$sgdisk_cmd --new ${data_part}::${data_size}: --typecode ${data_part}:\"$type_code\" \
-    --change-name ${data_part}:\"$part_name\" $usb_dev" || cleanUp 10
+$sgdisk_cmd --new ${data_part}::${data_size}: --typecode ${data_part}:"$type_code" \
+    --change-name ${data_part}:"$part_name" "$usb_dev" || cleanUp 10
 
 # Unmount device
 unmountUSB "$usb_dev"
@@ -219,11 +197,9 @@ unmountUSB "$usb_dev"
 if [ "$hybrid" -eq 1 ]; then
 	if [ "$interactive" -eq 0 ]; then
 		if [ "$eficonfig" -eq 1 ]; then
-		    tryCMD "Creating hybrid MBR on ${usb_dev}" \
-			    "$sgdisk_cmd --hybrid 1:2:3 $usb_dev" || cleanUp 10
+			$sgdisk_cmd --hybrid 1:2:3 "$usb_dev" || cleanUp 10
 		else
-		    tryCMD "Creating hybrid MBR on ${usb_dev}" \
-			    "$sgdisk_cmd --hybrid 1:2 $usb_dev" || cleanUp 10
+			$sgdisk_cmd --hybrid 1:2 "$usb_dev" || cleanUp 10
 		fi
 	else
 		# Create hybrid MBR manually
@@ -233,22 +209,18 @@ if [ "$hybrid" -eq 1 ]; then
 fi
 
 # Set bootable flag for data partion
-tryCMD "Setting bootable flag on ${usb_dev}${data_part}" \
-   "$sgdisk_cmd --attributes ${data_part}:set:2 $usb_dev" || cleanUp 10
+$sgdisk_cmd --attributes ${data_part}:set:2 "$usb_dev" || cleanUp 10
 
 # Unmount device
 unmountUSB "$usb_dev"
 
 # Format BIOS boot partition
-tryCMD "Wipe any file system signatures on ${usb_dev}1" \
-    "$wipefs_cmd -af ${usb_dev}1" || cleanup 10
+$wipefs_cmd -af "${usb_dev}1" || cleanup 10
 
 if [ "$eficonfig" -eq 1 ]; then
 	# Format EFI System partition
-	tryCMD "Wipe any file system signatures on ${usb_dev}2" \
-	    "$wipefs_cmd -af ${usb_dev}2" || cleanup 10
-	tryCMD "Formatting EFI System partition on ${usb_dev}2" \
-	    "mkfs.vfat -v -F 32 ${usb_dev}2" || cleanUp 10
+	$wipefs_cmd -af "${usb_dev}2" || cleanup 10
+	mkfs.vfat -v -F 32 "${usb_dev}2" || cleanUp 10
 fi
 
 # Format data partition
@@ -258,52 +230,40 @@ if [ "$data_fmt" = "ntfs" ]; then
 else
 	mkfs_args="-t $data_fmt"
 fi
-tryCMD "Wipe any file system signatures on ${usb_dev}${data_part}" \
-    "$wipefs_cmd -af ${usb_dev}${data_part}" || cleanup 10
-tryCMD "Formatting data partition as $data_fmt on ${usb_dev}${data_part}" \
-    "mkfs $mkfs_args ${usb_dev}${data_part}" || cleanUp 10
+$wipefs_cmd -af "${usb_dev}${data_part}" || cleanup 10
+mkfs $mkfs_args "${usb_dev}${data_part}" || cleanUp 10
 
 # Unmount device
 unmountUSB "$usb_dev"
 
 if [ "$eficonfig" -eq 1 ]; then
 	# Mount EFI System partition
-	tryCMD "Mounting EFI System partition on $efi_mnt" \
-	    "mkdir -p $efi_mnt \
-	    && mount -v ${usb_dev}2 $efi_mnt" || cleanUp 10
+	mkdir -p "$efi_mnt" \
+	    && mount -v "${usb_dev}2" "$efi_mnt" || cleanUp 10
 fi
 
 # Mount data partition
-tryCMD "Mounting data partition on $data_mnt" \
-    "mkdir -p $data_mnt \
-    && mount -v ${usb_dev}${data_part} $data_mnt" || cleanUp 10
+mkdir -p "$data_mnt" \
+    && mount -v "${usb_dev}${data_part}" "$data_mnt" || cleanUp 10
 
 if [ "$eficonfig" -eq 1 ]; then
 	# Install GRUB for EFI
-	tryCMD "Installing GRUB for EFI on $usb_dev" \
-	    "$grub_cmd --target=x86_64-efi --efi-directory=$efi_mnt \
-	    --boot-directory=${data_mnt}boot --removable --recheck" || cleanUp 10
-
-	# Unmount EFI System partition
-	tryCMD "Unmounting EFI System partition on $efi_mnt" "umount -v $efi_mnt" \
-	    || cleanUp 10
+	$grub_cmd --target=x86_64-efi --efi-directory="$efi_mnt" \
+	    --boot-directory="${data_mnt}/boot" --removable --recheck || cleanUp 10
 fi
 
 # Install GRUB for BIOS
-tryCMD "Installing GRUB for BIOS on $usb_dev" \
-    "$grub_cmd --force --target=i386-pc \
-    --boot-directory=${data_mnt}boot \
-    --recheck $usb_dev" || cleanUp 10
+$grub_cmd --force --target=i386-pc \
+    --boot-directory="${data_mnt}/boot" \
+    --recheck "$usb_dev" || cleanUp 10
 
 # Install fallback GRUB
-tryCMD "Installing fallback GRUB on ${usb_dev}${data_part}" \
-    "$grub_cmd --force --target=i386-pc \
-    --boot-directory=${data_mnt}boot \
-    --recheck ${usb_dev}${data_part}"
+$grub_cmd --force --target=i386-pc \
+    --boot-directory="${data_mnt}/boot" \
+    --recheck "${usb_dev}${data_part}"
 
 # Create necessary directories
-tryCMD "Creating directories on ${data_mnt}boot" \
-    "mkdir -p ${data_mnt}boot/isos" || cleanUp 10
+mkdir -p "${data_mnt}/boot/isos" || cleanUp 10
 
 # Detect GRUB directory name
 if [ -d "${data_mnt}boot/grub2" ]; then
@@ -315,27 +275,22 @@ else
 fi
 
 # Copy files
-tryCMD "Copying files to ${grub_dir}" \
-    "cp -rf ./mbusb.* $grub_dir" || cleanUp 10
+cp -rf ./mbusb.* "$grub_dir" || cleanUp 10
 
 # Copy example configuration for GRUB
-tryCMD "Copying grub.cfg to ${grub_dir}" \
-    "cp -f ./grub.cfg.example ${grub_dir}/grub.cfg" || cleanUp 10
+cp -f ./grub.cfg.example "${grub_dir}/grub.cfg" || cleanUp 10
 
 # Download memdisk
-tryCMD "Downloading memdisk to ${data_mnt}boot/grub" \
-    "$wget_cmd -qO - \
+$wget_cmd -qO - \
     'https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.gz' \
-    | $tar_cmd -xz -C $grub_dir --no-same-owner --strip-components 3 \
-    'syslinux-6.03/bios/memdisk/memdisk'"
+    | $tar_cmd -xz -C "$grub_dir" --no-same-owner --strip-components 3 \
+    'syslinux-6.03/bios/memdisk/memdisk'
 
 # Change ownership of files
-tryCMD "Change ownership of files under ${data_mnt}" \
-    "chown --recursive $normal_user ${data_mnt}/* 2>/dev/null" || true
+chown --recursive "$normal_user" "${data_mnt}"/* 2>/dev/null || true
 
-# Unmount data partition
-tryCMD "Unmounting data partition on $data_mnt" "umount -v $data_mnt" \
-    || cleanUp 10
+# Unmount partitions
+umount -v "$efi_mnt" "$data_mnt" || cleanUp 10
 
 # Clean up and exit
 cleanUp
