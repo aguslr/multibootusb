@@ -125,6 +125,9 @@ if [ "$(id -u)" -ne 0 ]; then
 	cleanUp 2
 fi
 
+# Get original user
+normal_user="${SUDO_USER-$(who am i | awk '{print $1}')}"
+
 # Check for required arguments
 if [ ! "$usb_dev" ]; then
 	printf '%s: No device was provided.\n' "$scriptname" >&2
@@ -325,6 +328,10 @@ tryCMD "Downloading memdisk to ${data_mnt}boot/grub" \
     'https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.gz' \
     | $tar_cmd -xz -C $grub_dir --no-same-owner --strip-components 3 \
     'syslinux-6.03/bios/memdisk/memdisk'"
+
+# Change ownership of files
+tryCMD "Change ownership of files under ${data_mnt}" \
+    "chown --recursive $normal_user ${data_mnt}/* 2>/dev/null" || true
 
 # Unmount data partition
 tryCMD "Unmounting data partition on $data_mnt" "umount -v $data_mnt" \
