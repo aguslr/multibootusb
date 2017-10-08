@@ -190,7 +190,7 @@ unmountUSB "$usb_dev"
 # Interactive configuration?
 if [ "$interactive" -eq 1 ]; then
 	# Create hybrid MBR manually
-	# https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Hybrid_UEFI_GPT_.2B_BIOS_GPT.2FMBR_boot
+	# https://bit.ly/2z7HBrP
 	gdisk "$usb_dev"
 elif [ "$hybrid" -eq 1 ]; then
 	# Create hybrid MBR
