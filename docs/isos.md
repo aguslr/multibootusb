@@ -7,7 +7,7 @@ layout: default
 
 # {{ page.title }}
 
-These are [ISO][] or [kernel][] files that can either boot a [LiveCD][] or allow for the installation of the OS onto a hard drive.
+These are [ISO][] or [kernel][] utilities that can either boot a [LiveCD][] or allow for the installation of the OS onto a hard drive.
 
 <svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
   <symbol id="cfg-icon" viewBox="0 0 24 24">
@@ -32,8 +32,7 @@ These are [ISO][] or [kernel][] files that can either boot a [LiveCD][] or allow
 
 ## Linux
 
-The following table cotains a list of supported [Linux][]-based
-[distributions][distro]:
+The following table cotains a list of supported [Linux][]-based [distributions][distro] ({{ site.linux.size }} items):
 
 {% if site.linux %}
 <table class="item-list">
@@ -57,7 +56,7 @@ The following table cotains a list of supported [Linux][]-based
 
 ## Unix
 
-This table contains a list of supported [Unix-like][] OS's:
+This table contains a list of supported [Unix-like][] OS's ({{ site.unix.size }} items):
 
 {% if site.unix %}
 <table class="item-list">
@@ -81,7 +80,7 @@ This table contains a list of supported [Unix-like][] OS's:
 
 ## Misc
 
-Lastly, this table contains a list of miscellaneous utilities:
+Lastly, this table contains a list of miscellaneous utilities ({{ site.misc.size }} items):
 
 {% if site.misc %}
 <table class="item-list">

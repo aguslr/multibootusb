@@ -4,7 +4,7 @@ layout: default
 
 # MultiBoot USB
 
-This is a project that contains a collection of [GRUB][] files and scripts that will allow you to create a pendrive capable of booting [different ISO files][isos].
+This is a project that contains a collection of [GRUB][] files and scripts that will allow you to create a pendrive capable of booting a total of [{{ site.linux.size | plus: site.unix.size | plus: site.misc.size }} supported utilities][isos].
 
 ![Demo GIF]({{ "/assets/img/demo.gif" | relative_url }} "Demo")
 
