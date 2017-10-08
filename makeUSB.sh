@@ -41,6 +41,10 @@ showUsage() {
 
 # Clean up when exiting
 cleanUp() {
+	# Change ownership of files
+	{ [ "$data_mnt" ] && \
+	    chown -R "$normal_user" "${data_mnt}"/* 2>/dev/null; } \
+	    || true
 	# Unmount everything
 	umount -f "$efi_mnt" 2>/dev/null || true
 	umount -f "$data_mnt" 2>/dev/null || true
@@ -283,12 +287,6 @@ wget -qO - \
     | tar -xz -C "${data_mnt}"/boot/grub*/ --no-same-owner --strip-components 3 \
     'syslinux-6.03/bios/memdisk/memdisk' \
     || cleanUp 10
-
-# Change ownership of files
-chown -R "$normal_user" "${data_mnt}"/* 2>/dev/null || true
-
-# Unmount partitions
-umount "$efi_mnt" "$data_mnt" || cleanUp 10
 
 # Clean up and exit
 cleanUp
