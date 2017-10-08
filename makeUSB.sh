@@ -13,6 +13,7 @@ set -o errexit
 # Defaults
 scriptname=$(basename "$0")
 hybrid=0
+clone=0
 eficonfig=0
 interactive=0
 data_part=2
@@ -20,6 +21,7 @@ data_fmt="vfat"
 data_size=""
 efi_mnt=""
 data_mnt=""
+repo_dir=""
 tmp_dir="${TMPDIR-/tmp}"
 
 # Show usage
@@ -32,6 +34,7 @@ showUsage() {
 	 fs-type                        Filesystem type for the data partition [ext3|ext4|vfat|ntfs]
 	 data-size                      Data partition size (e.g. 5G)
 	  -b,  --hybrid                 Create a hybrid MBR
+	  -c,  --clone                  Clone Git repository on the device
 	  -e,  --efi                    Enable EFI compatibility
 	  -i,  --interactive            Launch gdisk to create a hybrid MBR
 	  -h,  --help                   Display this message
@@ -51,6 +54,7 @@ cleanUp() {
 	# Delete mountpoints
 	[ -d "$efi_mnt" ] && rmdir "$efi_mnt"
 	[ -d "$data_mnt" ] && rmdir "$data_mnt"
+	[ -d "$repo_dir" ] && rmdir "$repo_dir"
 	# Exit
 	exit "${1-0}"
 }
@@ -83,6 +87,10 @@ while [ "$#" -gt 0 ]; do
 			;;
 		-b|--hybrid)
 			hybrid=1
+			shift
+			;;
+		-c|--clone)
+			clone=1
 			shift
 			;;
 		-e|--efi)
@@ -239,9 +247,10 @@ fi
 # Unmount device
 unmountUSB "$usb_dev"
 
-# Create temporary mountpoints
+# Create temporary directories
 efi_mnt=$(mktemp -p "$tmp_dir" -d efi.XXXX)   || cleanUp 10
 data_mnt=$(mktemp -p "$tmp_dir" -d data.XXXX) || cleanUp 10
+repo_dir=$(mktemp -p "$tmp_dir" -d repo.XXXX) || cleanUp 10
 
 # Mount EFI System partition
 [ "$eficonfig" -eq 1 ] && \
@@ -269,13 +278,20 @@ $grub_cmd --force --target=i386-pc \
 # Create necessary directories
 mkdir -p "${data_mnt}/boot/isos" || cleanUp 10
 
-# Copy files
-cp -R ./mbusb.* "${data_mnt}"/boot/grub*/ \
-    || cleanUp 10
-
-# Copy example configuration for GRUB
-cp ./grub.cfg.example "${data_mnt}"/boot/grub*/ \
-    || cleanUp 10
+if [ "$clone" -eq 1 ]; then
+	# Clone Git repository
+	(cd "$repo_dir" && \
+	    git clone https://github.com/aguslr/multibootusb . && \
+	    mv .git* * "${data_mnt}"/boot/grub*/) \
+	    || cleanUp 10
+else
+	# Copy files
+	cp -R ./mbusb.* "${data_mnt}"/boot/grub*/ \
+	    || cleanUp 10
+	# Copy example configuration for GRUB
+	cp ./grub.cfg.example "${data_mnt}"/boot/grub*/ \
+	    || cleanUp 10
+fi
 
 # Rename example configuration
 ( cd "${data_mnt}"/boot/grub*/ && cp grub.cfg.example grub.cfg ) \

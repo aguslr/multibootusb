@@ -91,6 +91,7 @@ Usage: makeUSB.sh [options] device [fs-type] [data-size]
  fs-type                        Filesystem type for the data partition [ext3|ext4|vfat|ntfs]
  data-size                      Data partition size (e.g. 5G)
   -b,  --hybrid                 Create a hybrid MBR
+  -c,  --clone                  Clone Git repository on the device
   -e,  --efi                    Enable EFI compatibility
   -i,  --interactive            Launch gdisk to create a hybrid MBR
   -h,  --help                   Display this message
