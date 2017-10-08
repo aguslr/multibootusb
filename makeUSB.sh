@@ -41,6 +41,10 @@ showUsage() {
 
 # Clean up when exiting
 cleanUp() {
+	# Change ownership of files
+	{ [ "$data_mnt" ] && \
+	    chown -R "$normal_user" "${data_mnt}"/* 2>/dev/null; } \
+	    || true
 	# Unmount everything
 	umount -f "$efi_mnt" 2>/dev/null || true
 	umount -f "$data_mnt" 2>/dev/null || true
@@ -117,6 +121,11 @@ if [ ! "$usb_dev" ]; then
 	cleanUp 1
 fi
 
+# Check for GRUB installation binary
+grub_cmd=$(command -v grub2-install) \
+    || grub_cmd=$(command -v grub-install) \
+    || cleanUp 3
+
 # Unmount device
 unmountUSB "$usb_dev"
 
@@ -160,9 +169,8 @@ sgdisk --new 1::+1M --typecode 1:ef02 \
     --change-name 2:"EFI System" "$usb_dev" || cleanUp 10; }
 
 # Set data partition size
-if [ ! -z "$data_size" ]; then
-	data_size="+$data_size"
-fi
+[ -z "$data_size" ] || \
+    data_size="+$data_size"
 
 # Set data partition information
 case "$data_fmt" in
@@ -191,7 +199,7 @@ unmountUSB "$usb_dev"
 # Interactive configuration?
 if [ "$interactive" -eq 1 ]; then
 	# Create hybrid MBR manually
-	# https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Hybrid_UEFI_GPT_.2B_BIOS_GPT.2FMBR_boot
+	# https://bit.ly/2z7HBrP
 	gdisk "$usb_dev"
 elif [ "$hybrid" -eq 1 ]; then
 	# Create hybrid MBR
@@ -225,78 +233,60 @@ if [ "$data_fmt" = "ntfs" ]; then
 	# Use mkntfs quick format
 	mkfs -t "$data_fmt" -f "${usb_dev}${data_part}" || cleanUp 10
 else
-	mkfs -t "$data_fmt" "${usb_dev}${data_part}" || cleanUp 10
+	mkfs -t "$data_fmt" "${usb_dev}${data_part}"    || cleanUp 10
 fi
 
 # Unmount device
 unmountUSB "$usb_dev"
 
 # Create temporary mountpoints
-efi_mnt=$(mktemp -p "$tmp_dir" -d efi.XXXX)
-data_mnt=$(mktemp -p "$tmp_dir" -d data.XXXX)
+efi_mnt=$(mktemp -p "$tmp_dir" -d efi.XXXX)   || cleanUp 10
+data_mnt=$(mktemp -p "$tmp_dir" -d data.XXXX) || cleanUp 10
 
-if [ "$eficonfig" -eq 1 ]; then
-	# Mount EFI System partition
-	mount "${usb_dev}2" "$efi_mnt" || cleanUp 10
-fi
+# Mount EFI System partition
+[ "$eficonfig" -eq 1 ] && \
+    { mount "${usb_dev}2" "$efi_mnt" || cleanUp 10; }
 
 # Mount data partition
 mount "${usb_dev}${data_part}" "$data_mnt" || cleanUp 10
 
 # Install GRUB for EFI
 [ "$eficonfig" -eq 1 ] && \
-    { grub2-install --target=x86_64-efi --efi-directory="$efi_mnt" \
-    --boot-directory="${data_mnt}/boot" --removable --recheck \
-    || grub-install --target=x86_64-efi --efi-directory="$efi_mnt" \
+    { $grub_cmd --target=x86_64-efi --efi-directory="$efi_mnt" \
     --boot-directory="${data_mnt}/boot" --removable --recheck \
     || cleanUp 10; }
 
 # Install GRUB for BIOS
-grub2-install --force --target=i386-pc \
-    --boot-directory="${data_mnt}/boot" --recheck "$usb_dev" \
-    || grub-install --force --target=i386-pc \
+$grub_cmd --force --target=i386-pc \
     --boot-directory="${data_mnt}/boot" --recheck "$usb_dev" \
     || cleanUp 10
 
 # Install fallback GRUB
-grub2-install --force --target=i386-pc \
+$grub_cmd --force --target=i386-pc \
     --boot-directory="${data_mnt}/boot" --recheck "${usb_dev}${data_part}" \
-    || grub-install --force --target=i386-pc \
-    --boot-directory="${data_mnt}/boot" --recheck "${usb_dev}${data_part}" \
+    || true
 
 # Create necessary directories
 mkdir -p "${data_mnt}/boot/isos" || cleanUp 10
 
 # Copy files
-cp -R -f ./mbusb.* "${data_mnt}/boot/grub2/" \
-    || cp -R -f ./mbusb.* "${data_mnt}/boot/grub/" \
+cp -R -f ./mbusb.* "${data_mnt}"/boot/grub*/ \
     || cleanUp 10
 
 # Copy example configuration for GRUB
-cp -f ./grub.cfg.example "${data_mnt}/boot/grub2/grub.cfg" \
-    || cp -f ./grub.cfg.example "${data_mnt}/boot/grub/grub.cfg" \
+cp -f ./grub.cfg.example "${data_mnt}"/boot/grub*/ \
+    || cleanUp 10
+
+# Rename example configuration
+( cd "${data_mnt}"/boot/grub*/ && mv -f grub.cfg.example grub.cfg ) \
     || cleanUp 10
 
 # Download memdisk
 wget -qO - \
     'https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.gz' \
-    | tar -xz -C "$tmp_dir" --no-same-owner --strip-components 3 \
+    | tar -xz -C "${data_mnt}"/boot/grub*/ --no-same-owner --strip-components 3 \
     'syslinux-6.03/bios/memdisk/memdisk' \
     || cleanUp 10
-
-# Copy memdisk to pendrive
-cp -p "${tmp_dir}/memdisk" "${data_mnt}/boot/grub2/" \
-    || cp -p "${tmp_dir}/memdisk" "${data_mnt}/boot/grub/" \
-    || cleanUp 10
-
-# Remove downloaded memdisk
-rm -f "${tmp_dir}/memdisk" || true
-
-# Change ownership of files
-chown -R "$normal_user" "${data_mnt}"/* 2>/dev/null || true
-
-# Unmount partitions
-umount "$efi_mnt" "$data_mnt" || cleanUp 10
 
 # Clean up and exit
 cleanUp
