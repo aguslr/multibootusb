@@ -233,15 +233,15 @@ if [ "$data_fmt" = "ntfs" ]; then
 	# Use mkntfs quick format
 	mkfs -t "$data_fmt" -f "${usb_dev}${data_part}" || cleanUp 10
 else
-	mkfs -t "$data_fmt" "${usb_dev}${data_part}" || cleanUp 10
+	mkfs -t "$data_fmt" "${usb_dev}${data_part}"    || cleanUp 10
 fi
 
 # Unmount device
 unmountUSB "$usb_dev"
 
 # Create temporary mountpoints
-efi_mnt=$(mktemp -p "$tmp_dir" -d efi.XXXX)
-data_mnt=$(mktemp -p "$tmp_dir" -d data.XXXX)
+efi_mnt=$(mktemp -p "$tmp_dir" -d efi.XXXX)   || cleanUp 10
+data_mnt=$(mktemp -p "$tmp_dir" -d data.XXXX) || cleanUp 10
 
 # Mount EFI System partition
 [ "$eficonfig" -eq 1 ] && \
