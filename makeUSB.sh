@@ -160,9 +160,8 @@ sgdisk --new 1::+1M --typecode 1:ef02 \
     --change-name 2:"EFI System" "$usb_dev" || cleanUp 10; }
 
 # Set data partition size
-if [ ! -z "$data_size" ]; then
-	data_size="+$data_size"
-fi
+[ -z "$data_size" ] || \
+    data_size="+$data_size"
 
 # Set data partition information
 case "$data_fmt" in
@@ -235,10 +234,9 @@ unmountUSB "$usb_dev"
 efi_mnt=$(mktemp -p "$tmp_dir" -d efi.XXXX)
 data_mnt=$(mktemp -p "$tmp_dir" -d data.XXXX)
 
-if [ "$eficonfig" -eq 1 ]; then
-	# Mount EFI System partition
-	mount "${usb_dev}2" "$efi_mnt" || cleanUp 10
-fi
+# Mount EFI System partition
+[ "$eficonfig" -eq 1 ] && \
+    { mount "${usb_dev}2" "$efi_mnt" || cleanUp 10; }
 
 # Mount data partition
 mount "${usb_dev}${data_part}" "$data_mnt" || cleanUp 10
