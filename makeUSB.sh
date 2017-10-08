@@ -270,15 +270,15 @@ $grub_cmd --force --target=i386-pc \
 mkdir -p "${data_mnt}/boot/isos" || cleanUp 10
 
 # Copy files
-cp -R -f ./mbusb.* "${data_mnt}"/boot/grub*/ \
+cp -R ./mbusb.* "${data_mnt}"/boot/grub*/ \
     || cleanUp 10
 
 # Copy example configuration for GRUB
-cp -f ./grub.cfg.example "${data_mnt}"/boot/grub*/ \
+cp ./grub.cfg.example "${data_mnt}"/boot/grub*/ \
     || cleanUp 10
 
 # Rename example configuration
-( cd "${data_mnt}"/boot/grub*/ && mv -f grub.cfg.example grub.cfg ) \
+( cd "${data_mnt}"/boot/grub*/ && cp grub.cfg.example grub.cfg ) \
     || cleanUp 10
 
 # Download memdisk
