@@ -6,7 +6,11 @@ layout: default
 
 This is a project that contains a collection of [GRUB][] files and scripts that will allow you to create a pendrive capable of booting a total of [{{ site.linux.size | plus: site.unix.size | plus: site.misc.size }} supported utilities][isos].
 
-![Demo GIF]({{ "/assets/img/demo.gif" | relative_url }} "Demo")
+<video width="640" height="480" controls="controls" loop="loop" title="Demo">
+  <source src="{{ "/assets/vid/demo.webm" | relative_url }}" type="video/webm" />
+  <source src="{{ "/assets/vid/demo.mp4" | relative_url }}" type="video/mp4" />
+  <img src="{{ "/assets/img/demo.gif" | relative_url }}" title="Your browser does not support the video tag." />
+</video>
 
 
 ## Documentation
