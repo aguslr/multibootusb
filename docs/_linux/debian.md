@@ -34,8 +34,8 @@ layout: default
 
 ## Supported releases
 
-- Live ISO
-- Netboot ISO[^note1]
+- Live ISO[^note1]
+- Netboot ISO[^note2]
 
 
 ## Resources
@@ -54,7 +54,8 @@ logs][issue866183]
 
 ## Notes
 
-[^note1]: Rename Netboot ISO files (e.g. from `mini.iso` to `debian-8.6.0-i386-mini.iso`).
+[^note1]: Only Live environment; installer not supported (use Netboot ISO).
+[^note2]: Rename Netboot ISO files (e.g. from `mini.iso` to `debian-8.6.0-i386-mini.iso`).
 
 
 [config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
