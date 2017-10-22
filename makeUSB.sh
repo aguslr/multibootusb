@@ -119,6 +119,10 @@ while [ "$#" -gt 0 ]; do
 			data_size="$1"
 			shift
 			;;
+		*)
+			printf '%s: %s is not a valid argument.\n' "$scriptname" "$1" >&2
+			cleanUp 1
+			;;
 	esac
 done
 
