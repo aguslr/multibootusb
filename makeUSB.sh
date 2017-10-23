@@ -244,6 +244,9 @@ wipefs -af "${usb_dev}${data_part}" || true
 if [ "$data_fmt" = "ntfs" ]; then
 	# Use mkntfs quick format
 	mkfs -t "$data_fmt" -f "${usb_dev}${data_part}" || cleanUp 10
+elif [ "$data_fmt" = "vfat" ]; then
+	# Use FAT32
+	mkfs -t "$data_fmt" -F 32 "${usb_dev}${data_part}" || cleanUp 10
 else
 	mkfs -t "$data_fmt" "${usb_dev}${data_part}"    || cleanUp 10
 fi
