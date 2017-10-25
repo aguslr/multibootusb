@@ -28,11 +28,13 @@ This is a project that contains a collection of [GRUB][] files and scripts that 
 - [grub-iso-boot][]
 - [grub-iso-multiboot][]
 - [GRUB2-filemanager][]
+- [LiveUSB][]
 - [MultiBootUSB][]
 - [MultiPass-USB][]
 - [SARDU][]
 - [SMI][]
 - [SystemImageKit][]
+- [XBOOT][]
 - [YUMI][]
 
 
@@ -46,9 +48,11 @@ This is a project that contains a collection of [GRUB][] files and scripts that 
 [grub-iso-boot]: https://github.com/Jimmy-Z/grub-iso-boot
 [grub-iso-multiboot]: https://github.com/mpolitzer/grub-iso-multiboot
 [grub2-filemanager]: https://github.com/a1ive/grub2-filemanager
+[liveusb]: http://liveusb.info/dotclear/
 [multibootusb]: http://multibootusb.org/
 [multipass-usb]: https://github.com/Thermionix/multipass-usb
 [sardu]: http://www.sarducd.it/
 [smi]: https://github.com/kilbith/smi
 [systemimagekit]: https://github.com/probonopd/SystemImageKit
+[xboot]: https://sites.google.com/site/shamurxboot/
 [yumi]: https://www.pendrivelinux.com/yumi-multiboot-usb-creator/
