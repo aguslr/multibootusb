@@ -1,7 +1,7 @@
 ---
 title: MenuetOS
 homepage: http://www.menuetos.net/
-download: http://http://www.menuetos.net/download.htm
+download: http://www.menuetos.net/download.htm
 cfgdir: menuetos.d
 layout: default
 ---
