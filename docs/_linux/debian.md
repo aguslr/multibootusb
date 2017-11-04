@@ -40,6 +40,8 @@ layout: default
 
 ## Resources
 
+- [#724931 - ISO loopback support for Debian installer - Debian Bug report
+logs][issue724931]
 - [#866183 - debian-live: loopback.cfg is not working - Debian Bug report
 logs][issue866183]
 
@@ -61,4 +63,5 @@ logs][issue866183]
 [config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
 [distrowatch]: https://distrowatch.com/table.php?distribution=debian
 [wikipedia]: https://en.wikipedia.org/wiki/Debian
+[issue724931]: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=724931
 [issue866183]: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=866183
