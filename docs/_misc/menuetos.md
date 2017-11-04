@@ -26,6 +26,7 @@ layout: default
 
 ## Supported releases
 
+- Standard diskette image (using [MEMDISK][])[^note1]
 - Standard ISO (using [MEMDISK][])
 
 
@@ -34,6 +35,11 @@ layout: default
 - [Official homepage]({{ page.homepage }})
 - [Official download page]({{ page.download }})
 - [{{ page.title }} at Wikipedia][wikipedia]
+
+
+## Notes
+
+[^note1]: Rename image files (e.g. from `M6412690.IMG` to `menuet-6412690.img`)
 
 
 [config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
