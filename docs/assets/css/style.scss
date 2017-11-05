@@ -11,6 +11,11 @@ a:visited {
   text-decoration: underline;
 }
 
+/* Code */
+pre {
+  border-radius: 0;
+}
+
 /* Center images */
 img {
   display:block;
