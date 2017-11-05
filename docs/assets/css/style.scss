@@ -3,6 +3,14 @@
 
 @import "{{ site.theme }}";
 
+/* Links */
+a:active,
+a:hover,
+a:visited {
+  font-weight: inherit;
+  text-decoration: underline;
+}
+
 /* Center images */
 img {
   display:block;
