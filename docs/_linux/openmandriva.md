@@ -1,5 +1,5 @@
 ---
-title: OpenMandriva
+title: OpenMandriva Lx
 homepage: https://www.openmandriva.org/
 download: https://www.openmandriva.org/download
 cfgdir: openmandriva.d
@@ -41,4 +41,4 @@ layout: default
 
 [config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
 [distrowatch]: http://distrowatch.com/table.php?distribution=openmandriva
-[wikipedia]: https://en.wikipedia.org/wiki/OpenMandriva
+[wikipedia]: https://en.wikipedia.org/wiki/OpenMandriva_Lx
