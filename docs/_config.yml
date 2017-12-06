@@ -25,6 +25,8 @@ kramdown:
 
 # Collections
 collections:
+  android:
+    output: true
   linux:
     output: true
   unix:

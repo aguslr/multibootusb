@@ -30,9 +30,33 @@ These are [ISO][] or [kernel][] utilities that can either boot a [LiveCD][] or a
 </svg>
 
 
+## Android
+
+The following table cotains a list of supported [Android][]-based operating systems ({{ site.android.size }} items):
+
+{% if site.android %}
+<table class="item-list">
+  <tbody>
+  {% for item in site.android %}
+  <tr>
+  <td markdown="1">
+  [{{ item.title }}]({{ item.url | relative_url }})
+  </td>
+  <td markdown="1">
+  {% if item.download %}<a href="{{ item.download }}" alt="Download" title="Download"><svg class="icon"><use xlink:href="#dl-icon"/></svg></a>{% endif %}
+  {% if item.homepage %}<a href="{{ item.homepage }}" alt="Homepage" title="Homepage"><svg class="icon"><use xlink:href="#home-icon"/></svg></a>{% endif %}
+  {% if item.cfgdir %}<a href="{{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: item.cfgdir }}" alt="Configuration" title="Configuration"><svg class="icon"><use xlink:href="#cfg-icon"/></svg></a>{% endif %}
+  </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+
 ## Linux
 
-The following table cotains a list of supported [Linux][]-based [distributions][distro] ({{ site.linux.size }} items):
+This table cotains a list of supported [Linux][]-based [distributions][distro] ({{ site.linux.size }} items):
 
 {% if site.linux %}
 <table class="item-list">
@@ -102,6 +126,7 @@ Lastly, this table contains a list of miscellaneous utilities ({{ site.misc.size
 {% endif %}
 
 
+[android]: https://en.wikipedia.org/wiki/Android_(operating_system)
 [iso]: https://en.wikipedia.org/wiki/ISO_image
 [kernel]: https://en.wikipedia.org/wiki/Kernel_(operating_system)
 [livecd]: https://en.wikipedia.org/wiki/Live_CD

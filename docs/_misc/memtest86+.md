@@ -1,8 +1,8 @@
 ---
-title: MemTest86
-homepage: https://www.memtest86.com/
-download: https://www.memtest86.com/download.htm
-cfgdir: memtest86.d
+title: Memtest86+
+homepage: http://www.memtest.org/
+download: http://www.memtest.org/#downiso
+cfgdir: memtest86+.d
 layout: default
 ---
 
@@ -28,7 +28,8 @@ layout: default
 
 ## Supported releases
 
-- Bootable CD (ISO format)
+- Bootable ISO (using [MEMDISK][])
+- Bootable binary
 
 
 ## Links

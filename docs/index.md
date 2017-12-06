@@ -4,7 +4,7 @@ layout: default
 
 # MultiBoot USB
 
-This is a project that contains a collection of [GRUB][] files and scripts that will allow you to create a pendrive capable of booting a total of [{{ site.linux.size | plus: site.unix.size | plus: site.misc.size }} supported utilities][isos].
+This is a project that contains a collection of [GRUB][] files and scripts that will allow you to create a pendrive capable of booting a total of [{{ site.android.size | plus: site.linux.size | plus: site.unix.size | plus: site.misc.size }} supported utilities][isos].
 
 <video width="640" height="480" controls="controls" loop="loop" title="Demo">
   <source src="{{ "/assets/vid/demo.webm" | relative_url }}" type="video/webm" />
