@@ -21,7 +21,7 @@ data_fmt="vfat"
 data_size=""
 efi_mnt=""
 data_mnt=""
-data_subdir="" # could be "boot"
+data_subdir="boot"
 repo_dir=""
 tmp_dir="${TMPDIR-/tmp}"
 
@@ -34,12 +34,12 @@ showUsage() {
 	 device                         Device to modify (e.g. /dev/sdb)
 	 fs-type                        Filesystem type for the data partition [ext3|ext4|vfat|ntfs]
 	 data-size                      Data partition size (e.g. 5G)
-	  -d,  --subdirectory           Data subdirectory (e.g. "boot")
 	  -b,  --hybrid                 Create a hybrid MBR
 	  -c,  --clone                  Clone Git repository on the device
 	  -e,  --efi                    Enable EFI compatibility
 	  -i,  --interactive            Launch gdisk to create a hybrid MBR
 	  -h,  --help                   Display this message
+	  -s,  --subdirectory <NAME>    Specify a data subdirectory (e.g. "boot" or "")
 
 	EOF
 }
@@ -87,11 +87,6 @@ while [ "$#" -gt 0 ]; do
 			showUsage
 			exit 0
 			;;
-		-d|--subdirectory)
-			data_subdir="$2"
-			shift
-			shift
-			;;
 		-b|--hybrid)
 			hybrid=1
 			shift
@@ -107,6 +102,11 @@ while [ "$#" -gt 0 ]; do
 			;;
 		-i|--interactive)
 			interactive=1
+			shift
+			;;
+		-s|--subdirectory)
+			data_subdir="$2"
+			shift
 			shift
 			;;
 		/dev/*)
