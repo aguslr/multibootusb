@@ -39,7 +39,7 @@ showUsage() {
 	  -e,  --efi                    Enable EFI compatibility
 	  -i,  --interactive            Launch gdisk to create a hybrid MBR
 	  -h,  --help                   Display this message
-	  -s,  --subdirectory <NAME>    Specify a data subdirectory (e.g. "boot" or "")
+	  -s,  --subdirectory <NAME>    Specify a data subdirectory (default: "boot")
 
 	EOF
 }
