@@ -89,25 +89,19 @@ while [ "$#" -gt 0 ]; do
 			;;
 		-b|--hybrid)
 			hybrid=1
-			shift
 			;;
 		-c|--clone)
 			clone=1
-			shift
 			;;
 		-e|--efi)
 			eficonfig=1
 			data_part=3
-			shift
 			;;
 		-i|--interactive)
 			interactive=1
-			shift
 			;;
 		-s|--subdirectory)
-			data_subdir="$2"
-			shift
-			shift
+			shift && data_subdir="$1"
 			;;
 		/dev/*)
 			if [ -b "$1" ]; then
@@ -116,21 +110,19 @@ while [ "$#" -gt 0 ]; do
 				printf '%s: %s is not a valid device.\n' "$scriptname" "$1" >&2
 				cleanUp 1
 			fi
-			shift
 			;;
 		[a-z]*)
 			data_fmt="$1"
-			shift
 			;;
 		[0-9]*)
 			data_size="$1"
-			shift
 			;;
 		*)
 			printf '%s: %s is not a valid argument.\n' "$scriptname" "$1" >&2
 			cleanUp 1
 			;;
 	esac
+	shift
 done
 
 # Check for required arguments
