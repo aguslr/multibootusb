@@ -5,6 +5,7 @@ description: >
   will allow you to create a pendrive capable of booting different ISO files.
 baseurl: ""
 url: ""
+repository: aguslr/multibootusb
 
 # Build settings
 markdown: kramdown
