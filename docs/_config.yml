@@ -4,7 +4,7 @@ description: >
   This is a project that contains a collection of GRUB files and scripts that
   will allow you to create a pendrive capable of booting different ISO files.
 baseurl: ""
-url: ""
+url: "https://mbusb.aguslr.com"
 repository: aguslr/multibootusb
 
 # Build settings

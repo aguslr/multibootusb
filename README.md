@@ -1,6 +1,6 @@
 # Multiboot USB
 
-<http://mbusb.aguslr.com/>
+<https://mbusb.aguslr.com/>
 
 ## About
 
@@ -15,5 +15,5 @@ Visit the [project's website for more information][website].
 
 
 [grub]: https://www.gnu.org/software/grub/
-[isos]: http://mbusb.aguslr.com/isos.html
-[website]: http://mbusb.aguslr.com/
+[isos]: https://mbusb.aguslr.com/isos.html
+[website]: https://mbusb.aguslr.com/
