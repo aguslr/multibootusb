@@ -6,6 +6,9 @@ cache:
   paths:
     - vendor/
 
+variables:
+  JEKYLL_ENV: production
+
 before_script:
   - ln -s docs/Gemfile ./
   - bundle install --path vendor
