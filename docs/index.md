@@ -9,7 +9,7 @@ This is a project that contains a collection of [GRUB][] files and scripts that 
 <video width="640" height="480" controls="controls" loop="loop" title="Demo">
   <source src="{{ "/assets/vid/demo.webm" | relative_url }}" type="video/webm" />
   <source src="{{ "/assets/vid/demo.mp4" | relative_url }}" type="video/mp4" />
-  <img src="{{ "/assets/img/demo.gif" | relative_url }}" title="Your browser does not support the video tag." />
+  <img src="{{ "/assets/img/demo.gif" | relative_url }}" title="Your browser does not support the video tag." alt="Demo" />
 </video>
 
 
