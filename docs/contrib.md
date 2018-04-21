@@ -2,10 +2,11 @@
 title: Contributing to the project
 layout: default
 ---
-* auto-gen TOC:
-{:toc}
 
 # {{ page.title }}
+
+* auto-gen TOC:
+{:toc}
 
 This project is [Free Software][freesoft] released under the [GNU General Public License (Version 3)][gpl3], therefore contributions are encouraged.
 

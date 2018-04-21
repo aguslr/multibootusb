@@ -2,10 +2,11 @@
 title: List of supported files
 layout: default
 ---
-* auto-gen TOC:
-{:toc}
 
 # {{ page.title }}
+
+* auto-gen TOC:
+{:toc}
 
 These are [ISO][] or [kernel][] utilities that can either boot a [LiveCD][] or allow for the installation of the OS onto a hard drive.
 

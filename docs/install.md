@@ -2,10 +2,11 @@
 title: Preparing the multiboot USB
 layout: default
 ---
-* auto-gen TOC:
-{:toc}
 
 # {{ page.title }}
+
+* auto-gen TOC:
+{:toc}
 
 ## Getting the configuration files
 
