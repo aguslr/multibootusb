@@ -23,7 +23,7 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>{{ site.title | default: site.github.repository_name }}</h1>
+        <a class="home" href="{{ site.url }}"><p>{{ site.title | default: site.github.repository_name }}</p></a>
         <p>{{ site.description | default: site.github.project_tagline }}</p>
 
         {% if site.github.is_user_page %}

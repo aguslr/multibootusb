@@ -23,6 +23,21 @@ img {
   margin: 0 auto;
 }
 
+/* Header home link */
+.home,
+.home:active,
+.home:hover,
+.home:visited {
+  color: #222;
+  font-size: 2.5em;
+  font-weight: bolder;
+  line-height: 1.1em;
+  text-decoration: none;
+}
+.home:hover {
+  color: #069;
+}
+
 /* Align table for items */
 .item-list td:first-child, .item-list th:first-child {
   text-align: left;
