@@ -16,7 +16,6 @@ exclude:
 
 # Theme settings
 show_downloads: true
-google_analytics: 'UA-91340346-2'
 
 # Kramdown settings
 kramdown:
