@@ -2,7 +2,7 @@
 title: Android-x86
 homepage: http://www.android-x86.org/
 download: http://www.android-x86.org/download
-cfgdir: android-x86.d
+cfgdir: android.d
 layout: default
 ---
 

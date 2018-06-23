@@ -2,7 +2,7 @@
 title: Arch Linux
 homepage: https://www.archlinux.org/
 download: https://www.archlinux.org/download/
-cfgdir: arch.d
+cfgdir: archlinux.d
 layout: default
 ---
 
