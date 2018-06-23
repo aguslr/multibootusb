@@ -301,8 +301,8 @@ fi
     || cleanUp 10
 
 # Download memdisk
-wget -qO - \
-    'https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.gz' \
+syslinux_url='https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.gz'
+{ wget -qO - "$syslinux_url" 2>/dev/null || curl -sL "$syslinux_url" 2>/dev/null; } \
     | tar -xz -C "${data_mnt}/${data_subdir}"/grub*/ --no-same-owner --strip-components 3 \
     'syslinux-6.03/bios/memdisk/memdisk' \
     || cleanUp 10
