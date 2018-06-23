@@ -31,6 +31,7 @@ layout: default
 
 - Desktop ISO (using [loopback.cfg][])
 - Netboot ISO[^note1]
+- Server ISO[^note1]
 
 
 ## Links
