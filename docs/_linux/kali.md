@@ -25,8 +25,7 @@ layout: default
 
 ## Supported releases
 
-- 2017 ISOs
-- All ISOs (using [loopback.cfg][])
+- All ISOs
 
 
 ## Links
@@ -39,5 +38,4 @@ layout: default
 
 [config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
 [distrowatch]: https://distrowatch.com/table.php?distribution=kali
-[loopback.cfg]: http://www.supergrubdisk.org/wiki/Loopback.cfg
 [wikipedia]: https://en.wikipedia.org/wiki/Kali_Linux
