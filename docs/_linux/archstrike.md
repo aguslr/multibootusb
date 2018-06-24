@@ -25,7 +25,7 @@ layout: default
 
 ## Supported releases
 
-- Live ISO(64-bit)
+- Live ISO
 
 ## Links
 
