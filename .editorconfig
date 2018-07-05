@@ -1,0 +1,23 @@
+# https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Charset and unix-style newlines with a newline ending every file
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+
+# 2 space indentation
+[*.{cfg,css,html,md,scss,yml}]
+indent_size = 2
+indent_style = space
+
+# Tab indentation (no size specified)
+[*.sh]
+indent_style = tab
+
+# Trim trailing spaces
+[*.{cfg,sh}]
+trim_trailing_whitespace = true
