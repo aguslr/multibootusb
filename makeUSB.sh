@@ -300,12 +300,23 @@ fi
 ( cd "${data_mnt}/${data_subdir}"/grub*/ && cp grub.cfg.example grub.cfg ) \
     || cleanUp 10
 
+# Check for download program
+if [ "$(command -v wget)" ]; then
+    download_cmd='wget -qO -'
+elif [ "$(command -v curl)" ]; then
+    download_cmd='curl -L'
+fi
+
 # Download memdisk
-wget -qO - \
+if [ "$download_cmd" ]; then
+    $download_cmd \
     'https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.gz' \
     | tar -xz -C "${data_mnt}/${data_subdir}"/grub*/ --no-same-owner --strip-components 3 \
     'syslinux-6.03/bios/memdisk/memdisk' \
     || cleanUp 10
+else
+    printf "There is no program (wget or curl) to download files.\nMemdisk haven't been copied.\n"
+fi
 
 # Clean up and exit
 cleanUp
