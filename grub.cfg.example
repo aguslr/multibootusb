@@ -26,6 +26,11 @@ fi
 # Timeout for menu
 set timeout=30
 
+# Load custom GRUB configuration
+if [ -e "$prefix/grub.cfg.local" ]; then
+  source "$prefix/grub.cfg.local"
+fi
+
 # Load MBUSB configuration
 if [ -e "$prefix/mbusb.cfg" ]; then
   source "$prefix/mbusb.cfg"
