@@ -30,6 +30,7 @@ layout: default
 
 - LiveDVD ISO[^note1]
 - Installation ISO[^note2]
+- Admin CD ISO[^note3]
 
 
 ## Links
@@ -44,6 +45,7 @@ layout: default
 
 [^note1]: Rename LiveDVD ISO files (e.g. from `livedvd-x86-amd64-32ul.iso` to `gentoo-livedvd-x86-amd64-32ul.iso`)
 [^note2]: Rename Installation ISO files (e.g. from `install-x86-minimal.iso` to `gentoo-install-x86-minimal.iso`)
+[^note3]: Rename Admin CD ISO files (e.g. from `admincd-amd64.iso` to `gentoo-admincd-amd64.iso`)
 
 
 [config]: {{ site.github.repository_url | append: "/tree/master/mbusb.d/" | append: page.cfgdir }}
