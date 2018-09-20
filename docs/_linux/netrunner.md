@@ -26,7 +26,9 @@ layout: default
 
 ## Supported releases
 
-- Desktop ISO (using [loopback.cfg][])
+- Arch-based ISO
+- Debian-based ISO (using [loopback.cfg][])
+- Core ISO
 
 
 ## Links
