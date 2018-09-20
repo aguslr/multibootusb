@@ -27,6 +27,7 @@ layout: default
 ## Supported releases
 
 - 6.0+ ISO
+- CyanogenMod ISO
 
 
 ## References
