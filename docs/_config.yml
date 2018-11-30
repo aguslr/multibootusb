@@ -7,6 +7,14 @@ baseurl: ""
 url: "https://mbusb.aguslr.com"
 repository: aguslr/multibootusb
 
+# GitHub
+github:
+  owner_name: aguslr
+  owner_url: https://github.com/aguslr
+  repository_url: https://github.com/aguslr/multibootusb
+  tar_url: https://github.com/aguslr/multibootusb/archive/master.tar.gz
+  zip_url: https://github.com/aguslr/multibootusb/archive/master.zip
+
 # Build settings
 markdown: kramdown
 theme: jekyll-theme-minimal
