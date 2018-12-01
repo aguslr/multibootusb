@@ -34,6 +34,10 @@ wget {{ site.github.tar_url }} -O - | tar -xzv --strip-components 1 --exclude={R
 
 ## Creating new USB drive
 
+<div class="note" markdown="1">
+We must have the files for targets *i386-pc* (e.g. package *[grub-pc-bin][]* in Debian/Ubuntu) and *x86_64-efi* (e.g. package *[grub-efi-amd64-bin][]* in Debian/Ubuntu) available in the system, usually in `/usr/lib/grub/`.
+</div>
+
 ### Manually preparing the drive
 
 #### Creating a bootable USB drive
@@ -148,7 +152,9 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 
 
 [efi+bios]: https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Hybrid_UEFI_GPT_.2B_BIOS_GPT.2FMBR_boot
+[grub-efi-amd64-bin]: https://packages.debian.org/search?keywords=grub-efi-amd64-bin
 [grub-iso-boot]: https://github.com/Jimmy-Z/grub-iso-boot/blob/master/grub.cfg
+[grub-pc-bin]: https://packages.debian.org/search?keywords=grub-pc-bin
 [hybridmbr]: http://www.rodsbooks.com/gdisk/hybrid.html
 [isos]: isos.html
 [kernel.org]: https://www.kernel.org/pub/linux/utils/boot/syslinux/
