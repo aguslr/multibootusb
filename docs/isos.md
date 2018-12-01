@@ -128,9 +128,9 @@ Lastly, this table contains a list of miscellaneous utilities ({{ site.misc.size
 
 
 [android]: https://en.wikipedia.org/wiki/Android_(operating_system)
+[distro]: https://en.wikipedia.org/wiki/Linux_distribution
 [iso]: https://en.wikipedia.org/wiki/ISO_image
 [kernel]: https://en.wikipedia.org/wiki/Kernel_(operating_system)
-[livecd]: https://en.wikipedia.org/wiki/Live_CD
 [linux]: https://en.wikipedia.org/wiki/Linux
-[distro]: https://en.wikipedia.org/wiki/Linux_distribution
+[livecd]: https://en.wikipedia.org/wiki/Live_CD
 [unix-like]: https://en.wikipedia.org/wiki/Unix-like

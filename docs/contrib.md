@@ -47,9 +47,9 @@ If you think you can solve the issue or want to [add support for another distro]
 - [How to Write a Git Commit Message][commits]
 
 
-[howto]: howto.html
+[commits]: http://chris.beams.io/posts/git-commit/
 [contribos]: https://guides.github.com/activities/contributing-to-open-source/
 [freesoft]: https://en.wikipedia.org/wiki/Free_software
-[commits]: http://chris.beams.io/posts/git-commit/
 [gpl3]: https://en.wikipedia.org/wiki/GNU_General_Public_License#Version_3
+[howto]: howto.html
 [pastebin]: https://en.wikipedia.org/wiki/Pastebin

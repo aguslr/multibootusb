@@ -38,16 +38,16 @@ This is a project that contains a collection of [GRUB][] files and scripts that 
 - [YUMI][]
 
 
-[isos]: isos.html
-[install]: install.html
 [contrib]: contrib.html
-[howto]: howto.html
 [easy2boot]: http://www.easy2boot.com/
 [glim]: https://github.com/thias/glim
-[grub]: https://www.gnu.org/software/grub/
 [grub-iso-boot]: https://github.com/Jimmy-Z/grub-iso-boot
 [grub-iso-multiboot]: https://github.com/mpolitzer/grub-iso-multiboot
 [grub2-filemanager]: https://github.com/a1ive/grub2-filemanager
+[grub]: https://www.gnu.org/software/grub/
+[howto]: howto.html
+[install]: install.html
+[isos]: isos.html
 [liveusb]: http://liveusb.info/dotclear/
 [multibootusb]: http://multibootusb.org/
 [multipass-usb]: https://github.com/Thermionix/multipass-usb

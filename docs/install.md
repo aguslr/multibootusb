@@ -147,10 +147,10 @@ Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to
 - [Using Syslinux and memdisk][usingmemdisk]
 
 
-[isos]: isos.html
 [efi+bios]: https://wiki.archlinux.org/index.php/Multiboot_USB_drive#Hybrid_UEFI_GPT_.2B_BIOS_GPT.2FMBR_boot
 [grub-iso-boot]: https://github.com/Jimmy-Z/grub-iso-boot/blob/master/grub.cfg
 [hybridmbr]: http://www.rodsbooks.com/gdisk/hybrid.html
+[isos]: isos.html
 [kernel.org]: https://www.kernel.org/pub/linux/utils/boot/syslinux/
 [kvmtuning]: http://www.linux-kvm.org/page/Tuning_KVM
 [loopback.cfg]: http://www.supergrubdisk.org/wiki/Loopback.cfg
