@@ -29,7 +29,7 @@ cd multibootusb && git pull
 If Git is not installed, we can still get the files as long as we have a basic Unix environment available:
 
 ```
-wget https://github.com/aguslr/multibootusb/tarball/master -O - | tar -xzv --strip-components 1 --exclude={README.md,docs}
+wget {{ site.github.tar_url }} -O - | tar -xzv --strip-components 1 --exclude={README.md,docs}
 ```
 
 ## Creating new USB drive
