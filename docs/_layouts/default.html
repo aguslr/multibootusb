@@ -10,6 +10,7 @@
         {{ site.title | default: site.github.repository_name }} by {{ site.github.owner_name | escape }}
       {% endif %}
     </title>
+    <meta name="description" content="{{ site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
 
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
