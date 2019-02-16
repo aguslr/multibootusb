@@ -70,6 +70,7 @@ unmountUSB() {
 trap 'cleanUp' 1 2 15
 
 # Show help before checking for root
+[ "$#" -eq 0 ] && showUsage && exit 0
 case "$1" in
 	-h|--help)
 		showUsage
@@ -87,7 +88,6 @@ fi
 normal_user="${SUDO_USER-$(who -m | awk '{print $1}')}"
 
 # Check arguments
-[ $# -eq 0 ] && showUsage && exit 0
 while [ "$#" -gt 0 ]; do
 	case "$1" in
 		-b|--hybrid)
