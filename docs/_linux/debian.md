@@ -50,6 +50,8 @@ logs][issue866183]
 
 - [Official homepage]({{ page.homepage }})
 - [Official download page]({{ page.download }})
+- [Official download page
+(Netboot)](https://www.debian.org/distrib/netinst#netboot)
 - [{{ page.title }} at DistroWatch][distrowatch]
 - [{{ page.title }} at Wikipedia][wikipedia]
 

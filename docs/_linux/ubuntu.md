@@ -38,6 +38,7 @@ layout: default
 
 - [Official homepage]({{ page.homepage }})
 - [Official download page]({{ page.download }})
+- [Official download page (Netboot)](http://cdimage.ubuntu.com/netboot/)
 - [{{ page.title }} at DistroWatch][distrowatch]
 - [{{ page.title }} at Wikipedia][wikipedia]
 
