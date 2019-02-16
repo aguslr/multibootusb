@@ -69,6 +69,15 @@ unmountUSB() {
 # Trap kill signals (SIGHUP, SIGINT, SIGTERM) to do some cleanup and exit
 trap 'cleanUp' 1 2 15
 
+# Show help before checking for root
+case "$1" in
+	-h|--help)
+		showUsage
+		exit 0
+		;;
+esac
+shift
+
 # Check for root
 if [ "$(id -u)" -ne 0 ]; then
 	printf 'This script must be run as root. Using sudo...\n' "$scriptname" >&2
@@ -82,11 +91,6 @@ normal_user="${SUDO_USER-$(who -m | awk '{print $1}')}"
 [ $# -eq 0 ] && showUsage && exit 0
 while [ "$#" -gt 0 ]; do
 	case "$1" in
-		# Show help
-		-h|--help)
-			showUsage
-			exit 0
-			;;
 		-b|--hybrid)
 			hybrid=1
 			;;
