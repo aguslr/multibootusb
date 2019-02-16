@@ -287,8 +287,10 @@ mkdir -p "${data_mnt}/${data_subdir}/isos" || cleanUp 10
 if [ "$clone" -eq 1 ]; then
 	# Clone Git repository
 	(cd "$repo_dir" && \
-	    git clone https://github.com/aguslr/multibootusb . && \
-	    mv .git* * "${data_mnt}/${data_subdir}"/grub*/) \
+		git clone https://github.com/aguslr/multibootusb . && \
+		# Move all visible and hidden files and folders except '.' and '..'
+		for x in * .[!.]* ..?*; do if [ -e "$x" ]; then mv -- "$x" \
+			"${data_mnt}/${data_subdir}"/grub*/; fi; done) \
 	    || cleanUp 10
 else
 	# Copy files
