@@ -33,7 +33,7 @@ layout: default
 
 ## Supported releases
 
-- Bootonly 64-bit ISO[^note1]
+- All 64-bit ISOs[^note1]
 
 
 ## Links
