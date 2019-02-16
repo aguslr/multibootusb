@@ -76,7 +76,6 @@ case "$1" in
 		exit 0
 		;;
 esac
-shift
 
 # Check for root
 if [ "$(id -u)" -ne 0 ]; then
