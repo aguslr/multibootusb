@@ -16,28 +16,33 @@ hybrid=0
 clone=0
 eficonfig=0
 interactive=0
-data_part=2
+boot_part=3
+data_part=1
 data_fmt="vfat"
-data_size=""
+data_size="1G"
+iso_part=2
+iso_fmt="vfat"
 efi_mnt=""
-data_mnt=""
-data_subdir="boot"
+iso_mnt=""
+iso_subdir="boot"
 repo_dir=""
 tmp_dir="${TMPDIR-/tmp}"
 
 # Show usage
 showUsage() {
 	cat <<- EOF
-	Script to prepare multiboot USB drive
-	Usage: $scriptname [options] device [fs-type] [data-size]
+	Script to prepare multiboot USB drive. 1st Partition 'DATA'. Separate 'ISO'
+    partition for grub files and ISO storage.
+	Usage: $scriptname [options] device
 
-	 device                         Device to modify (e.g. /dev/sdb)
-	 fs-type                        Filesystem type for the data partition [ext3|ext4|vfat|ntfs]
-	 data-size                      Data partition size (e.g. 5G)
+ device                 	Device to modify (e.g. /dev/sdb)
 	  -b,  --hybrid                 Create a hybrid MBR
 	  -c,  --clone                  Clone Git repository on the device
+	  -df, --data-format            Filesystem type for the DATA partition [ext3|ext4|vfat|exfat|ntfs] (Default vfat)
+	  -ds, --data-size              DATA partition size (e.g. 5G). Remainder of drive will be allocated to ISO partition. (Default 1G)
 	  -e,  --efi                    Enable EFI compatibility
 	  -i,  --interactive            Launch gdisk to create a hybrid MBR
+	  -if, --iso-format             Filesystem type for the ISO partition [ext3|ext4|vfat|exfat|ntfs] (Default vfat)
 	  -h,  --help                   Display this message
 	  -s,  --subdirectory <NAME>    Specify a data subdirectory (default: "boot")
 
@@ -47,15 +52,15 @@ showUsage() {
 # Clean up when exiting
 cleanUp() {
 	# Change ownership of files
-	{ [ "$data_mnt" ] && \
-	    chown -R "$normal_user" "${data_mnt}"/* 2>/dev/null; } \
+	{ [ "$iso_mnt" ] && \
+	    chown -R "$normal_user" "${iso_mnt}"/* 2>/dev/null; } \
 	    || true
 	# Unmount everything
 	umount -f "$efi_mnt" 2>/dev/null || true
-	umount -f "$data_mnt" 2>/dev/null || true
+	umount -f "$iso_mnt" 2>/dev/null || true
 	# Delete mountpoints
 	[ -d "$efi_mnt" ] && rmdir "$efi_mnt"
-	[ -d "$data_mnt" ] && rmdir "$data_mnt"
+	[ -d "$iso_mnt" ] && rmdir "$iso_mnt"
 	[ -d "$repo_dir" ] && rmdir "$repo_dir"
 	# Exit
 	exit "${1-0}"
@@ -96,15 +101,25 @@ while [ "$#" -gt 0 ]; do
 		-c|--clone)
 			clone=1
 			;;
+        -df|--data-format)
+			shift && data_fmt="$1"
+            ;;
+        -ds|--data-size)
+			shift && data_size="$1"
+            ;;
 		-e|--efi)
 			eficonfig=1
-			data_part=3
+			iso_part=3
+            boot_part=4
 			;;
 		-i|--interactive)
 			interactive=1
 			;;
+        -if|--iso-format)
+			shift && iso_fmt="$1"
+            ;;
 		-s|--subdirectory)
-			shift && data_subdir="$1"
+			shift && iso_subdir="$1"
 			;;
 		/dev/*)
 			if [ -b "$1" ]; then
@@ -115,10 +130,12 @@ while [ "$#" -gt 0 ]; do
 			fi
 			;;
 		[a-z]*)
+			iso_fmt="$1"
+			;;
+		[a-z]*)
 			data_fmt="$1"
 			;;
 		[0-9]*)
-			data_size="$1"
 			;;
 		*)
 			printf '%s: %s is not a valid argument.\n' "$scriptname" "$1" >&2
@@ -173,39 +190,60 @@ sgdisk --zap-all "$usb_dev"
 # Create GUID Partition Table
 sgdisk --mbrtogpt "$usb_dev" || cleanUp 10
 
-# Create BIOS boot partition (1M)
-sgdisk --new 1::+1M --typecode 1:ef02 \
-    --change-name 1:"BIOS boot partition" "$usb_dev" || cleanUp 10
-
-# Create EFI System partition (50M)
-[ "$eficonfig" -eq 1 ] && \
-    { sgdisk --new 2::+50M --typecode 2:ef00 \
-    --change-name 2:"EFI System" "$usb_dev" || cleanUp 10; }
-
-# Set data partition size
+# Set DATA partition size
 [ -z "$data_size" ] || \
     data_size="+$data_size"
 
-# Set data partition information
+# Set DATA partition information
 case "$data_fmt" in
 	ext2|ext3|ext4)
 		type_code="8300"
 		part_name="Linux filesystem"
 		;;
-	msdos|fat|vfat|ntfs)
+	msdos|fat|vfat|ntfs|exfat)
 		type_code="0700"
 		part_name="Microsoft basic data"
 		;;
 	*)
-		printf '%s: %s is an invalid filesystem type.\n' "$scriptname" "$data_fmt" >&2
+		printf '%s: %s is an invalid filesystem type.\n' "$scriptname" "$iso_fmt" >&2
 		showUsage
 		cleanUp 1
 		;;
 esac
 
-# Create data partition
+# Create DATA partition
 sgdisk --new ${data_part}::"${data_size}": --typecode ${data_part}:"$type_code" \
     --change-name ${data_part}:"$part_name" "$usb_dev" || cleanUp 10
+
+# Create EFI System partition (50M)
+[ "$eficonfig" -eq 1 ] && \
+    { sgdisk --new 0::+50M --typecode 0:ef00 \
+    --change-name 0:"EFI System" "$usb_dev" || cleanUp 10; }
+
+# Set ISO partition information
+case "$iso_fmt" in
+	ext2|ext3|ext4)
+		type_code="8300"
+		part_name="Linux filesystem"
+		;;
+	msdos|fat|vfat|ntfs|exfat)
+		type_code="0700"
+		part_name="Microsoft basic data"
+		;;
+	*)
+		printf '%s: %s is an invalid filesystem type.\n' "$scriptname" "$iso_fmt" >&2
+		showUsage
+		cleanUp 1
+		;;
+esac
+
+# Create ISO partition
+sgdisk --new 0::: --typecode 0:"$type_code" \
+    --change-name 0:"$part_name" "$usb_dev" || cleanUp 10
+
+# Create BIOS boot partition (1M)
+sgdisk --new 0::: --typecode 0:ef02 \
+    --change-name 0:"BIOS boot partition" "$usb_dev" || cleanUp 10
 
 # Unmount device
 unmountUSB "$usb_dev"
@@ -218,36 +256,54 @@ if [ "$interactive" -eq 1 ]; then
 elif [ "$hybrid" -eq 1 ]; then
 	# Create hybrid MBR
 	if [ "$eficonfig" -eq 1 ]; then
-		sgdisk --hybrid 1:2:3 "$usb_dev" || cleanUp 10
+		sgdisk --hybrid 2:3:4 "$usb_dev" || cleanUp 10
 	else
-		sgdisk --hybrid 1:2 "$usb_dev" || cleanUp 10
+		sgdisk --hybrid 2:3 "$usb_dev" || cleanUp 10
 	fi
 fi
 
-# Set bootable flag for data partion
-sgdisk --attributes ${data_part}:set:2 "$usb_dev" || cleanUp 10
+# Set bootable flag for ISO partion
+sgdisk --attributes ${iso_part}:set:2 "$usb_dev" || cleanUp 10
 
 # Unmount device
 unmountUSB "$usb_dev"
 
 # Wipe BIOS boot partition
-wipefs -af "${usb_dev}1" || true
+wipefs -af "${usb_dev}${boot_part}" || true
 
 # Format EFI System partition
 if [ "$eficonfig" -eq 1 ]; then
 	wipefs -af "${usb_dev}2" || true
-	mkfs.vfat -v -F 32 "${usb_dev}2" || cleanUp 10
+	mkfs.vfat -v -n "EFI" -F 32 "${usb_dev}2" || cleanUp 10
 fi
 
-# Wipe data partition
-wipefs -af "${usb_dev}${data_part}" || true
+# Wipe DATA and ISO partitions
+wipefs -af "${usb_dev}1" || true
+wipefs -af "${usb_dev}${iso_part}" || true
 
-# Format data partition
+# Format DATA partition
 if [ "$data_fmt" = "ntfs" ]; then
 	# Use mkntfs quick format
-	mkfs -t "$data_fmt" -f "${usb_dev}${data_part}" || cleanUp 10
+	mkfs -t "$data_fmt" -f -L "DATA" "${usb_dev}1" || cleanUp 10
 else
-	mkfs -t "$data_fmt" "${usb_dev}${data_part}"    || cleanUp 10
+    if [ "$data_fmt" = "vfat" -o "$data_fmt" = "exfat" ]; then
+        label="-n DATA"
+    else
+        label="-L DATA"
+    fi
+	eval mkfs -t "$data_fmt" "${label}" "${usb_dev}1"    || cleanUp 10
+fi
+# Format ISO partition
+if [ "$iso_fmt" = "ntfs" ]; then
+	# Use mkntfs quick format
+	mkfs -t "$iso_fmt" -f -L "DATA" "${usb_dev}${iso_part}" || cleanUp 10
+else
+    if [ "$iso_fmt" = "vfat" -o "$iso_fmt" = "exfat" ]; then
+        label="-n ISO"
+    else
+        label="-L ISO"
+    fi
+	eval mkfs -t "$iso_fmt" "${label}" "${usb_dev}${iso_part}"    || cleanUp 10
 fi
 
 # Unmount device
@@ -255,34 +311,34 @@ unmountUSB "$usb_dev"
 
 # Create temporary directories
 efi_mnt=$(mktemp -p "$tmp_dir" -d efi.XXXX)   || cleanUp 10
-data_mnt=$(mktemp -p "$tmp_dir" -d data.XXXX) || cleanUp 10
+iso_mnt=$(mktemp -p "$tmp_dir" -d data.XXXX) || cleanUp 10
 repo_dir=$(mktemp -p "$tmp_dir" -d repo.XXXX) || cleanUp 10
 
 # Mount EFI System partition
 [ "$eficonfig" -eq 1 ] && \
     { mount "${usb_dev}2" "$efi_mnt" || cleanUp 10; }
 
-# Mount data partition
-mount "${usb_dev}${data_part}" "$data_mnt" || cleanUp 10
+# Mount ISO partition
+mount "${usb_dev}${iso_part}" "$iso_mnt" || cleanUp 10
 
 # Install GRUB for EFI
 [ "$eficonfig" -eq 1 ] && \
     { $grub_cmd --target=x86_64-efi --efi-directory="$efi_mnt" \
-    --boot-directory="${data_mnt}/${data_subdir}" --removable --recheck \
+    --boot-directory="${iso_mnt}/${iso_subdir}" --removable --recheck \
     || cleanUp 10; }
 
 # Install GRUB for BIOS
 $grub_cmd --force --target=i386-pc \
-    --boot-directory="${data_mnt}/${data_subdir}" --recheck "$usb_dev" \
+    --boot-directory="${iso_mnt}/${iso_subdir}" --recheck "$usb_dev" \
     || cleanUp 10
 
 # Install fallback GRUB
 $grub_cmd --force --target=i386-pc \
-    --boot-directory="${data_mnt}/${data_subdir}" --recheck "${usb_dev}${data_part}" \
+    --boot-directory="${iso_mnt}/${iso_subdir}" --recheck "${usb_dev}${iso_part}" \
     || true
 
 # Create necessary directories
-mkdir -p "${data_mnt}/${data_subdir}/isos" || cleanUp 10
+mkdir -p "${iso_mnt}/${iso_subdir}/isos" || cleanUp 10
 
 if [ "$clone" -eq 1 ]; then
 	# Clone Git repository
@@ -290,25 +346,25 @@ if [ "$clone" -eq 1 ]; then
 		git clone https://github.com/aguslr/multibootusb . && \
 		# Move all visible and hidden files and folders except '.' and '..'
 		for x in * .[!.]* ..?*; do if [ -e "$x" ]; then mv -- "$x" \
-			"${data_mnt}/${data_subdir}"/grub*/; fi; done) \
+			"${iso_mnt}/${iso_subdir}"/grub*/; fi; done) \
 	    || cleanUp 10
 else
 	# Copy files
-	cp -R ./mbusb.* "${data_mnt}/${data_subdir}"/grub*/ \
+	cp -R ./mbusb.* "${iso_mnt}/${iso_subdir}"/grub*/ \
 	    || cleanUp 10
 	# Copy example configuration for GRUB
-	cp ./grub.cfg.example "${data_mnt}/${data_subdir}"/grub*/ \
+	cp ./grub.cfg.example "${iso_mnt}/${iso_subdir}"/grub*/ \
 	    || cleanUp 10
 fi
 
 # Rename example configuration
-( cd "${data_mnt}/${data_subdir}"/grub*/ && cp grub.cfg.example grub.cfg ) \
+( cd "${iso_mnt}/${iso_subdir}"/grub*/ && cp grub.cfg.example grub.cfg ) \
     || cleanUp 10
 
 # Download memdisk
 syslinux_url='https://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.gz'
 { wget -qO - "$syslinux_url" 2>/dev/null || curl -sL "$syslinux_url" 2>/dev/null; } \
-    | tar -xz -C "${data_mnt}/${data_subdir}"/grub*/ --no-same-owner --strip-components 3 \
+    | tar -xz -C "${iso_mnt}/${iso_subdir}"/grub*/ --no-same-owner --strip-components 3 \
     'syslinux-6.03/bios/memdisk/memdisk' \
     || cleanUp 10
 
