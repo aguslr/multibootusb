@@ -286,7 +286,7 @@ if [ "$data_fmt" = "ntfs" ]; then
 	# Use mkntfs quick format
 	mkfs -t "$data_fmt" -f -L "DATA" "${usb_dev}1" || cleanUp 10
 else
-    if [ "$data_fmt" = "vfat" -o "$data_fmt" = "exfat" ]; then
+    if [ "$data_fmt" = "vfat" ] || [ "$data_fmt" = "exfat" ]; then
         label="-n DATA"
     else
         label="-L DATA"
@@ -298,7 +298,7 @@ if [ "$iso_fmt" = "ntfs" ]; then
 	# Use mkntfs quick format
 	mkfs -t "$iso_fmt" -f -L "DATA" "${usb_dev}${iso_part}" || cleanUp 10
 else
-    if [ "$iso_fmt" = "vfat" -o "$iso_fmt" = "exfat" ]; then
+    if [ "$iso_fmt" = "vfat" ] || [ "$iso_fmt" = "exfat" ]; then
         label="-n ISO"
     else
         label="-L ISO"
