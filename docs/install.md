@@ -131,7 +131,7 @@ Once you have a bootable USB drive, it only remains to copy the bootable files (
 To test the newly created USB drive in a virtual environment with [QEMU][], run:
 
 ```
-qemu-system-x86_64 -enable-kvm -localtime -m 2G -vga std -drive file=<device>,readonly,cache=none,format=raw,if=virtio
+qemu-system-x86_64 -enable-kvm -rtc base=localtime -m 2G -vga std -drive file=<device>,readonly,cache=none,format=raw,if=virtio
 ```
 
 Where `<device>` is the name of the USB device (e.g. */dev/sdh*). Run `mount` to get this information.
