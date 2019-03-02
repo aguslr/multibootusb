@@ -30,7 +30,8 @@ layout: default
 
 ## Supported releases
 
-- Standard ISO
+- Standard Arch-based ISO
+- Old Gentoo-based ISOs
 
 
 ## Links
