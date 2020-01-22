@@ -9,4 +9,4 @@ jobs:
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           event: APPROVE
-          body: 'Thank you dependabot 🎊'
+          body: ''
