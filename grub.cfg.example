@@ -81,6 +81,11 @@ submenu "GRUB2 options ->" {
   }
 }
 
+# Motherboard
+menuentry "System Settings" {
+  fwsetup
+}
+
 # Reboot
 menuentry "Reboot" {
   reboot
