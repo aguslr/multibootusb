@@ -1,7 +1,7 @@
 ---
 title: Void
-homepage: http://www.voidlinux.eu/
-download: http://www.voidlinux.eu/download/
+homepage: http://www.voidlinux.org/
+download: http://www.voidlinux.org/download/
 cfgdir: void.d
 layout: default
 ---
