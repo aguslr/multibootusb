@@ -9,7 +9,7 @@ will allow you to create a pendrive capable of booting [different ISO
 files][isos].
 
 ![Demo
-GIF](https://gitlab.com/aguslr/multibootusb/raw/master/docs/assets/img/demo.gif
+GIF](https://gitlab.com/aguslr/multibootusb/raw/main/docs/assets/img/demo.gif
 "Demo")
 
 
